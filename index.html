@@ -6,34 +6,31 @@
     <title>Sergio Lubezky A. | El Bien Común</title>
     <meta name="description" content="Espacio dedicado a la búsqueda del bien común a través de la inteligencia compartida, la fotografía y los negocios.">
 
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
 
         {
-          "@type": "Organization",
-          "@id": "https://lubezky.com/#organization",
-          "name": "Lubezky Ecosystem",
-          "url": "https://lubezky.com",
-          "sameAs": [
-            "https://elmismobarco.com",
-            "https://inteligencia.com",
-            "https://unnuevopuntodevista.com",
-            "https://coachdefoto.com"
-          ]
-        },
-
-        {
           "@type": "Person",
-          "@id": "https://lubezky.com/#person",
-          "name": "Sergio Lubezky A.",
+          "@id": "https://lubezky.com/#sergio",
+          "name": "Sergio Lubezky",
           "url": "https://lubezky.com",
+          "image": "https://lubezky.com/foto-sergio.jpg",
           "sameAs": [
             "https://www.linkedin.com/in/sergiolubezky/",
             "https://x.com/slubezky",
             "https://www.facebook.com/sergiolubezky",
             "https://www.instagram.com/sergiolubezky/"
+          ],
+          "knowsAbout": [
+            "Kabbalah",
+            "Desarrollo personal",
+            "Inteligencia colectiva",
+            "Espiritualidad",
+            "Fotografía",
+            "Negocios"
           ]
         },
 
@@ -41,26 +38,46 @@
           "@type": "WebSite",
           "@id": "https://lubezky.com/#website",
           "url": "https://lubezky.com",
-          "name": "Sergio Lubezky A.",
+          "name": "Lubezky",
+          "description": "Espacio dedicado a la búsqueda del bien común a través de la inteligencia compartida, la fotografía y los negocios.",
+          "inLanguage": "es",
           "publisher": {
-            "@id": "https://lubezky.com/#organization"
+            "@id": "https://lubezky.com/#sergio"
           }
         },
 
         {
-          "@type": "WebPage",
-          "@id": "https://lubezky.com/#webpage",
-          "url": "https://lubezky.com",
+          "@type": "PodcastSeries",
           "name": "El Bien Común",
-          "isPartOf": {
-            "@id": "https://lubezky.com/#website"
-          },
-          "about": [
+          "url": "https://creators.spotify.com/pod/show/elbiencomun",
+          "creator": {
+            "@id": "https://lubezky.com/#sergio"
+          }
+        },
+
+        {
+          "@type": "ItemList",
+          "name": "Proyectos de Sergio Lubezky",
+          "itemListElement": [
             {
-              "@id": "https://lubezky.com/#person"
+              "@type": "WebSite",
+              "name": "El Mismo Barco",
+              "url": "https://elmismobarco.com"
             },
             {
-              "@id": "https://lubezky.com/#organization"
+              "@type": "WebSite",
+              "name": "Inteligencia",
+              "url": "https://inteligencia.com"
+            },
+            {
+              "@type": "WebSite",
+              "name": "Coach de Foto",
+              "url": "https://coachdefoto.com"
+            },
+            {
+              "@type": "WebSite",
+              "name": "Un Nuevo Punto de Vista",
+              "url": "https://unnuevopuntodevista.com"
             }
           ]
         }
@@ -183,6 +200,7 @@
         }
     </style>
 </head>
+
 <body>
 
 <main>
@@ -211,7 +229,7 @@
             <li><a href="https://www.facebook.com/sergiolubezky" target="_blank" rel="noopener">Facebook</a></li>
             <li><a href="https://www.instagram.com/sergiolubezky/" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://coachdefoto.com" target="_blank" rel="noopener">Fotografía</a></li>
-            <li><a href="https://www.youtube.com/playlist?list=PLOecieZCC_CbdDwQLKLKtpLoRiTw-Bv_h" target="_blank" rel="noopener">Podcast El Bien Común</a></li>
+            <li><a href="https://creators.spotify.com/pod/show/elbiencomun" target="_blank" rel="noopener">Podcast El Bien Común</a></li>
         </ul>
     </nav>
 </footer>
