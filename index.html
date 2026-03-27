@@ -4,49 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergio Lubezky | Entender, ver y actuar</title>
-    <meta name="description" content="Una forma de entender, ver y actuar con claridad, teniendo presente el bien común.">
+    <meta name="description" content="Una forma de entender, ver y actuar con claridad, teniendo presente el bien común. Trayectoria de Sergio Lubezky.">
 
-    <!-- SCHEMA COMPLETO DEL ECOSISTEMA -->
     <script type="application/ld+json">
     {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://lubezky.com/#sergio",
-      "name": "Sergio Lubezky",
-      "url": "https://lubezky.com/",
-      "jobTitle": "Experto en Estrategia e Inteligencia",
-      "description": "Estratega, consultor y experto en liderazgo e inteligencia aplicada.",
-      "sameAs": [
-        "https://www.linkedin.com/in/sergiolubezky/",
-        "https://inteligencia.com/",
-        "https://unnuevopuntodevista.com/",
-        "https://liderazgointerino.com/",
-        "https://elmismobarco.com/",
-        "https://coachdefoto.com/"
-      ],
-      "knowsAbout": [ 
-        "Artificial Intelligence", 
-        "Leadership", 
-        "Photography", 
-        "Business Strategy",
-        "Interim Management"
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://lubezky.com/#sergio",
+          "name": "Sergio Lubezky",
+          "url": "https://lubezky.com/",
+          "jobTitle": "Estratega en Tecnología, Liderazgo y Percepción",
+          "description": "Estratega y consultor enfocado en la intersección entre tecnología e inteligencia aplicada, liderazgo en crisis y narrativa visual.",
+          "image": "https://lubezky.com/foto-sergio.jpg",
+          "sameAs": [
+            "https://www.linkedin.com/in/sergiolubezky/",
+            "https://x.com/slubezky",
+            "https://www.facebook.com/sergiolubezky/",
+            "https://www.instagram.com/sergiolubezky/",
+            "https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk",
+            "https://inteligencia.com/",
+            "https://unnuevopuntodevista.com/",
+            "https://liderazgointerino.com/",
+            "https://elmismobarco.com/",
+            "https://coachdefoto.com/"
+          ],
+          "knowsAbout": [
+            "Inteligencia Artificial Aplicada",
+            "Liderazgo Interino",
+            "Estrategia de Negocios",
+            "Narrativa Visual",
+            "Gestión de Crisis",
+            "Percepción Estratégica"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lubezky.com/#website",
+          "name": "Sergio Lubezky",
+          "url": "https://lubezky.com/",
+          "publisher": { "@id": "https://lubezky.com/#sergio" },
+          "description": "Plataforma central del ecosistema estratégico de Sergio Lubezky."
+        }
       ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://lubezky.com/#website",
-      "name": "Lubezky",
-      "url": "https://lubezky.com/",
-      "publisher": { "@id": "https://lubezky.com/#sergio" },
-      "author": { "@id": "https://lubezky.com/#sergio" }
     }
-  ]
-}
     </script>
 
     <style>
+        /* --- Estilos Base --- */
         body { 
             margin: 0; 
             display: flex; 
@@ -76,29 +82,23 @@
             font-size: 1.5rem;
             font-weight: bold; 
             margin-bottom: 16px; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        p {
-            margin-bottom: 12px;
-        }
+        p { margin-bottom: 12px; }
 
         .content-box a { 
             color: #000; 
             text-decoration: none; 
             font-weight: bold; 
             border-bottom: 1px solid #ddd; 
+            transition: border-color 0.3s;
         }
 
-        .content-box a:hover { 
-            border-bottom: 1px solid #000; 
-        }
+        .content-box a:hover { border-bottom: 1px solid #000; }
 
-        footer { 
-            padding: 60px 20px; 
-            text-align: center; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-        }
-
+        /* --- Estilos de Identidad (Foto y Nombre) --- */
         .profile-img { 
             width: 75px; 
             height: 75px; 
@@ -112,7 +112,7 @@
             text-decoration: none; 
             color: inherit; 
             display: block; 
-            margin-bottom: 10px; 
+            margin-bottom: 2px; 
         }
 
         .name { 
@@ -120,6 +120,37 @@
             font-size: 1rem; 
             letter-spacing: 1.5px; 
             text-transform: uppercase; 
+        }
+
+        /* --- Footer Unificado --- */
+        footer { 
+            padding: 60px 20px; 
+            text-align: center; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
+
+        .footer-bio {
+            max-width: 650px;
+            margin: 0 auto 30px auto; 
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .footer-bio p { margin: 0; }
+
+        .footer-bio a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bio a:hover {
+            border-bottom: 1px solid #1a1a1a;
+            background-color: #f9f9f9;
+            color: #000;
         }
 
         .social-nav { 
@@ -133,70 +164,13 @@
             font-size: 0.85rem; 
         }
 
-        .social-nav a { 
-            color: #666; 
-            text-decoration: none; 
-        }
-
-        .social-nav a:hover { 
-            color: #000; 
-        }
-
+        .social-nav a { color: #666; text-decoration: none; }
+        .social-nav a:hover { color: #000; }
         .social-nav li:not(:last-child)::after { 
             content: "-"; 
             margin-left: 12px; 
             color: #ccc; 
         }
-
-/* --- Estilos Finales Footer Sergio Lubezky --- */
-footer { 
-    padding: 60px 20px; 
-    text-align: center; 
-    font-family: 'Helvetica Neue', Arial, sans-serif; 
-}
-
-.name-link { 
-    text-decoration: none; 
-    color: inherit; 
-    display: block; 
-    margin-bottom: 2px; /* Espacio mínimo debajo del nombre */
-}
-
-.name { 
-    font-weight: 600; 
-    font-size: 1rem; 
-    letter-spacing: 1.5px; 
-    text-transform: uppercase; 
-}
-
-.footer-bio {
-    max-width: 650px;
-    margin: 0 auto 30px auto; /* 0 arriba para pegarlo al nombre */
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.7;
-}
-
-.footer-bio p {
-    margin: 0;
-}
-
-.footer-bio a {
-    color: #1a1a1a;
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px solid #eee;
-    transition: all 0.3s ease;
-}
-
-.footer-bio a:hover {
-    border-bottom: 1px solid #1a1a1a;
-    background-color: #f9f9f9;
-    color: #000;
-}
-/* -------------------------------------------- */
-
-        
     </style>
 </head>
 
@@ -259,7 +233,6 @@ footer {
         <p>
             Si quieres compartir algo, puedes escribirme a <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>.
         </p>
-
     </div>
 </main>
 
@@ -274,10 +247,10 @@ footer {
         <p>
             Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. 
             Exploro la <a href="https://inteligencia.com" target="_blank">Inteligencia</a> aplicada, 
-            la <a href="https://liderazgointerino.com" target="_blank">Dirección Interina</a> en crisis 
-            y la narrativa visual en <a href="https://coachdefoto.com" target="_blank">Coach de Foto</a>. 
-            Todo bajo una misma premisa: la búsqueda de <a href="https://unnuevopuntodevista.com" target="_blank">Un Nuevo Punto de Vista</a> 
-            para entender que, al final, todos estamos en <a href="https://elmismobarco.com">El Mismo Barco</a>.
+            la <a href="https://liderazgointerino.com" target="_blank">Dirección Interina</a> 
+            y la narrativa visual en <a href="https://coachdefoto.com" target="_blank">Coach de Foto</a>, 
+            bajo una misma premisa: encontrar <a href="https://unnuevopuntodevista.com" target="_blank">un nuevo punto de vista</a> 
+            para entender que todos estamos en <a href="https://elmismobarco.com">el mismo barco</a>.
         </p>
     </div>
     
