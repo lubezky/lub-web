@@ -9,38 +9,37 @@
     <!-- SCHEMA -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://lubezky.com/#sergio",
-          "name": "Sergio Lubezky",
-          "url": "https://lubezky.com"
-        },
-        {
-          "@type": "WebPage",
-          "name": "Trabajo",
-          "url": "https://lubezky.com/trabajo/"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Inicio",
-              "item": "https://lubezky.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Trabajo",
-              "item": "https://lubezky.com/trabajo/"
-            }
-          ]
-        }
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lubezky.com/#sergio",
+      "name": "Sergio Lubezky",
+      "url": "https://lubezky.com/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lubezky.com/trabajo/#webpage",
+      "url": "https://lubezky.com/trabajo/",
+      "name": "Metodología y Trabajo de Sergio Lubezky",
+      "isPartOf": { "@id": "https://lubezky.com/#website" },
+      "about": { "@id": "https://lubezky.com/#sergio" },
+      "description": "Descripción de la metodología de consultoría, estrategia en inteligencia artificial y liderazgo interino.",
+      "mentions": [
+        { "@type": "Thing", "name": "Inteligencia Artificial", "sameAs": "https://inteligencia.com/" },
+        { "@type": "Thing", "name": "Liderazgo Interino", "sameAs": "https://liderazgointerino.com/" },
+        { "@type": "Thing", "name": "Coaching de Fotografía", "sameAs": "https://coachdefoto.com/" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://lubezky.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Trabajo", "item": "https://lubezky.com/trabajo/" }
       ]
     }
+  ]
+}
     </script>
 
     <style>
