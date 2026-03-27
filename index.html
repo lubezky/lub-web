@@ -1,238 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sergio Lubezky A. | El Bien Común</title>
-    <meta name="description" content="Espacio dedicado a la búsqueda del bien común a través de la inteligencia compartida, la fotografía y los negocios.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lubezky</title>
+  <meta name="description" content="Claridad para entender, perspectiva para ver y acción cuando importa." />
 
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-
-        {
-          "@type": "Person",
-          "@id": "https://lubezky.com/#sergio",
-          "name": "Sergio Lubezky",
-          "url": "https://lubezky.com",
-          "image": "https://lubezky.com/foto-sergio.jpg",
-          "sameAs": [
-            "https://www.linkedin.com/in/sergiolubezky/",
-            "https://x.com/slubezky",
-            "https://www.facebook.com/sergiolubezky",
-            "https://www.instagram.com/sergiolubezky/"
-          ],
-          "knowsAbout": [
-            "Kabbalah",
-            "Desarrollo personal",
-            "Inteligencia colectiva",
-            "Espiritualidad",
-            "Fotografía",
-            "Negocios"
-          ]
-        },
-
-        {
-          "@type": "WebSite",
-          "@id": "https://lubezky.com/#website",
-          "url": "https://lubezky.com",
-          "name": "Lubezky",
-          "description": "Espacio dedicado a la búsqueda del bien común a través de la inteligencia compartida, la fotografía y los negocios.",
-          "inLanguage": "es",
-          "publisher": {
-            "@id": "https://lubezky.com/#sergio"
-          }
-        },
-
-        {
-          "@type": "PodcastSeries",
-          "name": "El Bien Común",
-          "url": "https://creators.spotify.com/pod/show/elbiencomun",
-          "creator": {
-            "@id": "https://lubezky.com/#sergio"
-          }
-        },
-
-        {
-          "@type": "ItemList",
-          "name": "Proyectos de Sergio Lubezky",
-          "itemListElement": [
-            {
-              "@type": "WebSite",
-              "name": "El Mismo Barco",
-              "url": "https://elmismobarco.com"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Inteligencia",
-              "url": "https://inteligencia.com"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Coach de Foto",
-              "url": "https://coachdefoto.com"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Un Nuevo Punto de Vista",
-              "url": "https://unnuevopuntodevista.com"
-            }
-          ]
-        }
-
-      ]
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111;
+      background: #fff;
+      line-height: 1.6;
     }
-    </script>
 
-    <style>
-        * { box-sizing: border-box; }
-        
-        body { 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            background-color: #fff; 
-            color: #1a1a1a; 
-            font-family: 'Georgia', 'Times New Roman', serif; 
-            line-height: 1.8; 
-            -webkit-font-smoothing: antialiased; 
-        }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+    }
 
-        main { 
-            flex: 1; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 40px 20px; 
-        }
+    h1, h2, h3 {
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
 
-        .content-box { 
-            max-width: 750px; 
-            text-align: center; 
-            font-size: 1.35rem; 
-        }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; margin-bottom: 20px; }
+    h3 { font-size: 1.2rem; }
 
-        .site-header { 
-            font-weight: bold; 
-            margin-bottom: 25px; 
-            display: block; 
-            font-size: 1.5rem;
-        }
+    p { color: #444; }
 
-        .content-box p a { 
-            color: #000; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-bottom: 1px solid #ddd; 
-            transition: all 0.3s ease; 
-        }
+    .hero {
+      padding-top: 100px;
+    }
 
-        .content-box p a:hover { 
-            border-bottom: 1px solid #000; 
-            background-color: rgba(0,0,0,0.02);
-        }
+    .cta {
+      margin-top: 20px;
+    }
 
-        footer { 
-            padding: 60px 20px; 
-            text-align: center; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            background-color: #fafafa;
-        }
+    .btn {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 10px 16px;
+      border: 1px solid #111;
+      text-decoration: none;
+      color: #111;
+      font-size: 0.9rem;
+    }
 
-        .profile-img { 
-            width: 85px; 
-            height: 85px; 
-            border-radius: 50%; 
-            margin-bottom: 15px; 
-            object-fit: cover; 
-            border: 1px solid #eee; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+    .btn.secondary {
+      border-color: #ccc;
+      color: #666;
+    }
 
-        .name-link { 
-            text-decoration: none; 
-            color: inherit; 
-            display: block; 
-            margin-bottom: 15px; 
-        }
+    .grid {
+      display: grid;
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-        .name { 
-            font-weight: 600; 
-            font-size: 1rem; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-        }
+    .bloque a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      color: #111;
+    }
 
-        .social-nav { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 15px; 
-            font-size: 0.9rem; 
-        }
+    ul {
+      padding-left: 18px;
+    }
 
-        .social-nav a { 
-            color: #666; 
-            text-decoration: none; 
-            transition: 0.3s; 
-        }
+    footer {
+      border-top: 1px solid #eee;
+      padding: 40px 20px;
+      font-size: 0.85rem;
+      color: #666;
+    }
 
-        .social-nav a:hover { 
-            color: #000; 
-        }
+    footer a {
+      color: #666;
+      text-decoration: none;
+      margin-right: 12px;
+    }
 
-        .social-nav li:not(:last-child)::after { 
-            content: "|"; 
-            margin-left: 15px; 
-            color: #eee; 
-        }
+    footer a:hover {
+      text-decoration: underline;
+    }
 
-        @media (max-width: 600px) {
-            .content-box { font-size: 1.1rem; }
-            .social-nav { flex-direction: column; gap: 8px; }
-            .social-nav li:not(:last-child)::after { content: ""; }
-        }
-    </style>
+    .footer-links {
+      margin-top: 10px;
+    }
+  </style>
+
 </head>
 
 <body>
 
-<main>
-    <article class="content-box">
-        <span class="site-header">Sergio Lubezky A.</span>
-        <p>
-            Mi propósito es la búsqueda constante de <a href="https://creators.spotify.com/pod/show/elbiencomun">el bien común</a>, ese estado de armonía donde el progreso de uno significa el avance de todos. 
-            Creo que esta plenitud solo es alcanzable cuando utilizamos nuestra <a href="https://inteligencia.com">inteligencia</a> para reconocer que todos compartimos <a href="https://elmismobarco.com">el mismo barco</a>, y debemos integrar nuestras perspectivas para dar vida a 
-            <a href="https://unnuevopuntodevista.com">un nuevo punto de vista</a>. 
-            En mi experiencia profesional, la atención al detalle —tanto en los <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank" rel="noopener">negocios</a> como en la 
-            <a href="https://coachdefoto.com" target="_blank" rel="noopener">fotografía</a>— me permite utilizar los dones que <a href="https://dios.org">#elpatron</a> me ha dado en beneficio de la humanidad. 
-            Cuando este marco se traduce en acción, y la responsabilidad no puede esperar, ejerzo <strong><a href="https://liderazgointerino.com">liderazgo interino</a></strong> en contextos críticos.
-        </p>
-    </article>
-</main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Claridad para entender, perspectiva para ver, acción cuando importa.</h1>
+      <p>
+        Trabajo con personas y organizaciones cuando necesitan comprender lo que está pasando,
+        tomar decisiones difíciles o actuar en momentos críticos.
+      </p>
 
-<footer>
-    <img src="foto-sergio.jpg" alt="Retrato de Sergio Lubezky A." class="profile-img">
-    <a href="https://lubezky.com" class="name-link">
-        <span class="name">Sergio Lubezky A.</span>
-    </a>
-    <nav>
-        <ul class="social-nav">
-            <li><a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://x.com/slubezky" target="_blank" rel="noopener">X</a></li>
-            <li><a href="https://www.facebook.com/sergiolubezky" target="_blank" rel="noopener">Facebook</a></li>
-            <li><a href="https://www.instagram.com/sergiolubezky/" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://coachdefoto.com" target="_blank" rel="noopener">Fotografía</a></li>
-            <li><a href="https://creators.spotify.com/pod/show/elbiencomun" target="_blank" rel="noopener">Podcast El Bien Común</a></li>
-        </ul>
-    </nav>
-</footer>
+      <div class="cta">
+        <a href="#mapa" class="btn">Explorar el mapa</a>
+        <a href="/trabajo.html" class="btn secondary">Cómo trabajar conmigo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section id="mapa">
+    <div class="container">
+      <h2>Un ecosistema para entender, ver y actuar</h2>
+      <p>
+        Cada proyecto aborda una dimensión distinta, pero todos parten de la misma intención:
+        generar claridad real.
+      </p>
+
+      <div class="grid">
+
+        <div class="bloque">
+          <h3>Comprensión</h3>
+          <p>
+            Cuando el problema no está claro, cualquier solución falla.
+            Aquí se trabaja en entender lo que realmente está pasando.
+          </p>
+          <a href="https://inteligencia.com">Entender mejor</a>
+        </div>
+
+        <div class="bloque">
+          <h3>Percepción</h3>
+          <p>
+            A veces no falta información, falta una forma distinta de ver.
+            Cambiar la interpretación cambia la acción.
+          </p>
+          <a href="https://unnuevopuntodevista.com">Ver distinto</a>
+        </div>
+
+        <div class="bloque">
+          <h3>Acción</h3>
+          <p>
+            Hay momentos donde no se puede esperar.
+            Cuando la situación lo exige, se interviene.
+          </p>
+          <a href="https://liderazgointerino.com">Actuar ahora</a>
+        </div>
+
+        <div class="bloque">
+          <h3>Sentido colectivo</h3>
+          <p>
+            No todo es individual.
+            Entender lo compartido cambia la forma en que decidimos.
+          </p>
+          <a href="https://elmismobarco.com">Ampliar visión</a>
+        </div>
+
+        <div class="bloque">
+          <h3>Expresión</h3>
+          <p>
+            Cómo te muestras también comunica quién eres.
+            La expresión es parte de la claridad.
+          </p>
+          <a href="https://coachdefoto.com">Trabajar tu expresión</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIA -->
+  <section>
+    <div class="container">
+      <h2>Si no sabes por dónde empezar</h2>
+
+      <ul>
+        <li>Si sientes confusión → <a href="https://inteligencia.com">inteligencia.com</a></li>
+        <li>Si algo no te hace sentido → <a href="https://unnuevopuntodevista.com">unnuevopuntodevista.com</a></li>
+        <li>Si estás en una situación crítica → <a href="https://liderazgointerino.com">liderazgointerino.com</a></li>
+        <li>Si buscas perspectiva colectiva → <a href="https://elmismobarco.com">elmismobarco.com</a></li>
+        <li>Si quieres mejorar cómo te expresas → <a href="https://coachdefoto.com">coachdefoto.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TRABAJO -->
+  <section>
+    <div class="container">
+      <h2>Cómo puedo ayudarte</h2>
+
+      <div class="grid">
+
+        <div>
+          <h3>Procesos individuales</h3>
+          <p>
+            Para momentos donde necesitas claridad, dirección o tomar decisiones importantes.
+          </p>
+        </div>
+
+        <div>
+          <h3>Equipos</h3>
+          <p>
+            Alineación, comunicación y resolución de tensiones que no se están viendo con claridad.
+          </p>
+        </div>
+
+        <div>
+          <h3>Organizaciones</h3>
+          <p>
+            Intervención en momentos críticos, reestructura o liderazgo temporal.
+          </p>
+          <a href="https://liderazgointerino.com">Ver intervención</a>
+        </div>
+
+      </div>
+
+      <div class="cta">
+        <a href="/trabajo.html" class="btn">Ver opciones de trabajo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENFOQUE -->
+  <section>
+    <div class="container">
+      <h2>No separo lo personal de lo profesional</h2>
+      <p>
+        Los problemas organizacionales rara vez son solo técnicos.
+        Y los procesos personales rara vez están aislados del entorno.
+      </p>
+      <p>
+        Todo parte de entender mejor, ver con más claridad y actuar en consecuencia.
+      </p>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section>
+    <div class="container">
+      <p>
+        Este no es un solo proyecto.
+        Es una forma de observar, interpretar y actuar en el mundo.
+      </p>
+
+      <div class="cta">
+        <a href="#mapa" class="btn">Explorar el ecosistema</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+
+      <div>
+        <strong>Lubezky</strong>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://inteligencia.com">Inteligencia</a>
+        <a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a>
+        <a href="https://liderazgointerino.com">Liderazgo Interino</a>
+        <a href="https://elmismobarco.com">El Mismo Barco</a>
+        <a href="https://coachdefoto.com">Coach de Foto</a>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://elmismobarco.com">Podcast: El Bien Común</a>
+      </div>
+
+      <div class="footer-links">
+        <span>© 2026 Lubezky</span>
+      </div>
+
+    </div>
+  </footer>
 
 </body>
 </html>
