@@ -9,30 +9,40 @@
     <!-- SCHEMA COMPLETO DEL ECOSISTEMA -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://lubezky.com/#sergio",
-          "name": "Sergio Lubezky",
-          "url": "https://lubezky.com/",
-          "sameAs": [
-            "https://www.linkedin.com/in/sergiolubezky/",
-            "https://inteligencia.com/",
-            "https://unnuevopuntodevista.com/",
-            "https://liderazgointerino.com/",
-            "https://elmismobarco.com/",
-            "https://coachdefoto.com/"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://lubezky.com/#website",
-          "name": "Lubezky",
-          "url": "https://lubezky.com/"
-        }
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lubezky.com/#sergio",
+      "name": "Sergio Lubezky",
+      "url": "https://lubezky.com/",
+      "jobTitle": "Experto en Estrategia e Inteligencia", // Define tu rol principal
+      "description": "Estratega, consultor y experto en liderazgo e inteligencia aplicada.",
+      "sameAs": [
+        "https://www.linkedin.com/in/sergiolubezky/",
+        "https://inteligencia.com/",
+        "https://unnuevopuntodevista.com/",
+        "https://liderazgointerino.com/",
+        "https://elmismobarco.com/",
+        "https://coachdefoto.com/"
+      ],
+      "knowsAbout": [ 
+        "Artificial Intelligence", 
+        "Leadership", 
+        "Photography", 
+        "Business Strategy"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lubezky.com/#website",
+      "name": "Lubezky",
+      "url": "https://lubezky.com/",
+      "publisher": { "@id": "https://lubezky.com/#sergio" }, // ESTO CONECTA EL SITIO CONTIGO
+      "author": { "@id": "https://lubezky.com/#sergio" }      // ESTO TE DA LA AUTORÍA
     }
+  ]
+}
     </script>
 
     <style>
