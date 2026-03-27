@@ -15,193 +15,79 @@
           "@type": "Person",
           "@id": "https://lubezky.com/#sergio",
           "name": "Sergio Lubezky",
-          "url": "https://lubezky.com",
-          "sameAs": [
-            "https://www.linkedin.com/in/sergiolubezky/",
-            "https://inteligencia.com",
-            "https://unnuevopuntodevista.com",
-            "https://liderazgointerino.com",
-            "https://elmismobarco.com",
-            "https://coachdefoto.com"
-          ]
+          "url": "https://lubezky.com"
         },
         {
           "@type": "WebPage",
           "name": "Sobre mí",
-          "url": "https://lubezky.com/sobre-mi.html"
+          "url": "https://lubezky.com/sobre-mi/"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://lubezky.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sobre mí",
+              "item": "https://lubezky.com/sobre-mi/"
+            }
+          ]
         }
       ]
     }
     </script>
 
     <style>
-        body { 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            background-color: #fff; 
-            color: #1a1a1a; 
-            font-family: 'Georgia', serif; 
-            line-height: 1.8; 
-        }
-
-        main { 
-            flex: 1; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 60px 20px; 
-        }
-
-        .content-box { 
-            max-width: 700px; 
-            text-align: center; 
-            font-size: 1.2rem; 
-        }
-
-        h1 { 
-            font-size: 1.5rem;
-            font-weight: bold; 
-            margin-bottom: 16px; 
-        }
-
-        p {
-            margin-bottom: 12px;
-        }
-
-        .content-box a { 
-            color: #000; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-bottom: 1px solid #ddd; 
-        }
-
-        .content-box a:hover { 
-            border-bottom: 1px solid #000; 
-        }
-
-        footer { 
-            padding: 60px 20px; 
-            text-align: center; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-        }
-
-        .profile-img { 
-            width: 75px; 
-            height: 75px; 
-            border-radius: 50%; 
-            margin-bottom: 10px; 
-            object-fit: cover; 
-            border: 1px solid #eee; 
-        }
-
-        .name-link { 
-            text-decoration: none; 
-            color: inherit; 
-            display: block; 
-            margin-bottom: 10px; 
-        }
-
-        .name { 
-            font-weight: 600; 
-            font-size: 1rem; 
-            letter-spacing: 1.5px; 
-            text-transform: uppercase; 
-        }
-
-        .social-nav { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 12px; 
-            font-size: 0.85rem; 
-        }
-
-        .social-nav a { 
-            color: #666; 
-            text-decoration: none; 
-        }
-
-        .social-nav a:hover { 
-            color: #000; 
-        }
-
-        .social-nav li:not(:last-child)::after { 
-            content: "-"; 
-            margin-left: 12px; 
-            color: #ccc; 
-        }
+        body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fff; color: #1a1a1a; font-family: 'Georgia', serif; line-height: 1.8; }
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 20px; }
+        .content-box { max-width: 700px; text-align: center; font-size: 1.2rem; }
+        h1 { font-size: 1.5rem; font-weight: bold; margin-bottom: 16px; }
+        p { margin-bottom: 12px; }
+        .content-box a { color: #000; text-decoration: none; font-weight: bold; border-bottom: 1px solid #ddd; }
+        .content-box a:hover { border-bottom: 1px solid #000; }
+        footer { padding: 60px 20px; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .profile-img { width: 75px; height: 75px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; border: 1px solid #eee; }
+        .name-link { text-decoration: none; color: inherit; display: block; margin-bottom: 10px; }
+        .name { font-weight: 600; font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        .social-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; font-size: 0.85rem; }
+        .social-nav a { color: #666; text-decoration: none; }
+        .social-nav a:hover { color: #000; }
+        .social-nav li:not(:last-child)::after { content: "-"; margin-left: 12px; color: #ccc; }
     </style>
 </head>
 
 <body>
 
 <main>
-    <div class="content-box">
-        <h1>Sobre mí</h1>
+<div class="content-box">
+<h1>Sobre mí</h1>
 
-        <p>
-            Mi trabajo no surge de una teoría, sino de la experiencia de observar cómo se toman decisiones, cómo se construyen las organizaciones y cómo, con el tiempo, muchas de ellas pierden claridad sin que sea evidente en un inicio. He estado cerca de procesos donde la dirección se diluye, donde los problemas no se entienden del todo y donde las decisiones se postergan hasta que la realidad exige actuar.
-        </p>
+<p>Mi trabajo no surge de una teoría, sino de la experiencia de observar cómo se toman decisiones...</p>
 
-        <p>
-            Con el tiempo, se vuelve evidente que la mayoría de los problemas no aparecen de forma aislada, sino como resultado de cómo interpretamos la realidad, de las decisiones que tomamos y de la forma en que actuamos frente a ellas. Entender esto cambia la manera en que se observa cualquier situación y también la forma en que se interviene.
-        </p>
+<p>Con el tiempo, se vuelve evidente que la mayoría de los problemas no aparecen de forma aislada...</p>
 
-        <p>
-            A partir de esa comprensión, el trabajo se ha ido estructurando en distintos espacios que, aunque pueden parecer independientes, responden a una misma lógica.
-        </p>
+<p>En <a href="https://inteligencia.com">inteligencia</a>... en <a href="https://unnuevopuntodevista.com">un nuevo punto de vista</a>... en el <a href="https://liderazgointerino.com">liderazgo interino</a>...</p>
 
-        <p>
-            En <a href="https://inteligencia.com">inteligencia</a>, el enfoque está en comprender cómo surgen los problemas y cómo se conectan entre sí. En <a href="https://unnuevopuntodevista.com">un nuevo punto de vista</a>, en cuestionar la forma en que interpretamos lo que ocurre. En el <a href="https://liderazgointerino.com">liderazgo interino</a>, en asumir responsabilidad directa cuando la situación ya no permite esperar.
-        </p>
+<p>En <a href="https://elmismobarco.com">el mismo barco</a>...</p>
 
-        <p>
-            Todo esto ocurre dentro de un contexto más amplio. En <a href="https://elmismobarco.com">el mismo barco</a>, esa dimensión se hace evidente al reconocer que lo individual y lo colectivo están profundamente conectados, y que nuestras decisiones siempre tienen un impacto más allá de nosotros mismos.
-        </p>
+<p>En <a href="https://coachdefoto.com">coach de foto</a>...</p>
 
-        <p>
-            Paralelamente, existe una dimensión distinta. En <a href="https://coachdefoto.com">coach de foto</a>, la fotografía se convierte en una forma de explorar la mirada y compartir una experiencia más personal, construida a lo largo de años recorriendo el mundo y trabajando junto a algunos de los fotógrafos contemporáneos más relevantes.
-        </p>
+<p>No basta con no hacer mal alguno, es necesario hacer todo el bien que se pueda.</p>
 
-        <p>
-            Aunque cada uno de estos espacios tiene su propio lenguaje, todos responden a una misma intención: entender mejor lo que ocurre, verlo con mayor claridad y actuar de forma coherente.
-        </p>
+<p><a href="/">Volver al inicio</a></p>
 
-        <p>
-            Con el tiempo, esa intención se ha ido alineando con una idea simple que guía mi forma de trabajar:
-        </p>
-
-        <p>
-            No basta con no hacer mal alguno, es necesario hacer todo el bien que se pueda.
-        </p>
-
-        <p>
-            Si quieres regresar al punto de partida, puedes volver a <a href="https://lubezky.com">lubezky.com</a>.
-        </p>
-
-    </div>
+</div>
 </main>
 
 <footer>
-    <img src="/foto-sergio.jpg" alt="Sergio Lubezky A." class="profile-img">
-    
-    <a href="https://lubezky.com" class="name-link">
-        <span class="name">Sergio Lubezky A.</span>
-    </a>
-    
-    <ul class="social-nav">
-        <li><a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://x.com/slubezky" target="_blank">X</a></li>
-        <li><a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a></li>
-        <li><a href="https://elmismobarco.com" target="_blank">Podcast</a></li>
-        <li><a href="https://coachdefoto.com" target="_blank">Fotografía</a></li>
-    </ul>
+<img src="/foto-sergio.jpg" class="profile-img">
+<a href="/" class="name-link"><span class="name">Sergio Lubezky A.</span></a>
 </footer>
 
 </body>
