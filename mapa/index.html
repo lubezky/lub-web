@@ -9,38 +9,49 @@
     <!-- SCHEMA -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lubezky.com/#sergio",
+      "name": "Sergio Lubezky",
+      "url": "https://lubezky.com/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lubezky.com/mapa/#webpage",
+      "url": "https://lubezky.com/mapa/",
+      "name": "Mapa del Ecosistema Lubezky",
+      "isPartOf": { "@id": "https://lubezky.com/#website" },
+      "about": { "@id": "https://lubezky.com/#sergio" },
+      "description": "Indice y estructura del ecosistema digital de Sergio Lubezky: Inteligencia, Liderazgo, Fotografía y Estrategia.",
+      "significantLink": [
+        "https://inteligencia.com/",
+        "https://liderazgointerino.com/",
+        "https://coachdefoto.com/",
+        "https://elmismobarco.com/",
+        "https://unnuevopuntodevista.com/"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Person",
-          "@id": "https://lubezky.com/#sergio",
-          "name": "Sergio Lubezky",
-          "url": "https://lubezky.com"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://lubezky.com/"
         },
         {
-          "@type": "WebPage",
+          "@type": "ListItem",
+          "position": 2,
           "name": "Mapa",
-          "url": "https://lubezky.com/mapa/"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Inicio",
-              "item": "https://lubezky.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Mapa",
-              "item": "https://lubezky.com/mapa/"
-            }
-          ]
+          "item": "https://lubezky.com/mapa/"
         }
       ]
     }
+  ]
+}
     </script>
 
     <style>
