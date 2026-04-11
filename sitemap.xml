@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- HOME -->
   <url>
     <loc>https://lubezky.com/</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- SOBRE MI -->
   <url>
     <loc>https://lubezky.com/sobre-mi/</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- TRABAJO -->
   <url>
     <loc>https://lubezky.com/trabajo/</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- MAPA -->
   <url>
     <loc>https://lubezky.com/mapa/</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- MUSICA (CRITICO) -->
+  <url>
+    <loc>https://musica.sergiolubezky.com/</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
