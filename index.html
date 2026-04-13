@@ -1,94 +1,302 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sergio Lubezky | Entender, ver y actuar</title>
-<meta name="description" content="Una forma de entender, ver y actuar con claridad, teniendo presente el bien común. Trayectoria de Sergio Lubezky.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergio Lubezky | Entender, ver y actuar</title>
+    <meta name="description" content="Una forma de entender, ver y actuar con claridad, teniendo presente el bien común. Trayectoria de Sergio Lubezky.">
 
-<link rel="canonical" href="https://lubezky.com/" />
-<meta name="robots" content="index, follow">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
+    <script type="application/ld+json">
     {
-      "@type": "Person",
-      "@id": "https://lubezky.com/#sergio",
-      "name": "Sergio Lubezky",
-      "url": "https://lubezky.com/"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://lubezky.com/#website",
-      "name": "Sergio Lubezky",
-      "url": "https://lubezky.com/"
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://lubezky.com/#sergio",
+          "name": "Sergio Lubezky",
+          "url": "https://lubezky.com/",
+          "jobTitle": [
+            "Estratega en Tecnología y Liderazgo",
+            "Músico",
+            "Fotógrafo"
+          ],
+          "description": "Estratega, creativo y consultor enfocado en la intersección entre tecnología e inteligencia aplicada, liderazgo en crisis y narrativa visual.",
+          "hasOccupation": [
+            {
+              "@type": "Occupation",
+              "name": "Musician"
+            },
+            {
+              "@type": "Occupation",
+              "name": "Photographer"
+            },
+            {
+              "@type": "Occupation",
+              "name": "Business Strategist"
+            }
+          ],
+          "image": "https://lubezky.com/foto-sergio.jpg",
+          "subjectOf": {
+            "@id": "https://musica.sergiolubezky.com/#website"
+          },
+          "creator": {
+            "@id": "https://musica.sergiolubezky.com/#website"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/sergiolubezky/",
+            "https://x.com/slubezky",
+            "https://www.facebook.com/sergiolubezky/",
+            "https://www.instagram.com/sergiolubezky/",
+            "https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk",
+            "https://inteligencia.com/",
+            "https://unnuevopuntodevista.com/",
+            "https://liderazgointerino.com/",
+            "https://elmismobarco.com/",
+            "https://coachdefoto.com/"
+          ],
+          "knowsAbout": [
+            "Inteligencia Artificial Aplicada",
+            "Liderazgo Interino",
+            "Estrategia de Negocios",
+            "Narrativa Visual",
+            "Gestión de Crisis",
+            "Percepción Estratégica"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lubezky.com/#website",
+          "name": "Sergio Lubezky",
+          "url": "https://lubezky.com/",
+          "publisher": { "@id": "https://lubezky.com/#sergio" },
+          "description": "Plataforma central del ecosistema estratégico de Sergio Lubezky."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://musica.sergiolubezky.com/#website",
+          "name": "Música de Sergio Lubezky",
+          "url": "https://musica.sergiolubezky.com/"
+        }
+      ]
     }
-  ]
-}
-</script>
+    </script>
 
-<style>
-body { 
-    margin: 0; 
-    font-family: Georgia, serif; 
-    color: #1a1a1a; 
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh; 
-}
+    <style>
+        body { 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            background-color: #fff; 
+            color: #1a1a1a; 
+            font-family: 'Georgia', serif; 
+            line-height: 1.8; 
+        }
 
-main { 
-    flex: 1; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 60px 20px; 
-    text-align: center;
-}
+        main { 
+            flex: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 60px 20px; 
+        }
 
-h1 {
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+        .content-box { 
+            max-width: 700px; 
+            text-align: center; 
+            font-size: 1.2rem; 
+        }
 
-a {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ddd;
-}
-</style>
+        h1 { 
+            font-size: 1.5rem;
+            font-weight: bold; 
+            margin-bottom: 16px; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
+        p { margin-bottom: 12px; }
+
+        .content-box a { 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-bottom: 1px solid #ddd; 
+            transition: border-color 0.3s;
+        }
+
+        .content-box a:hover { border-bottom: 1px solid #000; }
+
+        .profile-img { 
+            width: 75px; 
+            height: 75px; 
+            border-radius: 50%; 
+            margin-bottom: 10px; 
+            object-fit: cover; 
+            border: 1px solid #eee; 
+        }
+
+        .name-link { 
+            text-decoration: none; 
+            color: inherit; 
+            display: block; 
+            margin-bottom: 2px; 
+        }
+
+        .name { 
+            font-weight: 600; 
+            font-size: 1rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+        }
+
+        footer { 
+            padding: 60px 20px; 
+            text-align: center; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+        }
+
+        .footer-bio {
+            max-width: 650px;
+            margin: 0 auto 30px auto; 
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .footer-bio p { margin: 0; }
+
+        .footer-bio a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bio a:hover {
+            border-bottom: 1px solid #1a1a1a;
+            background-color: #f9f9f9;
+            color: #000;
+        }
+
+        .social-nav { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 12px; 
+            font-size: 0.85rem; 
+        }
+
+        .social-nav a { color: #666; text-decoration: none; }
+        .social-nav a:hover { color: #000; }
+        .social-nav li:not(:last-child)::after { 
+            content: "-"; 
+            margin-left: 12px; 
+            color: #ccc; 
+        }
+    </style>
 </head>
 
 <body>
 
 <main>
+    <div class="content-box">
+        <h1>Sergio Lubezky</h1>
 
-<div>
+        <p>Gracias por estar aquí.</p>
 
-<h1>Sergio Lubezky</h1>
+        <p>
+            No basta con no hacer mal alguno, es necesario hacer todo el bien que se pueda.
+        </p>
 
-<p>
-Entender, ver y actuar con claridad, teniendo presente el bien común.
-</p>
+        <p>
+            Esa idea ha guiado durante años mi forma de ver el mundo y de relacionarme con las personas, con las organizaciones y con las decisiones que tomamos.
+        </p>
 
-<p>
-<a href="https://musica.sergiolubezky.com/">Explorar música</a>
-</p>
+        <p>
+            Este espacio reúne distintas formas de aproximarse a una misma pregunta: cómo entender mejor lo que ocurre, cómo verlo con mayor claridad y cómo actuar cuando realmente importa, sin perder de vista el impacto que eso tiene en los demás.
+        </p>
 
-</div>
+        <p>
+            Si quieres entender mejor el origen de este trabajo, puedes verlo con más detalle en <a href="/sobre-mi/">sobre mí</a>.
+        </p>
 
+        <p>
+            Cuando lo que ocurre no está claro, el trabajo comienza en <a href="https://inteligencia.com/">inteligencia</a>.
+        </p>
+
+        <p>
+            A partir de ahí, la forma en que observamos se vuelve determinante, como se desarrolla en <a href="https://unnuevopuntodevista.com/">un nuevo punto de vista</a>.
+        </p>
+
+        <p>
+            Y cuando es necesario actuar, el <a href="https://liderazgointerino.com/">liderazgo interino</a> toma sentido.
+        </p>
+
+        <p>
+            Si quieres ver cómo se traduce esto en la práctica, puedes explorarlo en <a href="/trabajo/">trabajo</a>.
+        </p>
+
+        <p>
+            Todo esto ocurre dentro de algo más amplio. En <a href="https://elmismobarco.com/">el mismo barco</a>, esa dimensión se vuelve evidente.
+        </p>
+
+        <p>
+            También existe una dimensión distinta. En <a href="https://coachdefoto.com/">coach de foto</a>, la fotografía se convierte en una forma de explorar y compartir la mirada.
+        </p>
+
+        <p>
+            No todo en se puede explicar del todo. 
+            En <a href="https://musica.sergiolubezky.com/">música</a>, 
+            ese espacio encuentra otra forma de comunicar.
+        </p>
+        
+        <p>
+            Si no tienes claro por dónde comenzar, puedes orientarte en el <a href="/mapa/">mapa</a>.
+        </p>
+
+        <p>
+            Estas son distintas formas de relacionarse con la realidad: entender lo que ocurre, verlo con claridad y actuar cuando es necesario, sin perder de vista que todo sucede dentro de algo compartido.
+        </p>
+
+        <p>
+            Si quieres compartir algo, puedes escribirme a <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>.
+        </p>
+    </div>
 </main>
 
 <footer>
+    <img src="https://lubezky.com/foto-sergio.jpg" alt="Sergio Lubezky A." class="profile-img">
+    
+    <a href="https://lubezky.com" class="name-link">
+        <span class="name">Sergio Lubezky A.</span>
+    </a>
 
-<p style="text-align:center; font-size:0.8rem;">
-Sergio Lubezky
-</p>
-
+    <div class="footer-bio">
+    <p>
+        Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. 
+        Exploro la <a href="https://inteligencia.com" target="_blank">Inteligencia</a> aplicada, 
+        la <a href="https://liderazgointerino.com" target="_blank">Dirección Interina</a>, 
+        la narrativa visual en <a href="https://coachdefoto.com" target="_blank">Coach de Foto</a> 
+        y la música como otra forma de <a href="https://musica.sergiolubezky.com" target="_blank">comunicar</a>, 
+        bajo una misma premisa: encontrar <a href="https://unnuevopuntodevista.com" target="_blank">un nuevo punto de vista</a> 
+        para entender que todos estamos en <a href="https://elmismobarco.com">el mismo barco</a>.
+    </p>
+</div>
+    
+    <ul class="social-nav">
+        <li><a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a></li>
+        <li><a href="https://x.com/slubezky" target="_blank">X</a></li>
+        <li><a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a></li>
+        <li><a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">Podcast</a></li>
+        <li><a href="https://musica.sergiolubezky.com" target="_blank">Música</a></li>
+        <li><a href="https://coachdefoto.com" target="_blank">Fotografía</a></li>
+    </ul>
 </footer>
 
 </body>
