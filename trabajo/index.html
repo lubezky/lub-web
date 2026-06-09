@@ -36,6 +36,7 @@
     </script>
 
     <style>
+        /* --- ESTÉTICA MASTER CORPORATIVA --- */
         body { 
             margin: 0; 
             display: flex; 
@@ -53,25 +54,29 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            padding: 60px 20px; 
+            padding: 80px 20px 40px 20px; 
         }
 
         .content-box { 
-            max-width: 700px; 
-            text-align: center; 
-            font-size: 1.2rem; 
+            width: 100%;
+            max-width: 750px; 
+            text-align: left; 
+            font-size: 1.15rem; 
         }
 
         h1 { 
-            font-size: 1.5rem;
+            font-size: 2rem; 
             font-weight: bold; 
-            margin-bottom: 24px; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-bottom: 40px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            text-align: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.3;
         }
 
         p { margin-bottom: 20px; text-align: justify; }
-        .content-box p:last-of-type, .content-box p:nth-last-of-type(2) { text-align: center; }
+        em { font-style: italic; }
 
         .content-box a { 
             color: #000; 
@@ -80,73 +85,39 @@
             border-bottom: 1px solid #ddd; 
             transition: border-color 0.3s;
         }
-        .content-box a:hover { border-bottom: 1px solid #000; }
+        .content-box a:hover { border-bottom: 1px solid #1a1a1a; }
 
-        footer { 
-            padding: 60px 20px; 
-            text-align: center; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            border-top: 1px solid #f2f2f2;
-        }
+        /* Enlace orgánico de retorno al final del texto */
+        .back-to-domain { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+        .back-to-domain a { color: #000; text-decoration: none; font-weight: bold; border-bottom: 1px solid #ddd; transition: border-color 0.3s; }
+        .back-to-domain a:hover { border-bottom: 1px solid #1a1a1a; }
 
-        .profile-img { 
-            width: 75px; 
-            height: 75px; 
-            border-radius: 50%; 
-            margin-bottom: 10px; 
-            object-fit: cover; 
-            border: 1px solid #eee; 
-        }
+        /* FOOTER UNIFICADO DE 3 COLUMNAS */
+        footer { padding: 60px 20px 30px 20px; background-color: #ffffff; border-top: 1px solid #f2f2f2; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; line-height: 1.6; }
+        .footer-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; text-align: left; }
+        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; } }
+        .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 20px; }
+        .footer-col p { color: #555; margin: 0; font-size: 0.9rem; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s; }
+        .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
+        
+        /* Ubicaciones internas e intersitio iluminadas en Rojo */
+        .footer-col ul li a.current-location { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
+        .footer-col ul li a.current-location:hover { border-bottom: 1px solid #d32f2f; }
 
-        .name-link { 
-            text-decoration: none; 
-            color: inherit; 
-            display: block; 
-            margin-bottom: 2px; 
-        }
-
-        .name { 
-            font-weight: 600; 
-            font-size: 1rem; 
-            letter-spacing: 1.5px; 
-            text-transform: uppercase; 
-        }
-
-        .footer-bio {
-            max-width: 650px;
-            margin: 0 auto 30px auto; 
-            font-size: 0.95rem;
-            color: #444;
-            line-height: 1.7;
-        }
-        .footer-bio p { text-align: center; margin: 0; }
-
-        .footer-bio a {
-            color: #1a1a1a;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px solid #eee;
-        }
-        .footer-bio a:hover { border-bottom: 1px solid #1a1a1a; }
-
-        .social-nav { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 12px; 
-            font-size: 0.85rem; 
-        }
-
-        .social-nav a { color: #666; text-decoration: none; }
-        .social-nav a:hover { color: #000; }
-        .social-nav li:not(:last-child)::after { 
-            content: "-"; 
-            margin-left: 12px; 
-            color: #ccc; 
-        }
+        .footer-socials { display: flex; gap: 15px; margin-top: 20px; }
+        @media (max-width: 768px) { .footer-socials { justify-content: center; } }
+        .footer-socials a { color: #666; text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+        .footer-socials a:hover { color: #000; }
+        
+        /* Ajuste fino de espacio muerto, copyright centrado absoluto y link al mapa */
+        .footer-bottom { max-width: 900px; margin: 25px auto 0 auto; padding-top: 20px; border-top: 1px solid #f9f9f9; text-align: center; font-size: 0.8rem; color: #999; }
+        .footer-bottom p { text-align: center; margin: 0 auto 10px auto; display: block; }
+        .map-link-container { margin-top: 12px; }
+        .map-link-container a { color: #999; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        .map-link-container a:hover { color: #1a1a1a; }
     </style>
 </head>
 
@@ -162,42 +133,68 @@
 
         <p>En otros, ocurre dentro de los equipos de operaciones, donde la falta de alineación transfronteriza, la comunicación fragmentada entre la casa matriz y la filial o la ausencia de dirección localizada comienzan a comprometer la inercia del negocio y los ingresos proyectados.</p>
 
-        <p>Y en ciertos momentos críticos de expansión o Soft Landing, la situación escala a nivel de infraestructura corporativa, donde los vacíos de ejecución ya no son aislados y es imperativo intervenir directamente en el campo para recuperar el orden, el control del P&L y la continuidad operativa.</p>
+        <p>Y en ciertos momentos críticos de expansión o <em>Soft Landing</em>, la situación escala a nivel de infraestructura corporativa, donde los vacíos de ejecución ya no son aislados y es imperativo intervenir directamente en el campo para recuperar el orden, el control del <em>P&L</em> y la continuidad operativa.</p>
 
-        <p>Cuando ese punto de fricción se alcanza, el trabajo deja de ser únicamente de análisis o acompañamiento a distancia, y se convierte en un despliegue directo. Es ahí donde el <a href="https://liderazgointerino.com">liderazgo interino</a> y la asunción de mandos ejecutivos toman total sentido.</p>
+        <p>Cuando ese punto de fricción se alcanza, el trabajo deja de ser únicamente de análisis o acompañamiento a distancia, y se convierte en un despliegue directo. Es ahí donde el <a href="https://liderazgointerino.com">Liderazgo Interino</a> y la asunción de mandos ejecutivos toman total sentido.</p>
 
         <p>No todos los procesos de negocio llegan a ese nivel, ni todas las fases de crecimiento requieren ese tipo de presencia operativa. En muchos escenarios corporativos, optimizar la gobernanza actual o replantear la percepción estratégica del mercado destino es suficiente para asegurar los resultados.</p>
 
         <p>Lo verdaderamente importante no es imponer una metodología rígida, sino reconocer con colmillo directivo qué tipo de situación se está enfrentando y qué modelo de ejecución tiene sentido real en ese contexto geográfico y comercial.</p>
 
-        <p>Si tu estrategia corporativa en la región requiere de una dirección enfocada en resultados inmediatos, puedes escribirme a <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>.</p>
+        <p>Si tu estrategia corporativa en la región requiere de una dirección enfocada en resultados inmediatos, puedes escribirme directamente a <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>.</p>
 
-        <p>Si prefieres regresar al inicio, puedes volver a <a href="/">lubezky.com</a>.</p>
+        <!-- Enlace orgánico final -->
+        <div class="back-to-domain">
+            <a href="https://lubezky.com/">Volver a lubezky.com</a>
+        </div>
     </div>
 </main>
 
 <footer>
-    <img src="https://lubezky.com/foto-sergio.jpg" alt="Sergio Lubezky A." class="profile-img">
-    <a href="https://lubezky.com" class="name-link"><span class="name">Sergio Lubezky A.</span></a>
-    <div class="footer-bio">
-        <p>
-            Director General Regional enfocado en la intersección entre tecnología, operaciones corporativas y percepción. 
-            Exploro la <a href="https://inteligencia.com" target="_blank">Inteligencia</a>, 
-            la <a href="https://liderazgointerino.com" target="_blank">Dirección Interina</a>, 
-            la narrativa visual en <a href="https://coachdefoto.com" target="_blank">Coach de Foto</a> 
-            y la música como otra forma de <a href="https://musica.sergiolubezky.com" target="_blank">comunicar</a>, 
-            bajo una misma premisa: encontrar <a href="https://unnuevopuntodevista.com" target="_blank">un nuevo punto de vista</a> 
-            para entender que todos estamos en <a href="https://elmismobarco.com">el mismo barco</a>.
-        </p>
+    <div class="footer-grid">
+        <!-- Columna 1: Bio Central -->
+        <div class="footer-col">
+            <h3>Sergio Lubezky A.</h3>
+            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a>
+                <a href="https://x.com/slubezky" target="_blank">X</a>
+                <a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a>
+                <a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">Podcast</a>
+            </div>
+        </div>
+        <!-- Columna 2: Páginas Internas Raíz (Mi Trabajo iluminado en Rojo) -->
+        <div class="footer-col">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="/sobre-mi/">Sobre Mí</a></li>
+                <li><a href="/trabajo/" class="current-location">Mi Trabajo</a></li>
+                <li><a href="mailto:sergio@lubezky.com">Contacto</a></li>
+            </ul>
+        </div>
+        <!-- Columna 3: Todo el Universo Cruzado (Lubezky.com iluminado en Rojo) -->
+        <div class="footer-col">
+            <h3>Ecosistema</h3>
+            <ul>
+                <li><a href="https://lubezky.com" class="current-location">Lubezky.com</a></li>
+                <li><a href="https://inteligencia.com">Inteligencia</a></li>
+                <li><a href="https://liderazgointerino.com">Liderazgo Interino</a></li>
+                <li><a href="https://coachdefoto.com">Coach de Foto</a></li>
+                <li><a href="https://elmismobarco.com">El Mismo Barco</a></li>
+                <li><a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a></li>
+                <li><a href="https://musica.sergiolubezky.com">Música</a></li>
+            </ul>
+        </div>
     </div>
-    <ul class="social-nav">
-        <li><a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://x.com/slubezky" target="_blank">X</a></li>
-        <li><a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a></li>
-        <li><a href="https://open.spotify.com" target="_blank">Podcast</a></li>
-        <li><a href="https://coachdefoto.com" target="_blank">Fotografía</a></li>
-    </ul>
+    <!-- Cierre compacto centrado con acceso al mapa -->
+    <div class="footer-bottom">
+        <p>© 2026 Sergio Lubezky A. Todos los derechos reservados.</p>
+        <div class="map-link-container">
+            <a href="/mapa/">Mapa del Ecosistema</a>
+        </div>
+    </div>
 </footer>
+
 </body>
 </html>
