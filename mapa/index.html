@@ -17,28 +17,37 @@
         .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
         .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #555; margin-top: 10px; }
 
-        /* --- ARQUITECTURA DE SCROLL HORIZONTAL SIMÉTRICO --- */
+        /* --- TRUCO DE INVERSIÓN MECÁNICA DE LA BARRA (180° GRADOS) --- */
         .scroll-master-wrapper {
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 20px;
+            
+            /* Voltea el contenedor para mandar la barra hacia ARRIBA */
+            transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg); /* IE 9 */
+            -webkit-transform: rotateX(180deg); /* Safari and Chrome */
         }
         
-        /* Barra de desplazamiento superior e inferior personalizada */
+        /* Estilizado de la barra que ahora vive arriba */
         .scroll-master-wrapper::-webkit-scrollbar { height: 6px; }
         .scroll-master-wrapper::-webkit-scrollbar-track { background: #f1f1f1; }
         .scroll-master-wrapper::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
         .scroll-master-wrapper::-webkit-scrollbar-thumb:hover { background: #d32f2f; }
 
-        /* Contenedor interno que estira el lienzo hacia la derecha */
+        /* Contenedor interno: Se vuelve a voltear para que el texto sea legible */
         .horizontal-scroll-container {
             display: flex;
             gap: 40px;
-            padding: 40px 40px 20px 40px;
+            padding: 20px 40px 40px 40px;
             width: max-content;
+            
+            /* Regresa el contenido a su orientación normal */
+            transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg); 
+            -webkit-transform: rotateX(180deg); 
         }
 
         /* Bloques o Estaciones del Mapa Mental */
@@ -55,7 +64,6 @@
         }
         .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-top-color: #d32f2f; }
         
-        /* Estación de Identidad Raíz Destacada */
         .map-station.core-identity { border-top-color: #1a1a1a; background: #fafafa; }
         .map-station.core-identity:hover { border-top-color: #d32f2f; }
 
