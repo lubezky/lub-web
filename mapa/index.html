@@ -4,194 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa del Ecosistema | Sergio Lubezky</title>
-    <meta name="description" content="Cartografía interactiva y mapa mental del ecosistema estratégico y creativo de Sergio Lubezky.">
+    <meta name="description" content="Cartografía estratégica y creativa de Sergio Lubezky.">
     <meta name="author" content="Sergio Lubezky">
     <link rel="canonical" href="https://lubezky.com/mapa/" />
 
     <style>
-        body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fafafa; color: #1a1a1a; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fcfcfc; color: #1a1a1a; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.4; -webkit-font-smoothing: antialiased; }
         
-        /* Contenedor panorámico de mesa de trabajo */
-        main { flex: 1; max-width: 1400px; margin: 0 auto; padding: 60px 20px; width: 100%; box-sizing: border-box; }
+        main { flex: 1; padding: 80px 20px; width: 100%; box-sizing: border-box; overflow-x: hidden; }
         
-        /* Encabezado del Dashboard */
-        .dashboard-header { text-align: center; margin-bottom: 60px; }
-        .dashboard-header h1 { font-size: 2.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 10px 0; color: #1a1a1a; }
-        .dashboard-header p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.2rem; color: #555; margin: 0; }
+        .header-title { text-align: center; margin-bottom: 80px; }
+        .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+        .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #666; margin-top: 10px; }
 
-        /* --- ARQUITECTURA DEL MAPA MENTAL --- */
-        .mindmap-container { display: flex; flex-direction: column; gap: 50px; position: relative; }
+        /* --- CONTENEDOR INFOGRÁFICO --- */
+        .infographic-canvas {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @media (max-width: 1100px) { .infographic-canvas { flex-direction: column; align-items: center; } }
+
+        /* Hemisferios */
+        .hemisphere { flex: 1; display: flex; flex-direction: column; gap: 30px; }
+        .hemisphere-title { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #aaa; 
+            margin-bottom: 10px; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* Nodo Central (Ancla) */
+        .core-node {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 40px 30px;
+            border-radius: 2px;
+            text-align: center;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            align-self: center;
+            margin-top: 45px;
+        }
+        .core-node h2 { margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .core-node span { font-size: 0.8rem; opacity: 0.6; display: block; margin-top: 5px; }
+
+        /* Nodos de Contenido (Tarjetas) */
+        .node-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+        .node-card:hover { border-color: #1a1a1a; transform: scale(1.02); box-shadow: 0 15px 35px rgba(0,0,0,0.05); z-index: 10; }
         
-        /* Línea conector central abstracta */
-        .mindmap-container::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: #e0e0e0; z-index: 1; }
-        @media (max-width: 1024px) { .mindmap-container::before { display: none; } }
+        .node-name { font-weight: bold; font-size: 1.05rem; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .node-link { font-size: 0.85rem; color: #888; text-decoration: none; margin-bottom: 15px; display: block; transition: color 0.2s; }
+        .node-link:hover { color: #d32f2f; }
 
-        /* Bloques principales del mapa (Estratégico vs Creativo) */
-        .mindmap-branch-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #888; text-align: center; margin-bottom: 25px; position: relative; z-index: 2; background: #fafafa; display: inline-block; padding: 0 15px; left: 50%; transform: translateX(-50%); }
+        .sub-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+        .sub-links li { font-family: 'Georgia', serif; font-size: 0.95rem; line-height: 1.2; }
+        .sub-links a { color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .sub-links a:hover { border-bottom: 1px solid #1a1a1a; }
 
-        .mindmap-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; position: relative; z-index: 2; margin-bottom: 20px; }
-        @media (max-width: 768px) { .mindmap-row { grid-template-columns: 1fr; } }
+        .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; font-weight: bold; text-transform: uppercase; color: #bbb; margin-right: 5px; }
 
-        /* Estilo de los Nodos / Tarjetas del Mapa Mental */
-        .mindmap-node { background: #ffffff; border: 1px solid #e5e5e5; border-radius: 4px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; }
-        .mindmap-node:hover { transform: translateY(-4px); border-color: #1a1a1a; box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
-        
-        /* Cabecera del Nodo */
-        .node-header { border-bottom: 1px solid #f0f0f0; padding-bottom: 12px; margin-bottom: 15px; }
-        .node-title { font-size: 1.15rem; font-weight: 700; margin: 0 0 4px 0; letter-spacing: 0.5px; color: #1a1a1a; }
-        .node-domain { font-size: 0.85rem; color: #666; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        .node-domain:hover { color: #d32f2f; }
+        /* --- FOOTER 2 COLUMNAS --- */
+        footer { 
+            padding: 80px 20px 40px; 
+            background: #fff; 
+            border-top: 1px solid #f2f2f2; 
+        }
+        .footer-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px;
+            text-align: center;
+        }
+        @media (max-width: 600px) { .footer-container { grid-template-columns: 1fr; gap: 40px; } }
 
-        /* Lista de sub-nodos / enlaces interconectados */
-        .node-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-        .node-links li { font-family: 'Georgia', serif; font-size: 1.05rem; display: flex; flex-direction: column; line-height: 1.3; }
-        
-        /* Etiquetas de tipo de contenido dentro del mapa */
-        .content-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #a0a0a0; margin-bottom: 2px; }
-        
-        .node-links a { color: #222; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s; width: fit-content; }
-        .node-links a:hover { color: #000; border-bottom: 1px solid #1a1a1a; }
-
-        /* Especialización de color para sub-pilares específicos al pasar el mouse */
-        .mindmap-node:hover .node-domain { color: #1a1a1a; }
-
-        /* --- STYLING DEL FOOTER --- */
-        footer { padding: 60px 20px 40px 20px; background-color: #ffffff; border-top: 1px solid #f2f2f2; font-size: 0.9rem; line-height: 1.6; margin-top: 80px; }
-        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 50px; text-align: left; }
-        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; } }
-        .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 15px; text-align: left; }
-        @media (max-width: 768px) { .footer-col h3 { text-align: center; } }
-        .footer-col p { color: #555; margin: 0 0 20px 0; font-size: 0.9rem; text-align: justify; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
-        @media (max-width: 768px) { .footer-col ul { text-align: center; } }
-        .footer-col ul li { margin-bottom: 12px; font-size: 0.9rem; }
-        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s; }
+        .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 20px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { 
+            color: #1a1a1a; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            border-bottom: 1px solid #eee; 
+            transition: all 0.3s; 
+        }
         .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
-        .footer-col ul li a.current-location { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
-        .footer-col ul li a.current-location:hover { border-bottom: 1px solid #d32f2f; }
+        .footer-col ul li a.active-map { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
         
-        .footer-socials { display: flex; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
-        @media (max-width: 768px) { .footer-socials { justify-content: center; } }
-        .footer-socials a { color: #666; text-decoration: none; font-size: 0.85rem; font-weight: 500; }
-        .footer-socials a:hover { color: #000; }
+        .social-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .social-row a { font-size: 0.85rem; font-weight: bold; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ddd; }
         
-        .footer-bottom { max-width: 1200px; margin: 25px auto 0 auto; padding-top: 20px; border-top: 1px solid #f9f9f9; text-align: center; font-size: 0.8rem; color: #999; }
-        .footer-bottom p { text-align: center; margin: 0 auto; display: block; }
+        .copyright { font-size: 0.8rem; color: #aaa; margin-top: 20px; display: block; }
+
     </style>
 </head>
 <body>
 
 <main>
-    <div class="dashboard-header">
+    <div class="header-title">
         <h1>Mapa del Ecosistema</h1>
-        <p>Cartografía de nodos, ideas y plataformas interconectadas bajo una misma premisa.</p>
+        <p>Una sola premisa. Dos hemisferios interconectados.</p>
     </div>
 
-    <div class="mindmap-container">
+    <div class="infographic-canvas">
         
-        <div>
-            <span class="mindmap-branch-title">Estrategia &amp; Organización</span>
-            <div class="mindmap-row">
-                
-                <div class="mindmap-node">
-                    <div class="node-header">
-                        <h3 class="node-title">Sergio Lubezky</h3>
-                        <a href="https://lubezky.com" class="node-domain" target="_blank">lubezky.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
-                        <li><span class="content-tag">Página</span><a href="https://lubezky.com/trabajo">Trabajo</a></li>
-                        <li><span class="content-tag">Página</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
-                    </ul>
-                </div>
+        <div class="hemisphere">
+            <span class="hemisphere-title" style="text-align: right;">Estrategia &amp; Organización</span>
+            
+            <div class="node-card" style="text-align: right;">
+                <span class="node-name">Inteligencia</span>
+                <a href="https://inteligencia.com" class="node-link" target="_blank">inteligencia.com</a>
+                <ul class="sub-links">
+                    <li><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a> <span class="tag">[Art]</span></li>
+                    <li><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a> <span class="tag">[Art]</span></li>
+                    <li><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a> <span class="tag">[Art]</span></li>
+                </ul>
+            </div>
 
-                <div class="mindmap-node">
-                    <div class="node-header">
-                        <h3 class="node-title">Inteligencia</h3>
-                        <a href="https://inteligencia.com" class="node-domain" target="_blank">inteligencia.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
-                    </ul>
-                </div>
-
-                <div class="mindmap-node">
-                    <div class="node-header">
-                        <h3 class="node-title">Liderazgo Interino</h3>
-                        <a href="https://liderazgointerino.com" class="node-domain" target="_blank">liderazgointerino.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
-                    </ul>
-                </div>
-
-                <div class="mindmap-node">
-                    <div class="node-header">
-                        <h3 class="node-title">Coach de Foto</h3>
-                        <a href="https://coachdefoto.com" class="node-domain" target="_blank">coachdefoto.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
-                        <li><span class="content-tag">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
-                    </ul>
-                </div>
-
+            <div class="node-card" style="text-align: right;">
+                <span class="node-name">Liderazgo Interino</span>
+                <a href="https://liderazgointerino.com" class="node-link" target="_blank">liderazgointerino.com</a>
+                <ul class="sub-links">
+                    <li><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un DI</a> <span class="tag">[Art]</span></li>
+                    <li><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en crisis</a> <span class="tag">[Art]</span></li>
+                    <li><a href="https://liderazgointerino.com/que-hace-un-director-interino">¿Qué hace un DI?</a> <span class="tag">[Art]</span></li>
+                    <li><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Strategic Advantage</a> <span class="tag">[Art]</span></li>
+                </ul>
             </div>
         </div>
 
-        <div>
-            <span class="mindmap-branch-title">Arte, Sonido &amp; Percepción</span>
-            <div class="mindmap-row">
-                
-                <div class="mindmap-node" style="grid-row: span 2;">
-                    <div class="node-header">
-                        <h3 class="node-title">Sergio Lubezky Música</h3>
-                        <a href="https://musica.sergiolubezky.com" class="node-domain" target="_blank">musica.sergiolubezky.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Kabbalah)</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el verano...</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
-                        <li><span class="content-tag">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
-                    </ul>
-                </div>
+        <div class="core-node">
+            <h2>Sergio Lubezky</h2>
+            <span>Origen &amp; Visión</span>
+            <div style="margin-top:20px; border-top: 1px solid #444; padding-top:20px;">
+                <ul class="sub-links" style="align-items: center;">
+                    <li><a href="https://lubezky.com/sobre-mi" style="color:#fff; opacity:0.8;">Sobre Mí</a></li>
+                    <li><a href="https://lubezky.com/trabajo" style="color:#fff; opacity:0.8;">Trabajo</a></li>
+                </ul>
+            </div>
+        </div>
 
-                <div class="mindmap-node">
-                    <div class="node-header">
-                        <h3 class="node-title">El Mismo Barco</h3>
-                        <a href="https://elmismobarco.com" class="node-domain" target="_blank">elmismobarco.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
-                        <li><span class="content-tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes...</a></li>
-                        <li><span class="content-tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
-                        <li><span class="content-tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
-                    </ul>
-                </div>
+        <div class="hemisphere">
+            <span class="hemisphere-title">Arte, Sonido &amp; Percepción</span>
 
-                <div class="mindmap-node">
-                    <div class="node-header">
-                        <h3 class="node-title">Un Nuevo Punto de Vista</h3>
-                        <a href="https://unnuevopuntodevista.com" class="node-domain" target="_blank">unnuevopuntodevista.com</a>
-                    </div>
-                    <ul class="node-links">
-                        <li><span class="content-tag">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
-                        <li><span class="content-tag">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
-                    </ul>
-                </div>
+            <div class="node-card">
+                <span class="node-name">Música</span>
+                <a href="https://musica.sergiolubezky.com" class="node-link" target="_blank">musica.sergiolubezky.com</a>
+                <ul class="sub-links">
+                    <li><span class="tag">[Alb]</span> <a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy</a></li>
+                    <li><span class="tag">[Alb]</span> <a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
+                    <li><span class="tag">[Alb]</span> <a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
+                </ul>
+            </div>
 
+            <div class="node-card">
+                <span class="node-name">Coach de Foto</span>
+                <a href="https://coachdefoto.com" class="node-link" target="_blank">coachdefoto.com</a>
+                <ul class="sub-links">
+                    <li><span class="tag">[Pág]</span> <a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
+                    <li><span class="tag">[Pág]</span> <a href="https://coachdefoto.com/viajes">Viajes</a></li>
+                </ul>
+            </div>
+
+            <div class="node-card">
+                <span class="node-name">El Mismo Barco</span>
+                <a href="https://elmismobarco.com" class="node-link" target="_blank">elmismobarco.com</a>
+                <ul class="sub-links">
+                    <li><span class="tag">[Ref]</span> <a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">No necesitas respuestas</a></li>
+                    <li><span class="tag">[Ref]</span> <a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
+                </ul>
+            </div>
+
+            <div class="node-card">
+                <span class="node-name">Un Nuevo Punto de Vista</span>
+                <a href="https://unnuevopuntodevista.com" class="node-link" target="_blank">unnuevopuntodevista.com</a>
+                <ul class="sub-links">
+                    <li><span class="tag">[Art]</span> <a href="https://unnuevopuntodevista.com/interpretacion-y-significado">Interpretación y significado</a></li>
+                    <li><span class="tag">[Art]</span> <a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
+                </ul>
             </div>
         </div>
 
@@ -199,41 +207,19 @@
 </main>
 
 <footer>
-    <div class="footer-grid">
+    <div class="footer-container">
         <div class="footer-col">
-            <h3>Sergio Lubezky A.</h3>
-            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
-            
-            <div class="footer-socials">
+            <h3>Conexión</h3>
+            <div class="social-row">
                 <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a>
                 <a href="https://x.com/slubezky" target="_blank">X</a>
                 <a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a>
                 <a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">Podcast</a>
             </div>
-            
-            <div class="footer-socials">
-                <a href="https://music.amazon.com.mx/artists/B0GDNRJZJ8/sergio-lubezky" target="_blank">Amazon Music</a>
-                <a href="https://music.apple.com/mx/artist/sergio-lubezky/1865741434" target="_blank">Apple Music</a>
-                <a href="https://open.spotify.com/artist/5pMlk0pQ7tWiaBDrhXihpJ" target="_blank">Spotify</a>
-                <a href="https://www.youtube.com/@SergioLubezkyMusic" target="_blank">YouTube</a>
-            </div>
+            <span class="copyright">© 2026 Sergio Lubezky. Todos los derechos reservados.</span>
         </div>
-        <div class="footer-col">
-            <h3>Discografía</h3>
-            <ul>
-                <li><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy</a></li>
-                <li><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
-                <li><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
-                <li><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
-                <li><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
-                <li><a href="https://musica.sergiolubezky.com/acapulco">Acapulco</a></li>
-                <li><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
-                <li><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
-                <li><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
-                <li><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
-            </ul>
-        </div>
+
         <div class="footer-col">
             <h3>Ecosistema</h3>
             <ul>
@@ -244,12 +230,9 @@
                 <li><a href="https://elmismobarco.com">El Mismo Barco</a></li>
                 <li><a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a></li>
                 <li><a href="https://musica.sergiolubezky.com/">Música</a></li>
-                <li style="margin-top: 20px;"><a href="https://lubezky.com/mapa/" class="current-location">Mapa del Ecosistema</a></li>
+                <li><a href="https://lubezky.com/mapa/" class="active-map">Mapa del Ecosistema</a></li>
             </ul>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Sergio Lubezky A. ℗ 2026 Sergio Lubezky. Todos los derechos reservados.</p>
     </div>
 </footer>
 
