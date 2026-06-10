@@ -17,12 +17,58 @@
         .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
         .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #555; margin-top: 10px; }
 
+        /* Navegación sutil: solo borde, sin relleno pesado */
+        .map-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: #1a1a1a;
+            color: #fff;
+            transform: scale(1.05);
+        }
+        
+        .nav-btn:disabled {
+            border-color: #ccc;
+            color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+        
+        .nav-btn:focus {
+            outline: 2px solid #d32f2f;
+            outline-offset: 2px;
+        }
+
+        /* Contenedor maestro del scroll */
         .scroll-master-wrapper {
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch; /* Suavidad nativa en iOS */
+            scroll-snap-type: x mandatory;
+            position: relative;
+            /* Truco para escritorio: convierte scroll vertical de mouse en horizontal */
             transform: rotateX(180deg);
             -ms-transform: rotateX(180deg); 
             -webkit-transform: rotateX(180deg); 
@@ -35,9 +81,11 @@
 
         .horizontal-scroll-container {
             display: flex;
+            flex-direction: row;
             gap: 40px;
             padding: 20px 40px 40px 40px;
             width: max-content;
+            /* Invierte el contenido para que se vea derecho tras la rotación del wrapper */
             transform: rotateX(180deg);
             -ms-transform: rotateX(180deg); 
             -webkit-transform: rotateX(180deg); 
@@ -53,9 +101,25 @@
             flex-direction: column;
             height: fit-content;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            scroll-snap-align: start;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
         }
-        .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-top-color: #d32f2f; }
         
+        .map-station:nth-child(1) { animation-delay: 0.1s; }
+        .map-station:nth-child(2) { animation-delay: 0.2s; }
+        .map-station:nth-child(3) { animation-delay: 0.3s; }
+        .map-station:nth-child(4) { animation-delay: 0.4s; }
+        .map-station:nth-child(5) { animation-delay: 0.5s; }
+        .map-station:nth-child(6) { animation-delay: 0.6s; }
+        .map-station:nth-child(7) { animation-delay: 0.7s; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-top-color: #d32f2f; }
         .map-station.core-identity { border-top-color: #1a1a1a; background: #ffffff; }
         .map-station.core-identity:hover { border-top-color: #d32f2f; }
 
@@ -72,22 +136,38 @@
 
         .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #a0a0a0; margin-bottom: 3px; letter-spacing: 0.5px; }
 
+        /* Indicadores de scroll sutiles */
+        .scroll-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            color: #1a1a1a;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            pointer-events: none; /* No interfiere con clicks o touch */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+            border: 1px solid #e0e0e0;
+            backdrop-filter: blur(4px);
+        }
+        .scroll-indicator.left { left: 10px; }
+        .scroll-indicator.right { right: 10px; }
+        .scroll-indicator.visible { opacity: 0.6; }
+
         footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
-        @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; } }
-
+        
         .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 20px; }
         .footer-col p { color: #555; margin: 0 0 20px 0; font-size: 0.9rem; text-align: justify; line-height: 1.6; }
-        @media (max-width: 768px) { .footer-col p { text-align: center; } }
         
         .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
-        @media (max-width: 768px) {
-            .footer-col ul {
-                text-align: center !important;
-                display: inline-block;
-                margin: 0 auto;
-            }
-        }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.3s; }
         .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
@@ -95,9 +175,6 @@
         .footer-col ul li a.active-map:hover { border-bottom: 1px solid #d32f2f; }
         
         .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; justify-content: flex-start; }
-        @media (max-width: 768px) {
-            .social-row { justify-content: center; }
-        }
         .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; border-bottom: 1px solid #eee; }
         .social-row a:hover { color: #000; border-bottom: 1px solid #000; }
 
@@ -105,51 +182,63 @@
         .contact-email a { font-size: 0.9rem; font-weight: 600; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s; }
         .contact-email a:hover { color: #d32f2f; border-bottom: 1px solid #d32f2f; }
 
-        .copyright { font-size: 0.8rem; color: #999; margin-top: 25px; display: block; }
+        .copyright { font-size: 0.8rem; color: #999; margin-top: 35px; display: block; text-align: left; }
 
+        /* ==========================================
+           RESPONSIVE: Mantiene scroll HORIZONTAL 
+           pero optimizado para pantallas táctiles
+           ========================================== */
         @media (max-width: 768px) {
-            footer {
-                padding: 70px 20px 35px;
+            .header-title h1 { font-size: 1.8rem; letter-spacing: 2px; }
+            .header-title p { font-size: 1rem; }
+
+            .map-navigation {
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
 
-            .footer-container {
-                gap: 28px;
-                align-items: center;
+            /* Desactivamos el truco de rotación en móvil para que el 
+               deslizamiento táctil (swipe izquierda/derecha) sea 100% nativo */
+            .scroll-master-wrapper {
+                transform: none;
+                -ms-transform: none;
+                -webkit-transform: none;
+            }
+            .horizontal-scroll-container {
+                transform: none;
+                -ms-transform: none;
+                -webkit-transform: none;
+                padding: 20px;
+                gap: 20px;
             }
 
-            .footer-col {
-                text-align: center;
+            /* Tarjetas un poco más estrechas para que se "asome" la siguiente, 
+               invitando al usuario a deslizar */
+            .map-station {
+                flex: 0 0 280px;
+                padding: 25px 20px;
+                animation: none; /* Mejor rendimiento en móvil */
+                opacity: 1;
             }
 
-            .footer-col p {
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 34rem;
-            }
+            .scroll-indicator { display: none; } /* En táctil el swipe es obvio */
 
-            .footer-col ul li a {
-                display: inline-block;
+            footer { padding: 50px 20px 30px; }
+            .footer-container { 
+                grid-template-columns: 1fr; 
+                gap: 30px; 
+                text-align: center; 
             }
-
-            .footer-col:last-child {
-                text-align: center;
-            }
-
-            .footer-col:last-child h3,
-            .footer-col:last-child ul {
-                text-align: center;
-            }
-
-            .footer-col:last-child ul {
-                display: inline-block;
-                margin: 0 auto;
-            }
-
-            .copyright {
-                margin-top: 18px;
-                text-align: center;
-            }
+            .footer-col p { text-align: center; margin: 0 auto 20px auto; max-width: 34rem; }
+            .footer-col ul { text-align: center; display: inline-block; }
+            .footer-col ul li a { display: inline-block; }
+            .social-row { justify-content: center; }
+            .copyright { text-align: center; margin-top: 25px; }
         }
     </style>
 </head>
@@ -161,144 +250,30 @@
         <p>Despliega horizontalmente para recorrer la cartografía completa de contenidos interconectados.</p>
     </div>
 
-    <div class="scroll-master-wrapper">
+    <div class="map-navigation">
+        <button class="nav-btn" id="prevBtn" aria-label="Estación anterior">←</button>
+        <button class="nav-btn" id="nextBtn" aria-label="Siguiente estación">→</button>
+    </div>
+
+    <div class="scroll-master-wrapper" tabindex="0" role="region" aria-label="Mapa horizontal del ecosistema">
+        <div class="scroll-indicator left">←</div>
+        <div class="scroll-indicator right">→</div>
         <div class="horizontal-scroll-container">
             
-            <div class="map-station core-identity">
+            <div class="map-station core-identity" data-station="0">
                 <div class="station-header">
                     <h2 class="station-title">Sergio Lubezky</h2>
-                    <a href="https://lubezky.com" class="station-domain" target="_blank">lubezky.com</a>
+                    <a href="https://lubezky.com" class="station-domain" target="_blank" rel="noopener noreferrer">lubezky.com</a>
                 </div>
                 <ul class="nodes-list">
                     <li><span class="tag">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
                     <li><span class="tag">Página</span><a href="https://lubezky.com/trabajo">Mi Trabajo</a></li>
-                    <li><span class="tag">Podcast</span><a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">El Bien Común</a></li>
+                    <li><span class="tag">Podcast</span><a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank" rel="noopener noreferrer">El Bien Común</a></li>
                     <li><span class="tag">Mapa</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
                 </ul>
             </div>
 
-            <div class="map-station">
+            <div class="map-station" data-station="1">
                 <div class="station-header">
                     <h2 class="station-title">Inteligencia</h2>
-                    <a href="https://inteligencia.com" class="station-domain" target="_blank">inteligencia.com</a>
-                </div>
-                <ul class="nodes-list">
-                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
-                </ul>
-            </div>
-
-            <div class="map-station" style="flex-basis: 350px;">
-                <div class="station-header">
-                    <h2 class="station-title">Liderazgo Interino</h2>
-                    <a href="https://liderazgointerino.com" class="station-domain" target="_blank">liderazgointerino.com</a>
-                </div>
-                <ul class="nodes-list">
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
-                    <li><span class="tag">Whitepaper</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/when-interim-director-needed/">When is an Interim Director Needed?</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/mistakes-in-an-organizational-crisis/">Mistakes in an Organizational Crisis</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/what-does-an-interim-director-do/">What Does an Interim Director Do?</a></li>
-                </ul>
-            </div>
-
-            <div class="map-station">
-                <div class="station-header">
-                    <h2 class="station-title">El Mismo Barco</h2>
-                    <a href="https://elmismobarco.com" class="station-domain" target="_blank">elmismobarco.com</a>
-                </div>
-                <ul class="nodes-list">
-                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
-                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
-                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
-                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
-                </ul>
-            </div>
-
-            <div class="map-station">
-                <div class="station-header">
-                    <h2 class="station-title">Un Nuevo Punto de Vista</h2>
-                    <a href="https://unnuevopuntodevista.com" class="station-domain" target="_blank">unnuevopuntodevista.com</a>
-                </div>
-                <ul class="nodes-list">
-                    <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
-                </ul>
-            </div>
-
-            <div class="map-station" style="flex-basis: 340px;">
-                <div class="station-header">
-                    <h2 class="station-title">Coach de Foto</h2>
-                    <a href="https://coachdefoto.com" class="station-domain" target="_blank">coachdefoto.com</a>
-                </div>
-                <ul class="nodes-list">
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver/">Cómo aprender a ver</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/taller-zoom/">Conoce tu Cámara (zoom)</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/domina-tu-iphone/">Conoce tu iPhone (zoom)</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes/">Viajes</a></li>
-                </ul>
-            </div>
-
-            <div class="map-station" style="flex-basis: 360px;">
-                <div class="station-header">
-                    <h2 class="station-title">Discografía</h2>
-                    <a href="https://musica.sergiolubezky.com" class="station-domain" target="_blank">musica.sergiolubezky.com</a>
-                </div>
-                <ul class="nodes-list">
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Lecciones de Kabbalah)</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el Verano que no fue</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
-                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</main>
-
-<footer>
-    <div class="footer-container">
-        <div class="footer-col">
-            <h3>Sergio Lubezky A.</h3>
-            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
-            <div class="social-row">
-                <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a>
-                <a href="https://x.com/slubezky" target="_blank">X</a>
-                <a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a>
-                <a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">Podcast</a>
-            </div>
-            <div class="contact-email">
-                <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>
-            </div>
-            <span class="copyright">© 2026 Sergio Lubezky A. Todos los derechos reservados.</span>
-        </div>
-
-        <div class="footer-col">
-            <h3>Ecosistema</h3>
-            <ul>
-                <li><a href="https://lubezky.com">Lubezky.com</a></li>
-                <li><a href="https://inteligencia.com">Inteligencia</a></li>
-                <li><a href="https://liderazgointerino.com">Liderazgo Interino</a></li>
-                <li><a href="https://coachdefoto.com">Coach de Foto</a></li>
-                <li><a href="https://elmismobarco.com">El Mismo Barco</a></li>
-                <li><a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a></li>
-                <li><a href="https://musica.sergiolubezky.com/">Música</a></li>
-                <li><a href="https://lubezky.com/mapa/" class="active-map">Mapa del Ecosistema</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
-
-</body>
-</html>
+                    <a href="https://int
