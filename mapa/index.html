@@ -18,30 +18,26 @@
 
     <style>
         body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fff; color: #1a1a1a; font-family: 'Georgia', serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
-        main { flex: 1; max-width: 800px; margin: 0 auto; padding: 80px 20px 40px 20px; }
+        main { flex: 1; max-width: 700px; margin: 0 auto; padding: 80px 20px 40px 20px; }
         
-        h1 { font-size: 2.2rem; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.3; }
-        .map-subtitle { text-align: center; font-size: 1.2rem; color: #555; font-style: italic; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        h1 { font-size: 2rem; font-weight: bold; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.3; }
+        .map-subtitle { text-align: center; font-size: 1.15rem; color: #555; font-style: italic; margin-bottom: 60px; }
         
-        .ecosystem-section { margin-bottom: 50px; border-bottom: 1px solid #f2f2f2; padding-bottom: 30px; }
-        .ecosystem-section:last-of-type { border-bottom: none; }
+        .ecosystem-section { margin-bottom: 50px; }
         
-        .domain-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 15px; }
-        @media (max-width: 600px) { .domain-header { flex-direction: column; gap: 50px; } }
-        
-        .domain-title { font-size: 1.4rem; font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .domain-link { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem; font-weight: bold; color: #666; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.3s; }
-        .domain-link:hover { color: #000; border-bottom: 1px solid #000; }
+        .section-header { margin-bottom: 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 6px; }
+        .domain-title { font-size: 1.3rem; font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; margin: 0; text-transform: uppercase; letter-spacing: 1px; display: inline-block; }
+        .domain-link { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: #666; text-decoration: none; margin-left: 10px; font-weight: normal; }
+        .domain-link:hover { color: #000; }
         
         .links-list { list-style: none; padding: 0; margin: 0; }
-        .links-list li { margin-bottom: 12px; display: flex; align-items: baseline; font-size: 1.1rem; }
-        .links-list li::before { content: "—"; margin-right: 12px; color: #999; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .links-list li { margin-bottom: 12px; font-size: 1.15rem; font-family: 'Georgia', serif; line-height: 1.4; }
         .links-list li a { color: #1a1a1a; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
         .links-list li a:hover { border-bottom: 1px solid #1a1a1a; }
         
-        .link-type { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-right: 10px; font-weight: bold; display: inline-block; width: 750px; }
-        @media (max-width: 600px) { .link-type { width: auto; margin-bottom: 2px; display: block; } .links-list li { flex-direction: column; align-items: flex-start; } .links-list li::before { display: none; } }
+        .link-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: bold; margin-right: 8px; }
 
+        /* --- STYLING DEL FOOTER --- */
         footer { padding: 60px 20px 40px 20px; background-color: #ffffff; border-top: 1px solid #f2f2f2; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; line-height: 1.6; }
         .footer-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 50px; text-align: left; }
         @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; } }
@@ -71,102 +67,95 @@
     <h1>Mapa del Ecosistema</h1>
     <div class="map-subtitle">Cartografía de nodos, ideas y plataformas interconectadas bajo una misma premisa.</div>
 
-    <!-- SECCIÓN: LUBEZKY.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">Sergio Lubezky</h2>
-            <a href="https://lubezky.com" class="domain-link" target="_blank">lubezky.com</a>
+            <a href="https://lubezky.com" class="domain-link" target="_blank">— lubezky.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
-            <li><span class="link-type">Página</span><a href="https://lubezky.com/trabajo">Trabajo</a></li>
-            <li><span class="link-type">Página</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
+            <li><span class="link-tag">[Página]</span> <a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
+            <li><span class="link-tag">[Página]</span> <a href="https://lubezky.com/trabajo">Trabajo</a></li>
+            <li><span class="link-tag">[Página]</span> <a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
         </ul>
     </div>
 
-    <!-- SECCIÓN: INTELIGENCIA.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">Inteligencia</h2>
-            <a href="https://inteligencia.com" class="domain-link" target="_blank">inteligencia.com</a>
+            <a href="https://inteligencia.com" class="domain-link" target="_blank">— inteligencia.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
         </ul>
     </div>
 
-    <!-- SECCIÓN: LIDERAZGOINTERINO.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">Liderazgo Interino</h2>
-            <a href="https://liderazgointerino.com" class="domain-link" target="_blank">liderazgointerino.com</a>
+            <a href="https://liderazgointerino.com" class="domain-link" target="_blank">— liderazgointerino.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
         </ul>
     </div>
 
-    <!-- SECCIÓN: COACHDEFOTO.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">Coach de Foto</h2>
-            <a href="https://coachdefoto.com" class="domain-link" target="_blank">coachdefoto.com</a>
+            <a href="https://coachdefoto.com" class="domain-link" target="_blank">— coachdefoto.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
-            <li><span class="link-type">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
+            <li><span class="link-tag">[Página]</span> <a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
+            <li><span class="link-tag">[Página]</span> <a href="https://coachdefoto.com/viajes">Viajes</a></li>
         </ul>
     </div>
 
-    <!-- SECCIÓN: MUSICA.SERGIOLUBEZKY.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">Sergio Lubezky Música</h2>
-            <a href="https://musica.sergiolubezky.com" class="domain-link" target="_blank">musica.sergiolubezky.com</a>
+            <a href="https://musica.sergiolubezky.com" class="domain-link" target="_blank">— musica.sergiolubezky.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Lecciones de Kabbalah)</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el Verano que no fue</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
-            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Lecciones de Kabbalah)</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el Verano que no fue</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
+            <li><span class="link-tag">[Álbum]</span> <a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
         </ul>
     </div>
 
-    <!-- SECCIÓN: ELMISMOBARCO.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">El Mismo Barco</h2>
-            <a href="https://elmismobarco.com" class="domain-link" target="_blank">elmismobarco.com</a>
+            <a href="https://elmismobarco.com" class="domain-link" target="_blank">— elmismobarco.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
-            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
-            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
-            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
+            <li><span class="link-tag">[Reflexión]</span> <a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
+            <li><span class="link-tag">[Reflexión]</span> <a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
+            <li><span class="link-tag">[Reflexión]</span> <a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
+            <li><span class="link-tag">[Reflexión]</span> <a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
         </ul>
     </div>
 
-    <!-- SECCIÓN: UNNUEVOPUNTODEVISTA.COM -->
     <div class="ecosystem-section">
-        <div class="domain-header">
+        <div class="section-header">
             <h2 class="domain-title">Un Nuevo Punto de Vista</h2>
-            <a href="https://unnuevopuntodevista.com" class="domain-link" target="_blank">unnuevopuntodevista.com</a>
+            <a href="https://unnuevopuntodevista.com" class="domain-link" target="_blank">— unnuevopuntodevista.com</a>
         </div>
         <ul class="links-list">
-            <li><span class="link-type">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
-            <li><span class="link-type">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
+            <li><span class="link-tag">[Artículo]</span> <a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
         </ul>
     </div>
 </main>
