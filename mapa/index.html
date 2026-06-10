@@ -58,7 +58,6 @@
         }
         .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-top-color: #d32f2f; }
         
-        /* Primera estación igualada visualmente en fondo blanco */
         .map-station.core-identity { border-top-color: #1a1a1a; background: #ffffff; }
         .map-station.core-identity:hover { border-top-color: #d32f2f; }
 
@@ -76,7 +75,7 @@
 
         .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #a0a0a0; margin-bottom: 3px; letter-spacing: 0.5px; }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER DE SOLO DOS COLUMNAS CENTRADAS --- */
         footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
         @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; } }
@@ -85,16 +84,18 @@
         .footer-col p { color: #555; margin: 0 0 20px 0; font-size: 0.9rem; text-align: justify; line-height: 1.6; }
         @media (max-width: 768px) { .footer-col p { text-align: center; } }
         
-        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
+        @media (max-width: 768px) { .footer-col ul { text-align: center; } }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.3s; }
         .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
         .footer-col ul li a.active-map { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
+        .footer-col ul li a.active-map:hover { border-bottom: 1px solid #d32f2f; }
         
-        .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
+        .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; justify-content: flex-start; }
         @media (max-width: 768px) { .social-row { justify-content: center; } }
-        .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; }
-        .social-row a:hover { color: #000; }
+        .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; border-bottom: 1px solid #eee; }
+        .social-row a:hover { color: #000; border-bottom: 1px solid #000; }
         
         .copyright { font-size: 0.8rem; color: #999; margin-top: 25px; display: block; }
     </style>
@@ -145,9 +146,9 @@
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
                     <li><span class="tag">Whitepaper</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/when-is-an-interim-director-needed">When is an Interim Director Needed?</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/mistakes-in-an-organizational-crisis">Mistakes in an Organizational Crisis</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/what-does-an-interim-director-do">What Does an Interim Director Do?</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/when-interim-director-needed/">When is an Interim Director Needed?</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/mistakes-in-an-organizational-crisis/">Mistakes in an Organizational Crisis</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/what-does-an-interim-director-do/">What Does an Interim Director Do?</a></li>
                 </ul>
             </div>
 
@@ -176,15 +177,16 @@
                 </ul>
             </div>
 
-            <div class="map-station">
+            <div class="map-station" style="flex-basis: 340px;">
                 <div class="station-header">
                     <h2 class="station-title">Coach de Foto</h2>
                     <a href="https://coachdefoto.com" class="station-domain" target="_blank">coachdefoto.com</a>
                 </div>
                 <ul class="nodes-list">
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/clase-zoom">Clase en Vivo vía Zoom</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver/">Cómo aprender a ver</a></li>
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/taller-zoom/">Clase en Vivo vía Zoom</a></li>
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/domina-tu-iphone/">Curso iPhone (Zoom)</a></li>
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes/">Viajes</a></li>
                 </ul>
             </div>
 
@@ -215,7 +217,7 @@
     <div class="footer-container">
         <div class="footer-col">
             <h3>Sergio Lubezky A.</h3>
-            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complexes, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
+            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
             <div class="social-row">
                 <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a> · 
                 <a href="https://x.com/slubezky" target="_blank">X</a> · 
