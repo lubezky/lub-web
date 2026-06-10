@@ -3,202 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sergio Lubezky | Mapa del Ecosistema</title>
-    <meta name="description" content="Una guía de navegación para orientarte dentro de los distintos espacios estratégicos de Sergio Lubezky y saber por dónde comenzar.">
+    <title>Mapa del Ecosistema | Sergio Lubezky</title>
+    <meta name="description" content="Centro de control estratégico y cartografía de contenidos del ecosistema digital de Sergio Lubezky.">
+    <meta name="author" content="Sergio Lubezky">
     <link rel="canonical" href="https://lubezky.com/mapa/" />
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://lubezky.com/#sergio",
-          "name": "Sergio Lubezky",
-          "url": "https://lubezky.com/"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://lubezky.com/mapa/#webpage",
-          "url": "https://lubezky.com/mapa/",
-          "name": "Mapa del Ecosistema Lubezky",
-          "isPartOf": { "@id": "https://lubezky.com/#website" },
-          "about": { "@id": "https://lubezky.com/#sergio" },
-          "description": "Índice, sitemap y estructura del ecosistema digital de Sergio Lubezky: Inteligencia, Operaciones, Dirección y Percepción.",
-          "significantLink": [
-            "https://inteligencia.com/",
-            "https://liderazgointerino.com/",
-            "https://coachdefoto.com/",
-            "https://elmismobarco.com/",
-            "https://unnuevopuntodevista.com/"
-          ]
-        }
-      ]
-    }
-    </script>
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mapa del Ecosistema | Sergio Lubezky" />
+    <meta property="og:description" content="La interconexión entre estrategia, liderazgo, percepción, narrativa visual y sonido." />
+    <meta property="og:url" content="https://lubezky.com/mapa/" />
+    <meta property="og:site_name" content="Sergio Lubezky" />
+    <meta property="og:image" content="https://lubezky.com/foto-sergio.jpg" />
 
     <style>
-        body { 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            background-color: #fff; 
-            color: #1a1a1a; 
-            font-family: 'Georgia', serif; 
-            line-height: 1.8; 
-            -webkit-font-smoothing: antialiased;
-        }
+        body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fff; color: #1a1a1a; font-family: 'Georgia', serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+        main { flex: 1; max-width: 800px; margin: 0 auto; padding: 80px 20px 40px 20px; }
+        
+        h1 { font-size: 2.2rem; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.3; }
+        .map-subtitle { text-align: center; font-size: 1.2rem; color: #555; font-style: italic; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .ecosystem-section { margin-bottom: 50px; border-bottom: 1px solid #f2f2f2; padding-bottom: 30px; }
+        .ecosystem-section:last-of-type { border-bottom: none; }
+        
+        .domain-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 15px; }
+        @media (max-width: 600px) { .domain-header { flex-direction: column; gap: 50px; } }
+        
+        .domain-title { font-size: 1.4rem; font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .domain-link { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem; font-weight: bold; color: #666; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.3s; }
+        .domain-link:hover { color: #000; border-bottom: 1px solid #000; }
+        
+        .links-list { list-style: none; padding: 0; margin: 0; }
+        .links-list li { margin-bottom: 12px; display: flex; align-items: baseline; font-size: 1.1rem; }
+        .links-list li::before { content: "—"; margin-right: 12px; color: #999; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .links-list li a { color: #1a1a1a; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+        .links-list li a:hover { border-bottom: 1px solid #1a1a1a; }
+        
+        .link-type { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-right: 10px; font-weight: bold; display: inline-block; width: 750px; }
+        @media (max-width: 600px) { .link-type { width: auto; margin-bottom: 2px; display: block; } .links-list li { flex-direction: column; align-items: flex-start; } .links-list li::before { display: none; } }
 
-        main { 
-            flex: 1; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 60px 20px; 
-        }
-
-        .content-box { 
-            max-width: 700px; 
-            text-align: center; 
-            font-size: 1.2rem; 
-        }
-
-        h1 { 
-            font-size: 1.5rem;
-            font-weight: bold; 
-            margin-bottom: 24px; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        p { margin-bottom: 20px; text-align: justify; }
-        .content-box p { text-align: justify; }
-        .content-box p:first-of-type, .content-box p:last-of-type, .content-box p:nth-last-of-type(2) { text-align: center; }
-
-        .content-box a { 
-            color: #000; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-bottom: 1px solid #ddd; 
-            transition: border-color 0.3s;
-        }
-        .content-box a:hover { border-bottom: 1px solid #000; }
-
-        footer { 
-            padding: 60px 20px; 
-            text-align: center; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            border-top: 1px solid #f2f2f2;
-        }
-
-        .profile-img { 
-            width: 75px; 
-            height: 75px; 
-            border-radius: 50%; 
-            margin-bottom: 10px; 
-            object-fit: cover; 
-            border: 1px solid #eee; 
-        }
-
-        .name-link { 
-            text-decoration: none; 
-            color: inherit; 
-            display: block; 
-            margin-bottom: 2px; 
-        }
-
-        .name { 
-            font-weight: 600; 
-            font-size: 1rem; 
-            letter-spacing: 1.5px; 
-            text-transform: uppercase; 
-        }
-
-        .footer-bio {
-            max-width: 650px;
-            margin: 0 auto 30px auto; 
-            font-size: 0.95rem;
-            color: #444;
-            line-height: 1.7;
-        }
-        .footer-bio p { text-align: center; margin: 0; }
-
-        .footer-bio a {
-            color: #1a1a1a;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px solid #eee;
-        }
-        .footer-bio a:hover { border-bottom: 1px solid #1a1a1a; }
-
-        .social-nav { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 12px; 
-            font-size: 0.85rem; 
-        }
-
-        .social-nav a { color: #666; text-decoration: none; }
-        .social-nav a:hover { color: #000; }
-        .social-nav li:not(:last-child)::after { 
-            content: "-"; 
-            margin-left: 12px; 
-            color: #ccc; 
-        }
+        footer { padding: 60px 20px 40px 20px; background-color: #ffffff; border-top: 1px solid #f2f2f2; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; line-height: 1.6; }
+        .footer-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 50px; text-align: left; }
+        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; } }
+        .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 15px; text-align: left; }
+        @media (max-width: 768px) { .footer-col h3 { text-align: center; } }
+        .footer-col p { color: #555; margin: 0 0 20px 0; font-size: 0.9rem; text-align: justify; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
+        @media (max-width: 768px) { .footer-col ul { text-align: center; } }
+        .footer-col ul li { margin-bottom: 12px; font-size: 0.9rem; }
+        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s; }
+        .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
+        .footer-col ul li a.current-location { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
+        .footer-col ul li a.current-location:hover { border-bottom: 1px solid #d32f2f; }
+        
+        .footer-socials { display: flex; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
+        @media (max-width: 768px) { .footer-socials { justify-content: center; } }
+        .footer-socials a { color: #666; text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+        .footer-socials a:hover { color: #000; }
+        
+        .footer-bottom { max-width: 900px; margin: 25px auto 0 auto; padding-top: 20px; border-top: 1px solid #f9f9f9; text-align: center; font-size: 0.8rem; color: #999; }
+        .footer-bottom p { text-align: center; margin: 0 auto; display: block; }
     </style>
 </head>
-
 <body>
 
 <main>
-    <div class="content-box">
-        <h1>Mapa del Ecosistema</h1>
+    <h1>Mapa del Ecosistema</h1>
+    <div class="map-subtitle">Cartografía de nodos, ideas y plataformas interconectadas bajo una misma premisa.</div>
 
-        <p>Este espacio no está diseñado para recorrerse en un orden lineal obligatorio, sino para que cada líder u organización encuentre el punto de partida exacto que demanda el momento operativo que atraviesa.</p>
+    <!-- SECCIÓN: LUBEZKY.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">Sergio Lubezky</h2>
+            <a href="https://lubezky.com" class="domain-link" target="_blank">lubezky.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
+            <li><span class="link-type">Página</span><a href="https://lubezky.com/trabajo">Trabajo</a></li>
+            <li><span class="link-type">Página</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
+        </ul>
+    </div>
 
-        <p>Cuando la necesidad primordial radica en diagnosticar la complejidad y entender la raíz interconectada de los problemas, el punto de inicio idóneo se encuentra en <a href="https://inteligencia.com">inteligencia</a>.</p>
+    <!-- SECCIÓN: INTELIGENCIA.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">Inteligencia</h2>
+            <a href="https://inteligencia.com" class="domain-link" target="_blank">inteligencia.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
+        </ul>
+    </div>
 
-        <p>Cuando el desafío se halla en la interpretación estratégica y en la toma de decisiones críticas frente al mercado, <a href="https://unnuevopuntodevista.com">un nuevo punto de vista</a> permite replantear y aclarar el enfoque gerencial.</p>
+    <!-- SECCIÓN: LIDERAZGOINTERINO.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">Liderazgo Interino</h2>
+            <a href="https://liderazgointerino.com" class="domain-link" target="_blank">liderazgointerino.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
+        </ul>
+    </div>
 
-        <p>Cuando la coyuntura corporativa de expansión, Soft Landing o reestructura exige una intervención directa en el campo, el <a href="https://liderazgointerino.com">liderazgo interino</a> asume la tracción operativa inmediata.</p>
+    <!-- SECCIÓN: COACHDEFOTO.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">Coach de Foto</h2>
+            <a href="https://coachdefoto.com" class="domain-link" target="_blank">coachdefoto.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
+            <li><span class="link-type">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
+        </ul>
+    </div>
 
-        <p>En <a href="https://elmismobarco.com">el mismo barco</a>, la reflexión adquiere una dimensión colectiva y sistémica, asumiendo que el impacto de nuestras decisiones corporativas no ocurre de forma aislada.</p>
+    <!-- SECCIÓN: MUSICA.SERGIOLUBEZKY.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">Sergio Lubezky Música</h2>
+            <a href="https://musica.sergiolubezky.com" class="domain-link" target="_blank">musica.sergiolubezky.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Lecciones de Kabbalah)</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el Verano que no fue</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
+            <li><span class="link-type">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
+        </ul>
+    </div>
 
-        <p>En <a href="https://coachdefoto.com">coach de foto</a>, la fotografía y la composición creativa se transforman en una disciplina avanzada para agudizar la observación y la perspectiva de la realidad.</p>
+    <!-- SECCIÓN: ELMISMOBARCO.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">El Mismo Barco</h2>
+            <a href="https://elmismobarco.com" class="domain-link" target="_blank">elmismobarco.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
+            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
+            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
+            <li><span class="link-type">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
+        </ul>
+    </div>
 
-        <p>No es imperativo recorrer cada rincón del ecosistema, sino identificar con claridad desde dónde tiene sentido estratégico comenzar a construir valor hoy.</p>
-
-        <p>Si prefiere regresar a la plataforma central, puede volver a <a href="/">lubezky.com</a>.</p>
+    <!-- SECCIÓN: UNNUEVOPUNTODEVISTA.COM -->
+    <div class="ecosystem-section">
+        <div class="domain-header">
+            <h2 class="domain-title">Un Nuevo Punto de Vista</h2>
+            <a href="https://unnuevopuntodevista.com" class="domain-link" target="_blank">unnuevopuntodevista.com</a>
+        </div>
+        <ul class="links-list">
+            <li><span class="link-type">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
+            <li><span class="link-type">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
+        </ul>
     </div>
 </main>
 
 <footer>
-    <img src="https://lubezky.com/foto-sergio.jpg" alt="Sergio Lubezky A." class="profile-img">
-    <a href="https://lubezky.com" class="name-link"><span class="name">Sergio Lubezky A.</span></a>
-    <div class="footer-bio">
-        <p>
-            Director General Regional enfocado en la intersección entre tecnología, operaciones corporativas y percepción. 
-            Exploro la <a href="https://inteligencia.com" target="_blank">Inteligencia</a>, 
-            la <a href="https://liderazgointerino.com" target="_blank">Dirección Interina</a>, 
-            la narrativa visual en <a href="https://coachdefoto.com" target="_blank">Coach de Foto</a> 
-            y la música como otra forma de <a href="https://musica.sergiolubezky.com" target="_blank">comunicar</a>, 
-            bajo una misma premisa: encontrar <a href="https://unnuevopuntodevista.com" target="_blank">un nuevo punto de vista</a> 
-            para entender que todos estamos en <a href="https://elmismobarco.com">el mismo barco</a>.
-        </p>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>Sergio Lubezky A.</h3>
+            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
+            
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a>
+                <a href="https://x.com/slubezky" target="_blank">X</a>
+                <a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a>
+                <a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">Podcast</a>
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://music.amazon.com.mx/artists/B0GDNRJZJ8/sergio-lubezky" target="_blank">Amazon Music</a>
+                <a href="https://music.apple.com/mx/artist/sergio-lubezky/1865741434" target="_blank">Apple Music</a>
+                <a href="https://open.spotify.com/artist/5pMlk0pQ7tWiaBDrhXihpJ" target="_blank">Spotify</a>
+                <a href="https://www.youtube.com/@SergioLubezkyMusic" target="_blank">YouTube</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3>Discografía</h3>
+            <ul>
+                <li><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy</a></li>
+                <li><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
+                <li><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
+                <li><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
+                <li><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
+                <li><a href="https://musica.sergiolubezky.com/acapulco">Acapulco</a></li>
+                <li><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
+                <li><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
+                <li><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
+                <li><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Ecosistema</h3>
+            <ul>
+                <li><a href="https://lubezky.com">Lubezky.com</a></li>
+                <li><a href="https://inteligencia.com">Inteligencia</a></li>
+                <li><a href="https://liderazgointerino.com">Liderazgo Interino</a></li>
+                <li><a href="https://coachdefoto.com">Coach de Foto</a></li>
+                <li><a href="https://elmismobarco.com">El Mismo Barco</a></li>
+                <li><a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a></li>
+                <li><a href="https://musica.sergiolubezky.com/">Música</a></li>
+                <li style="margin-top: 20px;"><a href="https://lubezky.com/mapa/" class="current-location">Mapa del Ecosistema</a></li>
+            </ul>
+        </div>
     </div>
-    <ul class="social-nav">
-        <li><a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://x.com/slubezky" target="_blank">X</a></li>
-        <li><a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a></li>
-        <li><a href="https://open.spotify.com" target="_blank">Podcast</a></li>
-        <li><a href="https://coachdefoto.com" target="_blank">Fotografía</a></li>
-    </ul>
+    <div class="footer-bottom">
+        <p>© 2026 Sergio Lubezky A. ℗ 2026 Sergio Lubezky. Todos los derechos reservados.</p>
+    </div>
 </footer>
+
 </body>
 </html>
