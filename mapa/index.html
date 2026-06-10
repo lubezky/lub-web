@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,55 +10,113 @@
     <link rel="canonical" href="https://lubezky.com/mapa/" />
 
     <style>
-        body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fbfbfb; color: #1a1a1a; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-        
-        main { flex: 1; padding: 60px 0 40px 0; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
-        
-        .header-title { text-align: center; margin-bottom: 25px; padding: 0 20px; }
-        .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-        .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #555; margin-top: 10px; }
+        *, *::before, *::after { box-sizing: border-box; }
 
+        :root {
+            /* Identidad */
+            --c-identity:        #1a1a1a;
+            --c-identity-bg:     #f7f7f7;
+            --c-identity-pill:   #e8e8e8;
+            --c-identity-light:  #555555;
+
+            /* Estrategia */
+            --c-strategy:        #1923b8;
+            --c-strategy-bg:     #eef0fc;
+            --c-strategy-pill:   #d6d9f7;
+            --c-strategy-light:  #3a42c4;
+
+            /* Reflexión */
+            --c-reflection:      #8b3a2a;
+            --c-reflection-bg:   #faf2f0;
+            --c-reflection-pill: #f2d8d3;
+            --c-reflection-light:#a84f3d;
+
+            /* Creación */
+            --c-creation:        #1a5c5c;
+            --c-creation-bg:     #eef6f6;
+            --c-creation-pill:   #cde8e8;
+            --c-creation-light:  #2a7a7a;
+
+            --accent: #d32f2f;
+            --radius: 6px;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #fbfbfb;
+            color: #1a1a1a;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        main {
+            flex: 1;
+            padding: 60px 0 40px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Header ── */
+        .header-title { text-align: center; margin-bottom: 20px; padding: 0 20px; }
+        .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+        .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1rem; color: #777; margin-top: 8px; margin-bottom: 0; }
+
+        /* ── Navigation ── */
         .map-navigation {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
             padding: 0 20px;
         }
-        
+
         .nav-btn {
             background: #1a1a1a;
             color: #fff;
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: background 0.25s, transform 0.2s;
+            flex-shrink: 0;
         }
-        
-        .nav-btn:hover:not(:disabled) {
-            background: #d32f2f;
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(211,47,47,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-        
-        .nav-btn:focus {
-            outline: 2px solid #d32f2f;
-            outline-offset: 2px;
-        }
+        .nav-btn:hover:not(:disabled) { background: #333; transform: scale(1.08); }
+        .nav-btn:disabled { background: #ccc; cursor: not-allowed; opacity: 0.5; }
+        .nav-btn:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 2px; }
 
+        /* ── Progress dots ── */
+        .progress-dots { display: flex; gap: 7px; align-items: center; }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .dot:hover { background: #bbb; }
+        .dot.active { transform: scale(1.4); }
+        .dot.active[data-category="identity"]   { background: var(--c-identity); }
+        .dot.active[data-category="strategy"]   { background: var(--c-strategy); }
+        .dot.active[data-category="reflection"] { background: var(--c-reflection); }
+        .dot.active[data-category="creation"]   { background: var(--c-creation); }
+
+        .station-counter { font-size: 0.75rem; color: #aaa; letter-spacing: 1px; min-width: 36px; text-align: center; }
+
+        /* ── Scroll wrapper ── */
         .scroll-master-wrapper {
             width: 100%;
             overflow-x: auto;
@@ -65,225 +124,205 @@
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
-            position: relative;
-            /* Truco para escritorio: convierte scroll vertical de mouse en horizontal */
-            transform: rotateX(180deg);
-            -ms-transform: rotateX(180deg); 
-            -webkit-transform: rotateX(180deg); 
         }
-        
-        .scroll-master-wrapper::-webkit-scrollbar { height: 6px; }
+        .scroll-master-wrapper::-webkit-scrollbar { height: 5px; }
         .scroll-master-wrapper::-webkit-scrollbar-track { background: #f1f1f1; }
-        .scroll-master-wrapper::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
-        .scroll-master-wrapper::-webkit-scrollbar-thumb:hover { background: #d32f2f; }
+        .scroll-master-wrapper::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+        .scroll-master-wrapper::-webkit-scrollbar-thumb:hover { background: #888; }
 
         .horizontal-scroll-container {
             display: flex;
-            gap: 40px;
-            padding: 20px 40px 40px 40px;
+            gap: 28px;
+            padding: 16px 40px 32px 40px;
             width: max-content;
-            transform: rotateX(180deg);
-            -ms-transform: rotateX(180deg); 
-            -webkit-transform: rotateX(180deg); 
         }
 
+        /* ── Card base ── */
         .map-station {
-            flex: 0 0 320px;
-            background: #ffffff;
+            flex: 0 0 310px;
             border-top: 3px solid #1a1a1a;
-            padding: 30px 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 24px 22px 22px;
             display: flex;
             flex-direction: column;
             height: fit-content;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             scroll-snap-align: start;
             opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
+            animation: fadeInUp 0.5s ease forwards;
         }
-        
-        .map-station:nth-child(1) { animation-delay: 0.1s; }
-        .map-station:nth-child(2) { animation-delay: 0.2s; }
-        .map-station:nth-child(3) { animation-delay: 0.3s; }
-        .map-station:nth-child(4) { animation-delay: 0.4s; }
-        .map-station:nth-child(5) { animation-delay: 0.5s; }
-        .map-station:nth-child(6) { animation-delay: 0.6s; }
-        .map-station:nth-child(7) { animation-delay: 0.7s; }
-        
+
+        .map-station:nth-child(1) { animation-delay: 0.05s; }
+        .map-station:nth-child(2) { animation-delay: 0.12s; }
+        .map-station:nth-child(3) { animation-delay: 0.19s; }
+        .map-station:nth-child(4) { animation-delay: 0.26s; }
+        .map-station:nth-child(5) { animation-delay: 0.33s; }
+        .map-station:nth-child(6) { animation-delay: 0.40s; }
+        .map-station:nth-child(7) { animation-delay: 0.47s; }
+
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        
-        .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-top-color: #d32f2f; }
-        
-        .map-station.core-identity { border-top-color: #1a1a1a; background: #ffffff; }
-        .map-station.core-identity:hover { border-top-color: #d32f2f; }
 
-        .station-header { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-        .station-title { font-size: 1.15rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px 0; }
-        .station-domain { font-size: 0.85rem; color: #666; text-decoration: none; font-weight: 500; }
-        .station-domain:hover { color: #000; }
+        /* Category colors */
+        .map-station[data-category="identity"]   { background: var(--c-identity-bg);   border-top-color: var(--c-identity); }
+        .map-station[data-category="strategy"]   { background: var(--c-strategy-bg);   border-top-color: var(--c-strategy); }
+        .map-station[data-category="reflection"] { background: var(--c-reflection-bg); border-top-color: var(--c-reflection); }
+        .map-station[data-category="creation"]   { background: var(--c-creation-bg);   border-top-color: var(--c-creation); }
 
-        .nodes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-        .nodes-list li { font-family: 'Georgia', serif; font-size: 1.05rem; display: flex; flex-direction: column; line-height: 1.3; }
-        
-        .nodes-list a { color: #222; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s; width: fit-content; }
-        .nodes-list a:hover { color: #d32f2f; border-bottom: 1px solid #d32f2f; }
+        .map-station[data-category="identity"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(26,26,26,0.09); }
+        .map-station[data-category="strategy"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(25,35,184,0.1); }
+        .map-station[data-category="reflection"]:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(139,58,42,0.1); }
+        .map-station[data-category="creation"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(26,92,92,0.1); }
 
-        .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #a0a0a0; margin-bottom: 3px; letter-spacing: 0.5px; }
+        /* ── Station number ── */
+        .station-number {
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+            opacity: 0.4;
+        }
+        .map-station[data-category="identity"]   .station-number { color: var(--c-identity); }
+        .map-station[data-category="strategy"]   .station-number { color: var(--c-strategy); }
+        .map-station[data-category="reflection"] .station-number { color: var(--c-reflection); }
+        .map-station[data-category="creation"]   .station-number { color: var(--c-creation); }
 
-        .scroll-indicator {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(26, 26, 26, 0.8);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            pointer-events: none;
+        /* ── Category pill ── */
+        .category-pill {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 9px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+        .map-station[data-category="identity"]   .category-pill { background: var(--c-identity-pill);   color: var(--c-identity); }
+        .map-station[data-category="strategy"]   .category-pill { background: var(--c-strategy-pill);   color: var(--c-strategy); }
+        .map-station[data-category="reflection"] .category-pill { background: var(--c-reflection-pill); color: var(--c-reflection); }
+        .map-station[data-category="creation"]   .category-pill { background: var(--c-creation-pill);   color: var(--c-creation); }
+
+        /* ── Station header ── */
+        .station-header { margin-bottom: 6px; }
+        .station-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 2px 0; color: #1a1a1a; }
+        .station-domain { font-size: 0.78rem; color: #999; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+
+        .map-station[data-category="identity"]   .station-domain:hover { color: var(--c-identity-light); }
+        .map-station[data-category="strategy"]   .station-domain:hover { color: var(--c-strategy-light); }
+        .map-station[data-category="reflection"] .station-domain:hover { color: var(--c-reflection-light); }
+        .map-station[data-category="creation"]   .station-domain:hover { color: var(--c-creation-light); }
+
+        /* ── Description ── */
+        .station-description {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.55;
+            margin: 10px 0 16px 0;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+        }
+
+        /* ── Nodes list ── */
+        .nodes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+        .nodes-list li { font-family: 'Georgia', serif; font-size: 0.97rem; display: flex; flex-direction: column; line-height: 1.3; }
+
+        .nodes-list a {
+            color: #222;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s, font-weight 0.1s;
+            width: fit-content;
+        }
+
+        /* Hover color per category */
+        .map-station[data-category="identity"]   .nodes-list a:hover { color: var(--c-identity-light); border-bottom-color: var(--c-identity-light); font-weight: 700; }
+        .map-station[data-category="strategy"]   .nodes-list a:hover { color: var(--c-strategy-light); border-bottom-color: var(--c-strategy-light); font-weight: 700; }
+        .map-station[data-category="reflection"] .nodes-list a:hover { color: var(--c-reflection-light); border-bottom-color: var(--c-reflection-light); font-weight: 700; }
+        .map-station[data-category="creation"]   .nodes-list a:hover { color: var(--c-creation-light); border-bottom-color: var(--c-creation-light); font-weight: 700; }
+
+        .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: #b0b0b0; margin-bottom: 2px; letter-spacing: 0.5px; }
+
+        /* ── Visit CTA ── */
+        .visit-cta {
+            display: block;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(0,0,0,0.07);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 10;
+            transform: translateY(4px);
+            transition: opacity 0.25s, transform 0.25s, color 0.2s;
         }
-        
-        .scroll-indicator.left {
-            left: 10px;
-        }
-        
-        .scroll-indicator.right {
-            right: 10px;
-        }
-        
-        .scroll-indicator.visible {
-            opacity: 1;
-        }
+        .map-station:hover .visit-cta { opacity: 1; transform: translateY(0); }
 
-        footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
+        .map-station[data-category="identity"]   .visit-cta { color: var(--c-identity); }
+        .map-station[data-category="strategy"]   .visit-cta { color: var(--c-strategy); }
+        .map-station[data-category="reflection"] .visit-cta { color: var(--c-reflection); }
+        .map-station[data-category="creation"]   .visit-cta { color: var(--c-creation); }
+
+        .visit-cta:hover { opacity: 0.7 !important; }
+
+        /* ── Legend ── */
+        .map-legend { display: flex; justify-content: center; gap: 24px; margin-top: 18px; padding: 0 20px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+        .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .legend-dot.identity   { background: var(--c-identity); }
+        .legend-dot.strategy   { background: var(--c-strategy); }
+        .legend-dot.reflection { background: var(--c-reflection); }
+        .legend-dot.creation   { background: var(--c-creation); }
+
+        /* ── Footer ── */
+        footer { padding: 70px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; font-family: 'Helvetica Neue', Arial, sans-serif; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
+        .footer-col h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 18px; }
+        .footer-col p { color: #555; margin: 0 0 16px 0; font-size: 0.9rem; line-height: 1.65; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 11px; }
+        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.25s; }
+        .footer-col ul li a:hover { border-bottom-color: #1a1a1a; }
+        .footer-col ul li a.active-map { color: var(--c-strategy); border-bottom-color: var(--c-strategy-pill); }
+        .footer-col ul li a.active-map:hover { border-bottom-color: var(--c-strategy); }
 
-        .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 20px; }
-        .footer-col p { color: #555; margin: 0 0 20px 0; font-size: 0.9rem; text-align: justify; line-height: 1.6; }
-        
-        .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.3s; }
-        .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
-        .footer-col ul li a.active-map { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
-        .footer-col ul li a.active-map:hover { border-bottom: 1px solid #d32f2f; }
-        
-        .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; justify-content: flex-start; }
-        .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; border-bottom: 1px solid #eee; }
-        .social-row a:hover { color: #000; border-bottom: 1px solid #000; }
+        .social-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
+        .social-row a { font-size: 0.82rem; font-weight: 600; color: #666; text-decoration: none; border-bottom: 1px solid #eee; transition: color 0.2s, border-color 0.2s; }
+        .social-row a:hover { color: #000; border-bottom-color: #000; }
 
-        .contact-email { margin-top: 12px; }
-        .contact-email a { font-size: 0.9rem; font-weight: 600; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s; }
-        .contact-email a:hover { color: #d32f2f; border-bottom: 1px solid #d32f2f; }
+        .contact-email a { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s; }
+        .contact-email a:hover { color: var(--c-strategy); border-bottom-color: var(--c-strategy); }
 
-        .copyright { font-size: 0.8rem; color: #999; margin-top: 25px; display: block; }
+        .copyright { display: block; max-width: 900px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid #f5f5f5; font-size: 0.78rem; color: #bbb; text-align: center; }
 
-        /* ==========================================
-           RESPONSIVE MÓVIL - Scroll HORIZONTAL
-           ========================================== */
+        /* ── Mobile ── */
         @media (max-width: 768px) {
-            .header-title h1 { 
-                font-size: 1.8rem; 
-                letter-spacing: 2px; 
-            }
-            .header-title p { 
-                font-size: 1rem; 
-            }
+            .header-title h1 { font-size: 1.6rem; letter-spacing: 2px; }
+            .map-navigation { gap: 8px; }
+            .nav-btn { width: 38px; height: 38px; font-size: 1rem; }
 
-            .map-navigation {
-                gap: 10px;
-                margin-bottom: 15px;
-            }
-            
-            .nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            /* En móvil NO usamos el truco de rotación, 
-               el swipe horizontal nativo funciona perfectamente */
-            .scroll-master-wrapper {
-                transform: none;
-                -ms-transform: none;
-                -webkit-transform: none;
-            }
-            
-            .horizontal-scroll-container {
-                transform: none;
-                -ms-transform: none;
-                -webkit-transform: none;
-                padding: 20px;
-                gap: 20px;
-            }
-            
-            /* Tarjetas más estrechas para que se asome la siguiente,
-               indicando que hay más contenido al deslizar */
-            .map-station {
-                flex: 0 0 280px;
-                padding: 25px 20px;
-                animation: none;
-                opacity: 1;
-            }
-            
-            /* Ocultamos indicadores en móvil, el swipe es obvio */
-            .scroll-indicator {
-                display: none;
-            }
-            
-            footer {
-                padding: 70px 20px 35px;
-            }
+            .scroll-master-wrapper { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; }
+            .horizontal-scroll-container { padding: 16px 20px 28px 20px; gap: 16px; }
+            .map-station { flex: 0 0 82vw; max-width: 300px; }
+            .visit-cta { opacity: 1; transform: none; }
 
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 28px;
-                text-align: center;
-            }
+            .map-legend { gap: 14px; }
+            .legend-item { font-size: 0.65rem; }
 
-            .footer-col {
-                text-align: center;
-            }
-
-            .footer-col p {
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 34rem;
-            }
-
-            .footer-col ul {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .footer-col ul li a {
-                display: inline-block;
-            }
-
-            .social-row {
-                justify-content: center;
-            }
-
-            .copyright {
-                margin-top: 18px;
-                text-align: center;
-            }
+            .footer-container { grid-template-columns: 1fr; gap: 0; }
+            .footer-col:first-child { margin-bottom: 32px; }
+            .footer-col p { text-align: left; }
+            .footer-col:last-child { text-align: center; }
+            .footer-col:last-child h3 { text-align: center; }
+            .footer-col:last-child ul { display: inline-block; text-align: left; }
+            .social-row { justify-content: flex-start; }
         }
     </style>
 </head>
@@ -292,49 +331,60 @@
 <main>
     <div class="header-title">
         <h1>Mapa del Ecosistema</h1>
-        <p>Despliega horizontalmente para recorrer la cartografía completa de contenidos interconectados.</p>
+        <p>Navega horizontalmente para recorrer la cartografía completa de proyectos interconectados.</p>
     </div>
 
     <div class="map-navigation">
         <button class="nav-btn" id="prevBtn" aria-label="Estación anterior">←</button>
+        <div class="progress-dots" id="progressDots"></div>
+        <span class="station-counter" id="stationCounter">1 / 7</span>
         <button class="nav-btn" id="nextBtn" aria-label="Siguiente estación">→</button>
     </div>
 
-    <div class="scroll-master-wrapper" tabindex="0" role="region" aria-label="Mapa horizontal del ecosistema">
-        <div class="scroll-indicator left">←</div>
-        <div class="scroll-indicator right">→</div>
-        <div class="horizontal-scroll-container">
-            
-            <div class="map-station core-identity" data-station="0">
+    <div class="scroll-master-wrapper" id="scrollWrapper" tabindex="0" role="region" aria-label="Mapa horizontal del ecosistema">
+        <div class="horizontal-scroll-container" id="scrollContainer">
+
+            <div class="map-station" data-station="0" data-category="identity">
+                <span class="station-number">01 — Identidad</span>
+                <span class="category-pill">Identidad</span>
                 <div class="station-header">
                     <h2 class="station-title">Sergio Lubezky</h2>
                     <a href="https://lubezky.com" class="station-domain" target="_blank" rel="noopener noreferrer">lubezky.com</a>
                 </div>
+                <p class="station-description">El nodo central del ecosistema. Estrategia, liderazgo y percepción ejecutiva en México y Latinoamérica.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
                     <li><span class="tag">Página</span><a href="https://lubezky.com/trabajo">Mi Trabajo</a></li>
                     <li><span class="tag">Podcast</span><a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank" rel="noopener noreferrer">El Bien Común</a></li>
                     <li><span class="tag">Mapa</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
                 </ul>
+                <a href="https://lubezky.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="1">
+            <div class="map-station" data-station="1" data-category="strategy">
+                <span class="station-number">02 — Estrategia</span>
+                <span class="category-pill">Estrategia</span>
                 <div class="station-header">
                     <h2 class="station-title">Inteligencia</h2>
                     <a href="https://inteligencia.com" class="station-domain" target="_blank" rel="noopener noreferrer">inteligencia.com</a>
                 </div>
+                <p class="station-description">Coordinación colectiva, sistemas complejos y dirección regional en Latinoamérica.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
                     <li><span class="tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
                     <li><span class="tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
                 </ul>
+                <a href="https://inteligencia.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" style="flex-basis: 350px;" data-station="2">
+            <div class="map-station" style="flex-basis: 330px;" data-station="2" data-category="strategy">
+                <span class="station-number">03 — Estrategia</span>
+                <span class="category-pill">Estrategia</span>
                 <div class="station-header">
                     <h2 class="station-title">Liderazgo Interino</h2>
                     <a href="https://liderazgointerino.com" class="station-domain" target="_blank" rel="noopener noreferrer">liderazgointerino.com</a>
                 </div>
+                <p class="station-description">Continuidad operativa y liderazgo de transición para corporaciones en momentos críticos.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
@@ -344,51 +394,67 @@
                     <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/mistakes-in-an-organizational-crisis/">Mistakes in an Organizational Crisis</a></li>
                     <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/what-does-an-interim-director-do/">What Does an Interim Director Do?</a></li>
                 </ul>
+                <a href="https://liderazgointerino.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="3">
+            <div class="map-station" data-station="3" data-category="reflection">
+                <span class="station-number">04 — Reflexión</span>
+                <span class="category-pill">Reflexión</span>
                 <div class="station-header">
                     <h2 class="station-title">El Mismo Barco</h2>
                     <a href="https://elmismobarco.com" class="station-domain" target="_blank" rel="noopener noreferrer">elmismobarco.com</a>
                 </div>
+                <p class="station-description">Un espacio para lo que se vive en silencio pero no en soledad. Reflexiones sobre el camino compartido.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
                     <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
                     <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
                     <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
                 </ul>
+                <a href="https://elmismobarco.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="4">
+            <div class="map-station" data-station="4" data-category="reflection">
+                <span class="station-number">05 — Reflexión</span>
+                <span class="category-pill">Reflexión</span>
                 <div class="station-header">
                     <h2 class="station-title">Un Nuevo Punto de Vista</h2>
                     <a href="https://unnuevopuntodevista.com" class="station-domain" target="_blank" rel="noopener noreferrer">unnuevopuntodevista.com</a>
                 </div>
+                <p class="station-description">Percepción, encuadre y decisión. Cómo cambia lo que vemos cuando cambiamos el lugar desde donde miramos.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
                     <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
                     <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
                 </ul>
+                <a href="https://unnuevopuntodevista.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" style="flex-basis: 340px;" data-station="5">
+            <div class="map-station" style="flex-basis: 320px;" data-station="5" data-category="creation">
+                <span class="station-number">06 — Creación</span>
+                <span class="category-pill">Creación</span>
                 <div class="station-header">
                     <h2 class="station-title">Coach de Foto</h2>
                     <a href="https://coachdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">coachdefoto.com</a>
                 </div>
+                <p class="station-description">Talleres y viajes fotográficos para desarrollar una mirada propia. Ver mejor es pensar mejor.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver/">Cómo aprender a ver</a></li>
                     <li><span class="tag">Página</span><a href="https://coachdefoto.com/taller-zoom/">Conoce tu Cámara (zoom)</a></li>
                     <li><span class="tag">Página</span><a href="https://coachdefoto.com/domina-tu-iphone/">Conoce tu iPhone (zoom)</a></li>
                     <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes/">Viajes</a></li>
                 </ul>
+                <a href="https://coachdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" style="flex-basis: 360px;" data-station="6">
+            <div class="map-station" style="flex-basis: 340px;" data-station="6" data-category="creation">
+                <span class="station-number">07 — Creación</span>
+                <span class="category-pill">Creación</span>
                 <div class="station-header">
                     <h2 class="station-title">Discografía</h2>
                     <a href="https://musica.sergiolubezky.com" class="station-domain" target="_blank" rel="noopener noreferrer">musica.sergiolubezky.com</a>
                 </div>
+                <p class="station-description">El sonido de lo que no siempre se dice con palabras. Diez álbumes, una sola búsqueda.</p>
                 <ul class="nodes-list">
                     <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Lecciones de Kabbalah)</a></li>
                     <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
@@ -401,9 +467,17 @@
                     <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
                     <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
                 </ul>
+                <a href="https://musica.sergiolubezky.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
         </div>
+    </div>
+
+    <div class="map-legend">
+        <div class="legend-item"><span class="legend-dot identity"></span>Identidad</div>
+        <div class="legend-item"><span class="legend-dot strategy"></span>Estrategia</div>
+        <div class="legend-item"><span class="legend-dot reflection"></span>Reflexión</div>
+        <div class="legend-item"><span class="legend-dot creation"></span>Creación</div>
     </div>
 </main>
 
@@ -442,99 +516,74 @@
 </footer>
 
 <script>
-    const wrapper = document.querySelector('.scroll-master-wrapper');
+    const wrapper = document.getElementById('scrollWrapper');
     const stations = document.querySelectorAll('.map-station');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const leftIndicator = document.querySelector('.scroll-indicator.left');
-    const rightIndicator = document.querySelector('.scroll-indicator.right');
-    
-    let currentStation = 0;
+    const counter = document.getElementById('stationCounter');
+    const dotsContainer = document.getElementById('progressDots');
     const totalStations = stations.length;
+    let currentStation = 0;
 
-    function updateNavigation() {
+    stations.forEach((s, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot';
+        dot.setAttribute('data-category', s.getAttribute('data-category'));
+        dot.setAttribute('aria-label', `Ir a estación ${i + 1}`);
+        dot.addEventListener('click', () => scrollToStation(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    function updateUI() {
         prevBtn.disabled = currentStation === 0;
         nextBtn.disabled = currentStation === totalStations - 1;
-        
-        if (window.innerWidth > 768) {
-            const scrollLeft = wrapper.scrollLeft;
-            const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-            
-            leftIndicator.classList.toggle('visible', scrollLeft > 50);
-            rightIndicator.classList.toggle('visible', scrollLeft < maxScroll - 50);
-        }
+        counter.textContent = `${currentStation + 1} / ${totalStations}`;
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentStation);
+        });
     }
 
     function scrollToStation(index) {
         if (index < 0 || index >= totalStations) return;
-        
         currentStation = index;
         const station = stations[index];
-        
-        // Siempre usamos scroll horizontal, funciona tanto en escritorio como en móvil
-        const scrollPosition = station.offsetLeft - 20;
-        wrapper.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
-        
-        updateNavigation();
+        wrapper.scrollTo({ left: station.offsetLeft - 40, behavior: 'smooth' });
+        updateUI();
     }
 
-    prevBtn.addEventListener('click', () => {
-        scrollToStation(currentStation - 1);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        scrollToStation(currentStation + 1);
-    });
+    prevBtn.addEventListener('click', () => scrollToStation(currentStation - 1));
+    nextBtn.addEventListener('click', () => scrollToStation(currentStation + 1));
 
     wrapper.addEventListener('scroll', () => {
-        const stationWidth = stations[0].offsetWidth + (window.innerWidth > 768 ? 40 : 20);
-        const newIndex = Math.round(wrapper.scrollLeft / stationWidth);
-        
-        if (newIndex !== currentStation && newIndex >= 0 && newIndex < totalStations) {
-            currentStation = newIndex;
-            updateNavigation();
-        }
-        
-        if (window.innerWidth > 768) {
-            const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-            leftIndicator.classList.toggle('visible', wrapper.scrollLeft > 50);
-            rightIndicator.classList.toggle('visible', wrapper.scrollLeft < maxScroll - 50);
-        }
+        let closest = 0, minDist = Infinity;
+        stations.forEach((s, i) => {
+            const dist = Math.abs(s.offsetLeft - wrapper.scrollLeft - 40);
+            if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        if (closest !== currentStation) { currentStation = closest; updateUI(); }
     });
 
     wrapper.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            scrollToStation(currentStation - 1);
-        } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            scrollToStation(currentStation + 1);
-        }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollToStation(currentStation - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); scrollToStation(currentStation + 1); }
     });
 
     document.querySelectorAll('.map-station a').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function() {
             const station = this.closest('.map-station');
             const stationTitle = station.querySelector('.station-title').textContent;
-            const linkText = this.textContent;
-            
-            console.log(`Analytics: Click en "${linkText}" de la estación "${stationTitle}"`);
-            
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'map_interaction', {
                     'event_category': 'Mapa del Ecosistema',
-                    'event_label': `${stationTitle} - ${linkText}`,
+                    'event_label': `${stationTitle} - ${this.textContent}`,
                     'station': stationTitle
                 });
             }
         });
     });
 
-    window.addEventListener('resize', updateNavigation);
-    updateNavigation();
+    window.addEventListener('resize', updateUI);
+    updateUI();
 </script>
 
 </body>
