@@ -17,7 +17,6 @@
         .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
         .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #555; margin-top: 10px; }
 
-        /* --- ARQUITECTURA DE INVERSIÓN MECÁNICA DE LA BARRA (180° GRADOS) --- */
         .scroll-master-wrapper {
             width: 100%;
             overflow-x: auto;
@@ -44,7 +43,6 @@
             -webkit-transform: rotateX(180deg); 
         }
 
-        /* Bloques o Estaciones del Mapa Mental */
         .map-station {
             flex: 0 0 320px;
             background: #ffffff;
@@ -66,7 +64,6 @@
         .station-domain { font-size: 0.85rem; color: #666; text-decoration: none; font-weight: 500; }
         .station-domain:hover { color: #000; }
 
-        /* Listados de Contenido Semántico */
         .nodes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
         .nodes-list li { font-family: 'Georgia', serif; font-size: 1.05rem; display: flex; flex-direction: column; line-height: 1.3; }
         
@@ -75,7 +72,6 @@
 
         .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #a0a0a0; margin-bottom: 3px; letter-spacing: 0.5px; }
 
-        /* --- FOOTER DE SOLO DOS COLUMNAS CENTRADAS --- */
         footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
         @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; } }
@@ -85,7 +81,13 @@
         @media (max-width: 768px) { .footer-col p { text-align: center; } }
         
         .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
-        @media (max-width: 768px) { .footer-col ul { text-align: center; } }
+        @media (max-width: 768px) {
+            .footer-col ul {
+                text-align: center !important;
+                display: inline-block;
+                margin: 0 auto;
+            }
+        }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.3s; }
         .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
@@ -93,11 +95,62 @@
         .footer-col ul li a.active-map:hover { border-bottom: 1px solid #d32f2f; }
         
         .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; justify-content: flex-start; }
-        @media (max-width: 768px) { .social-row { justify-content: center; } }
+        @media (max-width: 768px) {
+            .social-row { justify-content: center; }
+        }
         .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; border-bottom: 1px solid #eee; }
         .social-row a:hover { color: #000; border-bottom: 1px solid #000; }
-        
+
+        .contact-email { margin-top: 12px; }
+        .contact-email a { font-size: 0.9rem; font-weight: 600; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s; }
+        .contact-email a:hover { color: #d32f2f; border-bottom: 1px solid #d32f2f; }
+
         .copyright { font-size: 0.8rem; color: #999; margin-top: 25px; display: block; }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 70px 20px 35px;
+            }
+
+            .footer-container {
+                gap: 28px;
+                align-items: center;
+            }
+
+            .footer-col {
+                text-align: center;
+            }
+
+            .footer-col p {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 34rem;
+            }
+
+            .footer-col ul li a {
+                display: inline-block;
+            }
+
+            .footer-col:last-child {
+                text-align: center;
+            }
+
+            .footer-col:last-child h3,
+            .footer-col:last-child ul {
+                text-align: center;
+            }
+
+            .footer-col:last-child ul {
+                display: inline-block;
+                margin: 0 auto;
+            }
+
+            .copyright {
+                margin-top: 18px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -219,18 +272,21 @@
             <h3>Sergio Lubezky A.</h3>
             <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
             <div class="social-row">
-                <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a> · 
-                <a href="https://x.com/slubezky" target="_blank">X</a> · 
-                <a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a> · 
-                <a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a> · 
+                <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank">LinkedIn</a>
+                <a href="https://x.com/slubezky" target="_blank">X</a>
+                <a href="https://www.facebook.com/sergiolubezky/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/sergiolubezky/" target="_blank">Instagram</a>
                 <a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank">Podcast</a>
+            </div>
+            <div class="contact-email">
+                <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>
             </div>
             <span class="copyright">© 2026 Sergio Lubezky A. Todos los derechos reservados.</span>
         </div>
 
-        <div class="footer-col" style="text-align: right;">
+        <div class="footer-col">
             <h3>Ecosistema</h3>
-            <ul style="text-align: right;">
+            <ul>
                 <li><a href="https://lubezky.com">Lubezky.com</a></li>
                 <li><a href="https://inteligencia.com">Inteligencia</a></li>
                 <li><a href="https://liderazgointerino.com">Liderazgo Interino</a></li>
