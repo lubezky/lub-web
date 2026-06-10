@@ -11,31 +11,39 @@
     <style>
         body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fbfbfb; color: #1a1a1a; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
         
-        main { flex: 1; padding: 60px 0; width: 100%; box-sizing: border-box; }
+        main { flex: 1; padding: 60px 0 40px 0; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
         
-        .header-title { text-align: center; margin-bottom: 40px; padding: 0 20px; }
+        .header-title { text-align: center; margin-bottom: 25px; padding: 0 20px; }
         .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
         .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #555; margin-top: 10px; }
 
-        /* --- CONTENEDOR DE DESPLAZAMIENTO HORIZONTAL PURO --- */
-        .horizontal-scroll-container {
-            display: flex;
-            gap: 40px;
-            padding: 20px 40px 60px 40px;
+        /* --- ARQUITECTURA DE SCROLL HORIZONTAL SIMÉTRICO --- */
+        .scroll-master-wrapper {
+            width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
         }
         
-        /* Personalización sutil de la barra de desplazamiento */
-        .horizontal-scroll-container::-webkit-scrollbar { height: 6px; }
-        .horizontal-scroll-container::-webkit-scrollbar-track { background: #f1f1f1; }
-        .horizontal-scroll-container::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+        /* Barra de desplazamiento superior e inferior personalizada */
+        .scroll-master-wrapper::-webkit-scrollbar { height: 6px; }
+        .scroll-master-wrapper::-webkit-scrollbar-track { background: #f1f1f1; }
+        .scroll-master-wrapper::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+        .scroll-master-wrapper::-webkit-scrollbar-thumb:hover { background: #d32f2f; }
 
-        /* Bloques o Estaciones del Mapa */
+        /* Contenedor interno que estira el lienzo hacia la derecha */
+        .horizontal-scroll-container {
+            display: flex;
+            gap: 40px;
+            padding: 40px 40px 20px 40px;
+            width: max-content;
+        }
+
+        /* Bloques o Estaciones del Mapa Mental */
         .map-station {
-            flex: 0 0 320px; /* Evita que las columnas se colapsen o encojan */
+            flex: 0 0 320px;
             background: #ffffff;
             border-top: 3px solid #1a1a1a;
             padding: 30px 25px;
@@ -43,19 +51,20 @@
             display: flex;
             flex-direction: column;
             height: fit-content;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+        .map-station:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-top-color: #d32f2f; }
         
-        /* Estación Central Destacada (Sergio Lubezky) */
-        .map-station.core-identity { border-top-color: #d32f2f; background: #fafafa; }
+        /* Estación de Identidad Raíz Destacada */
+        .map-station.core-identity { border-top-color: #1a1a1a; background: #fafafa; }
+        .map-station.core-identity:hover { border-top-color: #d32f2f; }
 
         .station-header { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-        .station-title { font-size: 1.2rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px 0; }
+        .station-title { font-size: 1.15rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px 0; }
         .station-domain { font-size: 0.85rem; color: #666; text-decoration: none; font-weight: 500; }
         .station-domain:hover { color: #000; }
 
-        /* Listados de Contenido Completos */
+        /* Listados de Contenido Semántico */
         .nodes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
         .nodes-list li { font-family: 'Georgia', serif; font-size: 1.05rem; display: flex; flex-direction: column; line-height: 1.3; }
         
@@ -64,7 +73,7 @@
 
         .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #a0a0a0; margin-bottom: 3px; letter-spacing: 0.5px; }
 
-        /* --- FOOTER OPTIMIZADO DE 2 COLUMNAS CENTRADAS --- */
+        /* --- FOOTER EJECUTIVO DE 2 COLUMNAS CENTRADAS --- */
         footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
         @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; } }
@@ -81,7 +90,7 @@
         
         .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
         @media (max-width: 768px) { .social-row { justify-content: center; } }
-        .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; }
+        .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; }
         .social-row a:hover { color: #000; }
         
         .copyright { font-size: 0.8rem; color: #999; margin-top: 25px; display: block; }
@@ -95,100 +104,102 @@
         <p>Despliega horizontalmente para recorrer la cartografía completa de contenidos interconectados.</p>
     </div>
 
-    <div class="horizontal-scroll-container">
-        
-        <div class="map-station core-identity">
-            <div class="station-header">
-                <h2 class="station-title">Sergio Lubezky</h2>
-                <a href="https://lubezky.com" class="station-domain" target="_blank">lubezky.com</a>
+    <div class="scroll-master-wrapper">
+        <div class="horizontal-scroll-container">
+            
+            <div class="map-station core-identity">
+                <div class="station-header">
+                    <h2 class="station-title">Sergio Lubezky</h2>
+                    <a href="https://lubezky.com" class="station-domain" target="_blank">lubezky.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
+                    <li><span class="tag">Página</span><a href="https://lubezky.com/trabajo">Trabajo</a></li>
+                    <li><span class="tag">Página</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
-                <li><span class="tag">Página</span><a href="https://lubezky.com/trabajo">Trabajo</a></li>
-                <li><span class="tag">Página</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
-            </ul>
-        </div>
 
-        <div class="map-station">
-            <div class="station-header">
-                <h2 class="station-title">Inteligencia</h2>
-                <a href="https://inteligencia.com" class="station-domain" target="_blank">inteligencia.com</a>
+            <div class="map-station">
+                <div class="station-header">
+                    <h2 class="station-title">Inteligencia</h2>
+                    <a href="https://inteligencia.com" class="station-domain" target="_blank">inteligencia.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
-                <li><span class="tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
-                <li><span class="tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
-            </ul>
-        </div>
 
-        <div class="map-station">
-            <div class="station-header">
-                <h2 class="station-title">Liderazgo Interino</h2>
-                <a href="https://liderazgointerino.com" class="station-domain" target="_blank">liderazgointerino.com</a>
+            <div class="map-station">
+                <div class="station-header">
+                    <h2 class="station-title">Liderazgo Interino</h2>
+                    <a href="https://liderazgointerino.com" class="station-domain" target="_blank">liderazgointerino.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
-                <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
-                <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
-                <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
-            </ul>
-        </div>
 
-        <div class="map-station">
-            <div class="station-header">
-                <h2 class="station-title">Coach de Foto</h2>
-                <a href="https://coachdefoto.com" class="station-domain" target="_blank">coachdefoto.com</a>
+            <div class="map-station">
+                <div class="station-header">
+                    <h2 class="station-title">El Mismo Barco</h2>
+                    <a href="https://elmismobarco.com" class="station-domain" target="_blank">elmismobarco.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
+                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
+                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
+                    <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
-                <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
-            </ul>
-        </div>
 
-        <div class="map-station" style="flex-basis: 360px;">
-            <div class="station-header">
-                <h2 class="station-title">Música</h2>
-                <a href="https://musica.sergiolubezky.com" class="station-domain" target="_blank">musica.sergiolubezky.com</a>
+            <div class="map-station">
+                <div class="station-header">
+                    <h2 class="station-title">Un Nuevo Punto de Vista</h2>
+                    <a href="https://unnuevopuntodevista.com" class="station-domain" target="_blank">unnuevopuntodevista.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Kabbalah)</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el Verano que no fue</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
-                <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
-            </ul>
-        </div>
 
-        <div class="map-station">
-            <div class="station-header">
-                <h2 class="station-title">El Mismo Barco</h2>
-                <a href="https://elmismobarco.com" class="station-domain" target="_blank">elmismobarco.com</a>
+            <div class="map-station">
+                <div class="station-header">
+                    <h2 class="station-title">Coach de Foto</h2>
+                    <a href="https://coachdefoto.com" class="station-domain" target="_blank">coachdefoto.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/a-veces-no-necesitas-respuestas">A veces no necesitas respuestas</a></li>
-                <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/hay-dias-en-los-que-no-sabes">Hay días en los que no sabes qué estás haciendo</a></li>
-                <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/no-todo-tiene-que-estar-resuelto">No todo tiene que estar resuelto</a></li>
-                <li><span class="tag">Reflexión</span><a href="https://elmismobarco.com/reflexiones/todo-lo-que-soy">Todo lo que soy</a></li>
-            </ul>
-        </div>
 
-        <div class="map-station">
-            <div class="station-header">
-                <h2 class="station-title">Un Nuevo Punto de Vista</h2>
-                <a href="https://unnuevopuntodevista.com" class="station-domain" target="_blank">unnuevopuntodevista.com</a>
+            <div class="map-station" style="flex-basis: 360px;">
+                <div class="station-header">
+                    <h2 class="station-title">Discografía</h2>
+                    <a href="https://musica.sergiolubezky.com" class="station-domain" target="_blank">musica.sergiolubezky.com</a>
+                </div>
+                <ul class="nodes-list">
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/todo-lo-que-soy">Todo lo que Soy (Lecciones de Kabbalah)</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/aqui-estoy">Aquí Estoy</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/a-solas-conmigo">A Solas Conmigo</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/veces">A veces… Amor</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/enfoque-manual">Enfoque Manual</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/acapulco">Acapulco, el Verano que no fue</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/tercera-persona">Tercera Persona</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/calle">Mi Calle</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/medallo">Todos Somos Medallo</a></li>
+                    <li><span class="tag">Álbum</span><a href="https://musica.sergiolubezky.com/luz">Luz Prestada</a></li>
+                </ul>
             </div>
-            <ul class="nodes-list">
-                <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/interpretacion-y-significado">La Interpretación y el significado</a></li>
-                <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/limites-de-la-observacion">Los límites de la observación</a></li>
-                <li><span class="tag">Artículo</span><a href="https://unnuevopuntodevista.com/percepcion-y-realidad">Percepción y realidad</a></li>
-            </ul>
-        </div>
 
+        </div>
     </div>
 </main>
 
