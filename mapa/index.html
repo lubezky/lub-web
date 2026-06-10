@@ -64,11 +64,12 @@
             overflow-y: hidden;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            position: relative;
+            /* Truco para escritorio: convierte scroll vertical de mouse en horizontal */
             transform: rotateX(180deg);
             -ms-transform: rotateX(180deg); 
             -webkit-transform: rotateX(180deg); 
-            scroll-snap-type: x mandatory;
-            position: relative;
         }
         
         .scroll-master-wrapper::-webkit-scrollbar { height: 6px; }
@@ -171,20 +172,11 @@
 
         footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
-        @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; } }
 
         .footer-col h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 20px; }
         .footer-col p { color: #555; margin: 0 0 20px 0; font-size: 0.9rem; text-align: justify; line-height: 1.6; }
-        @media (max-width: 768px) { .footer-col p { text-align: center; } }
         
         .footer-col ul { list-style: none; padding: 0; margin: 0; text-align: left; }
-        @media (max-width: 768px) {
-            .footer-col ul {
-                text-align: center !important;
-                display: inline-block;
-                margin: 0 auto;
-            }
-        }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.3s; }
         .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
@@ -192,9 +184,6 @@
         .footer-col ul li a.active-map:hover { border-bottom: 1px solid #d32f2f; }
         
         .social-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; justify-content: flex-start; }
-        @media (max-width: 768px) {
-            .social-row { justify-content: center; }
-        }
         .social-row a { font-size: 0.85rem; font-weight: bold; color: #666; text-decoration: none; transition: color 0.2s; border-bottom: 1px solid #eee; }
         .social-row a:hover { color: #000; border-bottom: 1px solid #000; }
 
@@ -204,9 +193,21 @@
 
         .copyright { font-size: 0.8rem; color: #999; margin-top: 25px; display: block; }
 
+        /* ==========================================
+           RESPONSIVE MÓVIL - Scroll HORIZONTAL
+           ========================================== */
         @media (max-width: 768px) {
+            .header-title h1 { 
+                font-size: 1.8rem; 
+                letter-spacing: 2px; 
+            }
+            .header-title p { 
+                font-size: 1rem; 
+            }
+
             .map-navigation {
                 gap: 10px;
+                margin-bottom: 15px;
             }
             
             .nav-btn {
@@ -215,31 +216,32 @@
                 font-size: 1rem;
             }
             
+            /* En móvil NO usamos el truco de rotación, 
+               el swipe horizontal nativo funciona perfectamente */
             .scroll-master-wrapper {
-                overflow-x: hidden;
-                overflow-y: auto;
                 transform: none;
                 -ms-transform: none;
                 -webkit-transform: none;
-                scroll-snap-type: y mandatory;
             }
             
             .horizontal-scroll-container {
-                flex-direction: column;
                 transform: none;
                 -ms-transform: none;
                 -webkit-transform: none;
-                width: 100%;
                 padding: 20px;
                 gap: 20px;
             }
             
+            /* Tarjetas más estrechas para que se asome la siguiente,
+               indicando que hay más contenido al deslizar */
             .map-station {
-                flex: 1 1 auto;
-                width: 100%;
-                scroll-snap-align: start;
+                flex: 0 0 280px;
+                padding: 25px 20px;
+                animation: none;
+                opacity: 1;
             }
             
+            /* Ocultamos indicadores en móvil, el swipe es obvio */
             .scroll-indicator {
                 display: none;
             }
@@ -249,8 +251,9 @@
             }
 
             .footer-container {
+                grid-template-columns: 1fr;
                 gap: 28px;
-                align-items: center;
+                text-align: center;
             }
 
             .footer-col {
@@ -264,22 +267,17 @@
                 max-width: 34rem;
             }
 
+            .footer-col ul {
+                text-align: center;
+                display: inline-block;
+            }
+
             .footer-col ul li a {
                 display: inline-block;
             }
 
-            .footer-col:last-child {
-                text-align: center;
-            }
-
-            .footer-col:last-child h3,
-            .footer-col:last-child ul {
-                text-align: center;
-            }
-
-            .footer-col:last-child ul {
-                display: inline-block;
-                margin: 0 auto;
+            .social-row {
+                justify-content: center;
             }
 
             .copyright {
@@ -473,19 +471,12 @@
         currentStation = index;
         const station = stations[index];
         
-        if (window.innerWidth > 768) {
-            const scrollPosition = station.offsetLeft - 40;
-            wrapper.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
-        } else {
-            const scrollPosition = station.offsetTop - 20;
-            wrapper.scrollTo({
-                top: scrollPosition,
-                behavior: 'smooth'
-            });
-        }
+        // Siempre usamos scroll horizontal, funciona tanto en escritorio como en móvil
+        const scrollPosition = station.offsetLeft - 20;
+        wrapper.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
         
         updateNavigation();
     }
@@ -499,9 +490,8 @@
     });
 
     wrapper.addEventListener('scroll', () => {
-        const scrollPosition = window.innerWidth > 768 ? wrapper.scrollLeft : wrapper.scrollTop;
-        const stationSize = window.innerWidth > 768 ? stations[0].offsetWidth + 40 : stations[0].offsetHeight + 20;
-        const newIndex = Math.round(scrollPosition / stationSize);
+        const stationWidth = stations[0].offsetWidth + (window.innerWidth > 768 ? 40 : 20);
+        const newIndex = Math.round(wrapper.scrollLeft / stationWidth);
         
         if (newIndex !== currentStation && newIndex >= 0 && newIndex < totalStations) {
             currentStation = newIndex;
