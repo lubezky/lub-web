@@ -17,34 +17,28 @@
         .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
         .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #555; margin-top: 10px; }
 
-        /* --- TRUCO DE INVERSIÓN MECÁNICA DE LA BARRA (180° GRADOS) --- */
+        /* --- ARQUITECTURA DE INVERSIÓN MECÁNICA DE LA BARRA (180° GRADOS) --- */
         .scroll-master-wrapper {
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            
-            /* Voltea el contenedor para mandar la barra hacia ARRIBA */
             transform: rotateX(180deg);
-            -ms-transform: rotateX(180deg); /* IE 9 */
-            -webkit-transform: rotateX(180deg); /* Safari and Chrome */
+            -ms-transform: rotateX(180deg); 
+            -webkit-transform: rotateX(180deg); 
         }
         
-        /* Estilizado de la barra que ahora vive arriba */
         .scroll-master-wrapper::-webkit-scrollbar { height: 6px; }
         .scroll-master-wrapper::-webkit-scrollbar-track { background: #f1f1f1; }
         .scroll-master-wrapper::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
         .scroll-master-wrapper::-webkit-scrollbar-thumb:hover { background: #d32f2f; }
 
-        /* Contenedor interno: Se vuelve a voltear para que el texto sea legible */
         .horizontal-scroll-container {
             display: flex;
             gap: 40px;
             padding: 20px 40px 40px 40px;
             width: max-content;
-            
-            /* Regresa el contenido a su orientación normal */
             transform: rotateX(180deg);
             -ms-transform: rotateX(180deg); 
             -webkit-transform: rotateX(180deg); 
@@ -81,7 +75,7 @@
 
         .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: #a0a0a0; margin-bottom: 3px; letter-spacing: 0.5px; }
 
-        /* --- FOOTER EJECUTIVO DE 2 COLUMNAS CENTRADAS --- */
+        /* --- FOOTER --- */
         footer { padding: 80px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; }
         .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
         @media (max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; } }
@@ -139,7 +133,7 @@
                 </ul>
             </div>
 
-            <div class="map-station">
+            <div class="map-station" style="flex-basis: 350px;">
                 <div class="station-header">
                     <h2 class="station-title">Liderazgo Interino</h2>
                     <a href="https://liderazgointerino.com" class="station-domain" target="_blank">liderazgointerino.com</a>
@@ -148,7 +142,10 @@
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
                     <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
+                    <li><span class="tag">Whitepaper</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/when-is-an-interim-director-needed">When is an Interim Director Needed?</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/mistakes-in-an-organizational-crisis">Mistakes in an Organizational Crisis</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/what-does-an-interim-director-do">What Does an Interim Director Do?</a></li>
                 </ul>
             </div>
 
@@ -184,6 +181,7 @@
                 </div>
                 <ul class="nodes-list">
                     <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver">Cómo aprender a ver</a></li>
+                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/clase-zoom">Clase en Vivo vía Zoom</a></li>
                     <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes">Viajes</a></li>
                 </ul>
             </div>
