@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +7,47 @@
     <meta name="description" content="Cartografía estratégica y mapa de contenidos del ecosistema completo de Sergio Lubezky.">
     <meta name="author" content="Sergio Lubezky">
     <link rel="canonical" href="https://lubezky.com/mapa/" />
+
+    <!-- Marcado Estructurado JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://lubezky.com/#website",
+          "url": "https://lubezky.com/",
+          "name": "Sergio Lubezky",
+          "inLanguage": "es",
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://lubezky.com/#person",
+            "name": "Sergio Lubezky",
+            "url": "https://lubezky.com/"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://lubezky.com/mapa/#webpage",
+          "url": "https://lubezky.com/mapa/",
+          "name": "Mapa del Ecosistema | Sergio Lubezky",
+          "description": "Cartografía estratégica y mapa de contenidos del ecosistema completo de Sergio Lubezky.",
+          "inLanguage": "es",
+          "isPartOf": {
+            "@id": "https://lubezky.com/#website"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://lubezky.com/#person"
+          },
+          "about": {
+            "@type": "Person",
+            "@id": "https://lubezky.com/#person"
+          }
+        }
+      ]
+    }
+    </script>
 
     <style>
         *, *::before, *::after { box-sizing: border-box; }
@@ -153,12 +193,14 @@
         }
 
         .map-station:nth-child(1) { animation-delay: 0.05s; }
-        .map-station:nth-child(2) { animation-delay: 0.12s; }
-        .map-station:nth-child(3) { animation-delay: 0.19s; }
-        .map-station:nth-child(4) { animation-delay: 0.26s; }
-        .map-station:nth-child(5) { animation-delay: 0.33s; }
-        .map-station:nth-child(6) { animation-delay: 0.40s; }
-        .map-station:nth-child(7) { animation-delay: 0.47s; }
+        .map-station:nth-child(2) { animation-delay: 0.10s; }
+        .map-station:nth-child(3) { animation-delay: 0.15s; }
+        .map-station:nth-child(4) { animation-delay: 0.20s; }
+        .map-station:nth-child(5) { animation-delay: 0.25s; }
+        .map-station:nth-child(6) { animation-delay: 0.30s; }
+        .map-station:nth-child(7) { animation-delay: 0.35s; }
+        .map-station:nth-child(8) { animation-delay: 0.40s; }
+        .map-station:nth-child(9) { animation-delay: 0.45s; }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -337,7 +379,7 @@
     <div class="map-navigation">
         <button class="nav-btn" id="prevBtn" aria-label="Estación anterior">←</button>
         <div class="progress-dots" id="progressDots"></div>
-        <span class="station-counter" id="stationCounter">1 / 7</span>
+        <span class="station-counter" id="stationCounter">1 / 9</span>
         <button class="nav-btn" id="nextBtn" aria-label="Siguiente estación">→</button>
     </div>
 
@@ -397,8 +439,55 @@
                 <a href="https://liderazgointerino.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="3" data-category="reflection">
-                <span class="station-number">04 — Reflexión</span>
+            <div class="map-station" data-station="3" data-category="creation">
+                <span class="station-number">04 — Creación</span>
+                <span class="category-pill">Creación</span>
+                <div class="station-header">
+                    <h2 class="station-title">Clases de Foto</h2>
+                    <a href="https://clasesdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">clasesdefoto.com</a>
+                </div>
+                <p class="station-description">Aprender fotografía bien desde el primer paso. Clases individuales para principiantes.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Formato</span><a href="https://clasesdefoto.com/#sesiones">Tres Sesiones Individuales</a></li>
+                    <li><span class="tag">Modalidad</span><a href="https://clasesdefoto.com/#sesiones">Presencial (Santa Fe) o Zoom</a></li>
+                    <li><span class="tag">Contacto</span><a href="https://clasesdefoto.com/#contacto">Atención Directa</a></li>
+                </ul>
+                <a href="https://clasesdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" style="flex-basis: 320px;" data-station="4" data-category="creation">
+                <span class="station-number">05 — Creación</span>
+                <span class="category-pill">Creación</span>
+                <div class="station-header">
+                    <h2 class="station-title">Coach de Foto</h2>
+                    <a href="https://coachdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">coachdefoto.com</a>
+                </div>
+                <p class="station-description">Coaching uno a uno para fotógrafos intermedios/avanzados y viajes fotográficos en grupo reducidos.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Acompañamiento</span><a href="https://coachdefoto.com/#coaching">Rondas de Tres Sesiones</a></li>
+                    <li><span class="tag">Experiencia</span><a href="https://coachdefoto.com/#viajes">Viajes Fotográficos</a></li>
+                    <li><span class="tag">Consulta</span><a href="https://coachdefoto.com/#contacto">Sesión Gratuita de 15 min</a></li>
+                </ul>
+                <a href="https://coachdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" data-station="5" data-category="creation">
+                <span class="station-number">06 — Creación</span>
+                <span class="category-pill">Creación</span>
+                <div class="station-header">
+                    <h2 class="station-title">Lo Mío es la Foto</h2>
+                    <a href="https://lomioeslafoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">lomioeslafoto.com</a>
+                </div>
+                <p class="station-description">Una foto y su historia. Anécdotas, vivencias y lecciones sobre lo que veo y aprendo con una cámara.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Blog</span><a href="https://lomioeslafoto.com/historias/">Historias de Fotografía</a></li>
+                    <li><span class="tag">Acerca</span><a href="https://lomioeslafoto.com/acerca/">Por qué la foto es lo mío</a></li>
+                </ul>
+                <a href="https://lomioeslafoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" data-station="6" data-category="reflection">
+                <span class="station-number">07 — Reflexión</span>
                 <span class="category-pill">Reflexión</span>
                 <div class="station-header">
                     <h2 class="station-title">El Mismo Barco</h2>
@@ -414,8 +503,8 @@
                 <a href="https://elmismobarco.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="4" data-category="reflection">
-                <span class="station-number">05 — Reflexión</span>
+            <div class="map-station" data-station="7" data-category="reflection">
+                <span class="station-number">08 — Reflexión</span>
                 <span class="category-pill">Reflexión</span>
                 <div class="station-header">
                     <h2 class="station-title">Un Nuevo Punto de Vista</h2>
@@ -430,25 +519,8 @@
                 <a href="https://unnuevopuntodevista.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" style="flex-basis: 320px;" data-station="5" data-category="creation">
-                <span class="station-number">06 — Creación</span>
-                <span class="category-pill">Creación</span>
-                <div class="station-header">
-                    <h2 class="station-title">Coach de Foto</h2>
-                    <a href="https://coachdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">coachdefoto.com</a>
-                </div>
-                <p class="station-description">Talleres y viajes fotográficos para desarrollar una mirada propia. Ver mejor es pensar mejor.</p>
-                <ul class="nodes-list">
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/como-aprender-a-ver/">Cómo aprender a ver</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/taller-zoom/">Conoce tu Cámara (zoom)</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/domina-tu-iphone/">Conoce tu iPhone (zoom)</a></li>
-                    <li><span class="tag">Página</span><a href="https://coachdefoto.com/viajes/">Viajes</a></li>
-                </ul>
-                <a href="https://coachdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
-            </div>
-
-            <div class="map-station" style="flex-basis: 340px;" data-station="6" data-category="creation">
-                <span class="station-number">07 — Creación</span>
+            <div class="map-station" style="flex-basis: 340px;" data-station="8" data-category="creation">
+                <span class="station-number">09 — Creación</span>
                 <span class="category-pill">Creación</span>
                 <div class="station-header">
                     <h2 class="station-title">Discografía</h2>
@@ -504,7 +576,9 @@
                 <li><a href="https://lubezky.com">Lubezky.com</a></li>
                 <li><a href="https://inteligencia.com">Inteligencia</a></li>
                 <li><a href="https://liderazgointerino.com">Liderazgo Interino</a></li>
+                <li><a href="https://clasesdefoto.com">Clases de Foto</a></li>
                 <li><a href="https://coachdefoto.com">Coach de Foto</a></li>
+                <li><a href="https://lomioeslafoto.com">Lo Mío es la Foto</a></li>
                 <li><a href="https://elmismobarco.com">El Mismo Barco</a></li>
                 <li><a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a></li>
                 <li><a href="https://musica.sergiolubezky.com/">Música</a></li>
