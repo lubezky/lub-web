@@ -27,16 +27,16 @@
         }
 
         .container {
-            max-width: 480px;
+            max-width: 520px;
             width: 100%;
         }
 
-        /* Contenedor y animación de la abeja */
+        /* Contenedor más grande y animación de vuelo errático */
         .bee-wrapper {
-            margin: 0 auto 10px auto;
-            width: 220px;
+            margin: 0 auto 15px auto;
+            width: 320px; /* Tamaño mucho más visible */
             height: auto;
-            animation: float 3s ease-in-out infinite;
+            animation: erratics-fly 4s ease-in-out infinite;
         }
 
         .bee-img {
@@ -47,14 +47,14 @@
 
         h1 {
             font-family: 'Fredoka', sans-serif;
-            font-size: 3.8rem;
+            font-size: 4rem;
             color: #f59e0b;
             line-height: 1;
             margin-bottom: 10px;
         }
 
         p {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: #4b5563;
             margin-bottom: 30px;
             line-height: 1.4;
@@ -67,7 +67,7 @@
             text-decoration: none;
             font-family: 'Fredoka', sans-serif;
             font-size: 1.15rem;
-            padding: 14px 28px;
+            padding: 14px 30px;
             border-radius: 50px;
             box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
             transition: all 0.2s ease;
@@ -79,16 +79,22 @@
             box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
         }
 
-        /* Animación suave de flotación */
-        @keyframes float {
+        /* Animación errática (arriba/abajo + izquierda/derecha + inclinación) */
+        @keyframes erratics-fly {
             0% {
-                transform: translateY(0px) rotate(0deg);
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(-18px, -15px) rotate(-6deg);
             }
             50% {
-                transform: translateY(-12px) rotate(3deg);
+                transform: translate(12px, -8px) rotate(5deg);
+            }
+            75% {
+                transform: translate(-10px, -20px) rotate(-3deg);
             }
             100% {
-                transform: translateY(0px) rotate(0deg);
+                transform: translate(0, 0) rotate(0deg);
             }
         }
     </style>
@@ -96,7 +102,6 @@
 <body>
 
     <div class="container">
-        <!-- Imagen de la abeja alojada directamente en tu repositorio -->
         <div class="bee-wrapper">
             <img src="/bee.png" alt="Abeja buscando con lupa" class="bee-img">
         </div>
