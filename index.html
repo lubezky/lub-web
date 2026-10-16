@@ -25,47 +25,64 @@
 
     <!-- Marcado Estructurado JSON-LD -->
     <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://lubezky.com/#person",
-        "name": "Sergio Lubezky",
-        "alternateName": "Sergio Lubezky A.",
-        "url": "https://lubezky.com/",
-        "image": "https://lubezky.com/foto-sergio.jpg",
-        "jobTitle": "Estratega y Director Operativo Transfronterizo",
-        "email": "mailto:sergio@lubezky.com",
-        "description": "Estratega enfocado en la intersección entre tecnología, liderazgo y percepción estratégica en México y Latinoamérica.",
-        "sameAs": [
-          "https://www.linkedin.com/in/sergiolubezky/",
-          "https://x.com/slubezky",
-          "https://www.facebook.com/sergiolubezky/",
-          "https://www.instagram.com/sergiolubezky/",
-          "https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk",
-          "https://inteligencia.com/",
-          "https://liderazgointerino.com/",
-          "https://clasesdefoto.com/",
-          "https://coachdefoto.com/",
-          "https://lomioeslafoto.com/",
-          "https://elmismobarco.com/",
-          "https://unnuevopuntodevista.com/",
-          "https://musica.sergiolubezky.com/"
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://lubezky.com/#website",
-        "url": "https://lubezky.com/",
-        "name": "Sergio Lubezky",
-        "publisher": {
-          "@id": "https://lubezky.com/#person"
-        },
-        "inLanguage": "es"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lubezky.com/#person",
+      "name": "Sergio Lubezky",
+      "alternateName": "Sergio Lubezky A.",
+      "url": "https://lubezky.com/",
+      "image": "https://lubezky.com/foto-sergio.jpg",
+      "jobTitle": "Estratega y Director Operativo Transfronterizo",
+      "email": "mailto:sergio@lubezky.com",
+      "description": "Estratega enfocado en la intersección entre tecnología, liderazgo y percepción estratégica en México y Latinoamérica.",
+      "sameAs": [
+        "https://www.linkedin.com/in/sergiolubezky/",
+        "https://x.com/slubezky",
+        "https://www.facebook.com/sergiolubezky/",
+        "https://www.instagram.com/sergiolubezky/",
+        "https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk"
+      ],
+      "owns": [
+        { "@type": "WebSite", "@id": "https://inteligencia.com/#website", "name": "Inteligencia", "url": "https://inteligencia.com/" },
+        { "@type": "WebSite", "@id": "https://liderazgointerino.com/#website", "name": "Liderazgo Interino", "url": "https://liderazgointerino.com/" },
+        { "@type": "WebSite", "@id": "https://clasesdefoto.com/#website", "name": "Clases de Foto", "url": "https://clasesdefoto.com/" },
+        { "@type": "WebSite", "@id": "https://coachdefoto.com/#website", "name": "Coach de Foto", "url": "https://coachdefoto.com/" },
+        { "@type": "WebSite", "@id": "https://lomioeslafoto.com/#website", "name": "Lo Mío es la Foto", "url": "https://lomioeslafoto.com/" },
+        { "@type": "WebSite", "@id": "https://elmismobarco.com/#website", "name": "El Mismo Barco", "url": "https://elmismobarco.com/" },
+        { "@type": "WebSite", "@id": "https://unnuevopuntodevista.com/#website", "name": "Un Nuevo Punto de Vista", "url": "https://unnuevopuntodevista.com/" },
+        { "@type": "WebSite", "@id": "https://musica.sergiolubezky.com/#website", "name": "Música Sergio Lubezky", "url": "https://musica.sergiolubezky.com/" }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lubezky.com/#website",
+      "url": "https://lubezky.com/",
+      "name": "Sergio Lubezky",
+      "inLanguage": "es",
+      "publisher": {
+        "@id": "https://lubezky.com/#person"
       }
-    ]
-    </script>
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lubezky.com/#webpage",
+      "url": "https://lubezky.com/",
+      "name": "Sergio Lubezky | Entender, ver y actuar",
+      "description": "Estratega, Dirección Regional y Operaciones Transfronterizas. Una forma de entender, ver y actuar con claridad y precisión ejecutiva en México y Latinoamérica.",
+      "inLanguage": "es",
+      "isPartOf": {
+        "@id": "https://lubezky.com/#website"
+      },
+      "about": {
+        "@id": "https://lubezky.com/#person"
+      }
+    }
+  ]
+}
+</script>
 
     <style>
         body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background-color: #fff; color: #1a1a1a; font-family: 'Georgia', serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
