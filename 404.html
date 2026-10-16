@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin+Sketch">
+    <style>
+        html, body {
+            min-height: 100vh;
+        }
+
+        body {
+            background: #251e21;
+            background-image: 
+                radial-gradient(ellipse at center, rgba(127,0,255,0.15) 0%, rgba(0,0,0,0) 100%), 
+                linear-gradient(to bottom, rgba(200, 200, 200, 0.1) 50%, rgba(0, 0, 0, 0.4) 50%);
+            background-size: 100% 100%, 100% 2px;
+            font-family: 'Cabin Sketch', cursive;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .site {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sketch {
+            position: relative;
+            height: 180px;
+            width: 100%;
+        }
+
+        .bee-sketch {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            top: calc(50% - 100px);
+            left: calc(50% - 100px);
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+            animation: 
+                bee-hop 2s infinite ease-in-out alternate,
+                bee-wiggle 100ms infinite ease-in-out alternate;
+        }
+
+        .red {
+            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/bee-red.svg");
+            animation-delay: 0s, 0s;
+        }
+
+        .blue {
+            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/bee-blue.svg");
+            animation-delay: -0.1s, -0.05s;
+        }
+
+        h1 {
+            font-size: 7em;
+            margin: 0;
+            text-shadow: 3px 3px 0px rgba(255, 0, 100, 0.7), -3px -3px 0px rgba(0, 255, 255, 0.7);
+            line-height: 0.9;
+        }
+
+        h1 small {
+            display: block;
+            font-size: 0.35em;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 22px;
+            color: #fff;
+            border: 2px solid #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background: #fff;
+            color: #251e21;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes bee-hop {
+            0% { transform: translateY(-8px) scale(0.98); }
+            100% { transform: translateY(8px) scale(1.02); }
+        }
+
+        @keyframes bee-wiggle {
+            0% { transform: translate(-2px, 1px); }
+            100% { transform: translate(2px, -1px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="site">
+        <div class="sketch">
+            <div class="bee-sketch red"></div>
+            <div class="bee-sketch blue"></div>
+        </div>
+
+        <h1>404:
+            <small>Página no encontrada</small>
+        </h1>
+
+        <a href="/" class="btn-home">Volver al inicio</a>
+    </div>
+
+</body>
+</html>
