@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa del Ecosistema | Sergio Lubezky</title>
-    <meta name="description" content="Cartografía estratégica y mapa de contenidos del ecosistema completo de Sergio Lubezky.">
+    <title>Mi Huella | Sergio Lubezky</title>
+    <meta name="description" content="Cartografía completa de los proyectos, reflexiones, música, fotografía y firmas directivas de Sergio Lubezky.">
     <meta name="author" content="Sergio Lubezky">
     <link rel="canonical" href="https://lubezky.com/mapa/" />
 
@@ -30,8 +30,8 @@
           "@type": "WebPage",
           "@id": "https://lubezky.com/mapa/#webpage",
           "url": "https://lubezky.com/mapa/",
-          "name": "Mapa del Ecosistema | Sergio Lubezky",
-          "description": "Cartografía estratégica y mapa de contenidos del ecosistema completo de Sergio Lubezky.",
+          "name": "Mi Huella | Sergio Lubezky",
+          "description": "Cartografía completa de los proyectos, reflexiones, música, fotografía y firmas directivas de Sergio Lubezky.",
           "inLanguage": "es",
           "isPartOf": {
             "@id": "https://lubezky.com/#website"
@@ -59,12 +59,6 @@
             --c-identity-pill:   #e8e8e8;
             --c-identity-light:  #555555;
 
-            /* Estrategia */
-            --c-strategy:        #1923b8;
-            --c-strategy-bg:     #eef0fc;
-            --c-strategy-pill:   #d6d9f7;
-            --c-strategy-light:  #3a42c4;
-
             /* Reflexión */
             --c-reflection:      #8b3a2a;
             --c-reflection-bg:   #faf2f0;
@@ -77,11 +71,18 @@
             --c-creation-pill:   #cde8e8;
             --c-creation-light:  #2a7a7a;
 
+            /* Estrategia */
+            --c-strategy:        #1923b8;
+            --c-strategy-bg:     #eef0fc;
+            --c-strategy-pill:   #d6d9f7;
+            --c-strategy-light:  #3a42c4;
+
             --accent: #d32f2f;
             --radius: 6px;
         }
 
         body {
+            position: relative;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -89,30 +90,36 @@
             background-color: #fbfbfb;
             color: #1a1a1a;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Pleca superior editorial */
+        .top-bar { height: 4px; width: 100%; background: linear-gradient(90deg, #1a1a1a 0%, #2b5876 35%, #4e4376 70%, #b8860b 100%); }
+        
+        /* BS"D sutil en esquina superior derecha */
+        .bsd { position: absolute; top: 14px; right: 20px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; letter-spacing: 1px; color: #c8c8c8; user-select: none; }
+
         main {
             flex: 1;
-            padding: 60px 0 40px 0;
+            padding: 65px 0 50px 0;
             width: 100%;
             display: flex;
             flex-direction: column;
         }
 
         /* ── Header ── */
-        .header-title { text-align: center; margin-bottom: 20px; padding: 0 20px; }
-        .header-title h1 { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-        .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1rem; color: #777; margin-top: 8px; margin-bottom: 0; }
+        .header-title { text-align: center; margin-bottom: 24px; padding: 0 24px; }
+        .header-title h1 { font-size: 2.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin: 0; }
+        .header-title p { font-family: 'Georgia', serif; font-style: italic; font-size: 1.2rem; color: #666; margin-top: 10px; margin-bottom: 0; }
 
         /* ── Navigation ── */
         .map-navigation {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
+            gap: 14px;
+            margin-bottom: 18px;
             padding: 0 20px;
         }
 
@@ -120,11 +127,11 @@
             background: #1a1a1a;
             color: #fff;
             border: none;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -136,10 +143,10 @@
         .nav-btn:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 2px; }
 
         /* ── Progress dots ── */
-        .progress-dots { display: flex; gap: 7px; align-items: center; }
+        .progress-dots { display: flex; gap: 8px; align-items: center; }
         .dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
             background: #ddd;
             border: none;
@@ -150,11 +157,11 @@
         .dot:hover { background: #bbb; }
         .dot.active { transform: scale(1.4); }
         .dot.active[data-category="identity"]   { background: var(--c-identity); }
-        .dot.active[data-category="strategy"]   { background: var(--c-strategy); }
         .dot.active[data-category="reflection"] { background: var(--c-reflection); }
         .dot.active[data-category="creation"]   { background: var(--c-creation); }
+        .dot.active[data-category="strategy"]   { background: var(--c-strategy); }
 
-        .station-counter { font-size: 0.75rem; color: #aaa; letter-spacing: 1px; min-width: 36px; text-align: center; }
+        .station-counter { font-size: 0.85rem; color: #888; letter-spacing: 1px; min-width: 42px; text-align: center; font-weight: 600; }
 
         /* ── Scroll wrapper ── */
         .scroll-master-wrapper {
@@ -165,7 +172,7 @@
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
         }
-        .scroll-master-wrapper::-webkit-scrollbar { height: 5px; }
+        .scroll-master-wrapper::-webkit-scrollbar { height: 6px; }
         .scroll-master-wrapper::-webkit-scrollbar-track { background: #f1f1f1; }
         .scroll-master-wrapper::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
         .scroll-master-wrapper::-webkit-scrollbar-thumb:hover { background: #888; }
@@ -179,10 +186,10 @@
 
         /* ── Card base ── */
         .map-station {
-            flex: 0 0 310px;
+            flex: 0 0 340px;
             border-top: 3px solid #1a1a1a;
             border-radius: 0 0 var(--radius) var(--radius);
-            padding: 24px 22px 22px;
+            padding: 26px 24px 24px;
             display: flex;
             flex-direction: column;
             height: fit-content;
@@ -209,171 +216,161 @@
 
         /* Category colors */
         .map-station[data-category="identity"]   { background: var(--c-identity-bg);   border-top-color: var(--c-identity); }
-        .map-station[data-category="strategy"]   { background: var(--c-strategy-bg);   border-top-color: var(--c-strategy); }
         .map-station[data-category="reflection"] { background: var(--c-reflection-bg); border-top-color: var(--c-reflection); }
         .map-station[data-category="creation"]   { background: var(--c-creation-bg);   border-top-color: var(--c-creation); }
+        .map-station[data-category="strategy"]   { background: var(--c-strategy-bg);   border-top-color: var(--c-strategy); }
 
         .map-station[data-category="identity"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(26,26,26,0.09); }
-        .map-station[data-category="strategy"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(25,35,184,0.1); }
         .map-station[data-category="reflection"]:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(139,58,42,0.1); }
         .map-station[data-category="creation"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(26,92,92,0.1); }
+        .map-station[data-category="strategy"]:hover   { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(25,35,184,0.1); }
 
         /* ── Station number ── */
         .station-number {
-            font-size: 0.63rem;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 9px;
-            opacity: 0.4;
+            margin-bottom: 10px;
+            opacity: 0.55;
         }
         .map-station[data-category="identity"]   .station-number { color: var(--c-identity); }
-        .map-station[data-category="strategy"]   .station-number { color: var(--c-strategy); }
         .map-station[data-category="reflection"] .station-number { color: var(--c-reflection); }
         .map-station[data-category="creation"]   .station-number { color: var(--c-creation); }
+        .map-station[data-category="strategy"]   .station-number { color: var(--c-strategy); }
 
         /* ── Category pill ── */
         .category-pill {
             display: inline-block;
-            font-size: 0.6rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            padding: 3px 9px;
+            padding: 4px 10px;
             border-radius: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             width: fit-content;
         }
         .map-station[data-category="identity"]   .category-pill { background: var(--c-identity-pill);   color: var(--c-identity); }
-        .map-station[data-category="strategy"]   .category-pill { background: var(--c-strategy-pill);   color: var(--c-strategy); }
         .map-station[data-category="reflection"] .category-pill { background: var(--c-reflection-pill); color: var(--c-reflection); }
         .map-station[data-category="creation"]   .category-pill { background: var(--c-creation-pill);   color: var(--c-creation); }
+        .map-station[data-category="strategy"]   .category-pill { background: var(--c-strategy-pill);   color: var(--c-strategy); }
 
         /* ── Station header ── */
-        .station-header { margin-bottom: 6px; }
-        .station-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 2px 0; color: #1a1a1a; }
-        .station-domain { font-size: 0.78rem; color: #999; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .station-header { margin-bottom: 8px; }
+        .station-title { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px 0; color: #1a1a1a; }
+        .station-domain { font-size: 0.9rem; color: #777; text-decoration: none; font-weight: 500; transition: color 0.2s; }
 
         .map-station[data-category="identity"]   .station-domain:hover { color: var(--c-identity-light); }
-        .map-station[data-category="strategy"]   .station-domain:hover { color: var(--c-strategy-light); }
         .map-station[data-category="reflection"] .station-domain:hover { color: var(--c-reflection-light); }
         .map-station[data-category="creation"]   .station-domain:hover { color: var(--c-creation-light); }
+        .map-station[data-category="strategy"]   .station-domain:hover { color: var(--c-strategy-light); }
 
         /* ── Description ── */
         .station-description {
             font-family: 'Georgia', serif;
             font-style: italic;
-            font-size: 0.88rem;
-            color: #666;
-            line-height: 1.55;
-            margin: 10px 0 16px 0;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(0,0,0,0.07);
+            font-size: 1.02rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 12px 0 18px 0;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
         }
 
         /* ── Nodes list ── */
-        .nodes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
-        .nodes-list li { font-family: 'Georgia', serif; font-size: 0.97rem; display: flex; flex-direction: column; line-height: 1.3; }
+        .nodes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+        .nodes-list li { font-family: 'Georgia', serif; font-size: 1.08rem; display: flex; flex-direction: column; line-height: 1.4; }
 
         .nodes-list a {
-            color: #222;
+            color: #1a1a1a;
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: color 0.2s, border-color 0.2s, font-weight 0.1s;
             width: fit-content;
         }
 
-        /* Hover color per category */
         .map-station[data-category="identity"]   .nodes-list a:hover { color: var(--c-identity-light); border-bottom-color: var(--c-identity-light); font-weight: 700; }
-        .map-station[data-category="strategy"]   .nodes-list a:hover { color: var(--c-strategy-light); border-bottom-color: var(--c-strategy-light); font-weight: 700; }
         .map-station[data-category="reflection"] .nodes-list a:hover { color: var(--c-reflection-light); border-bottom-color: var(--c-reflection-light); font-weight: 700; }
         .map-station[data-category="creation"]   .nodes-list a:hover { color: var(--c-creation-light); border-bottom-color: var(--c-creation-light); font-weight: 700; }
+        .map-station[data-category="strategy"]   .nodes-list a:hover { color: var(--c-strategy-light); border-bottom-color: var(--c-strategy-light); font-weight: 700; }
 
-        .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: #b0b0b0; margin-bottom: 2px; letter-spacing: 0.5px; }
+        .tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: #999; margin-bottom: 2px; letter-spacing: 0.6px; }
 
         /* ── Visit CTA ── */
         .visit-cta {
             display: block;
-            margin-top: 18px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(0,0,0,0.07);
-            font-size: 0.8rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.9rem;
             font-weight: 700;
             text-decoration: none;
             letter-spacing: 0.5px;
-            opacity: 0;
-            transform: translateY(4px);
-            transition: opacity 0.25s, transform 0.25s, color 0.2s;
+            opacity: 0.85;
+            transition: opacity 0.25s, color 0.2s;
         }
-        .map-station:hover .visit-cta { opacity: 1; transform: translateY(0); }
+        .map-station:hover .visit-cta { opacity: 1; }
 
         .map-station[data-category="identity"]   .visit-cta { color: var(--c-identity); }
-        .map-station[data-category="strategy"]   .visit-cta { color: var(--c-strategy); }
         .map-station[data-category="reflection"] .visit-cta { color: var(--c-reflection); }
         .map-station[data-category="creation"]   .visit-cta { color: var(--c-creation); }
-
-        .visit-cta:hover { opacity: 0.7 !important; }
+        .map-station[data-category="strategy"]   .visit-cta { color: var(--c-strategy); }
 
         /* ── Legend ── */
-        .map-legend { display: flex; justify-content: center; gap: 24px; margin-top: 18px; padding: 0 20px; flex-wrap: wrap; }
-        .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #888; }
-        .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .map-legend { display: flex; justify-content: center; gap: 26px; margin-top: 20px; padding: 0 20px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #777; }
+        .legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
         .legend-dot.identity   { background: var(--c-identity); }
-        .legend-dot.strategy   { background: var(--c-strategy); }
         .legend-dot.reflection { background: var(--c-reflection); }
         .legend-dot.creation   { background: var(--c-creation); }
+        .legend-dot.strategy   { background: var(--c-strategy); }
 
-        /* ── Footer ── */
-        footer { padding: 70px 20px 40px; background: #fff; border-top: 1px solid #f2f2f2; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        .footer-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; text-align: left; }
-        .footer-col h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 0; margin-bottom: 18px; }
-        .footer-col p { color: #555; margin: 0 0 16px 0; font-size: 0.9rem; line-height: 1.65; }
+        /* ── Footer unificado de 4 columnas ── */
+        footer { padding: 65px 24px 45px 24px; background-color: #ffffff; border-top: 1px solid #eaeaea; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.05rem; line-height: 1.7; }
+        .footer-grid { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1.7fr 1fr 1.15fr 1fr; gap: 40px; text-align: left; }
+        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; } }
+        
+        .footer-col h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #777; margin-top: 0; margin-bottom: 18px; }
+        .footer-col p { color: #444; margin: 0; font-size: 1.02rem; text-align: left; }
+        @media (max-width: 600px) { .footer-col p { text-align: center; } }
+        
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 11px; }
-        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid #eee; transition: all 0.25s; }
-        .footer-col ul li a:hover { border-bottom-color: #1a1a1a; }
-        .footer-col ul li a.active-map { color: var(--c-strategy); border-bottom-color: var(--c-strategy-pill); }
-        .footer-col ul li a.active-map:hover { border-bottom-color: var(--c-strategy); }
-
-        .social-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
-        .social-row a { font-size: 0.82rem; font-weight: 600; color: #666; text-decoration: none; border-bottom: 1px solid #eee; transition: color 0.2s, border-color 0.2s; }
-        .social-row a:hover { color: #000; border-bottom-color: #000; }
-
-        .contact-email a { font-size: 0.88rem; font-weight: 600; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #ddd; transition: all 0.2s; }
-        .contact-email a:hover { color: var(--c-strategy); border-bottom-color: var(--c-strategy); }
-
-        .copyright { display: block; max-width: 900px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid #f5f5f5; font-size: 0.78rem; color: #bbb; text-align: center; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #e5e5e5; transition: all 0.3s; }
+        .footer-col ul li a:hover { border-bottom: 1px solid #1a1a1a; }
+        .footer-col ul li a.current-location { color: #d32f2f !important; border-bottom: 1px solid #f9ebeb; }
+        .footer-col ul li a.current-location:hover { border-bottom: 1px solid #d32f2f; }
+        
+        .footer-socials { display: flex; gap: 16px; margin-top: 22px; flex-wrap: wrap; }
+        @media (max-width: 600px) { .footer-socials { justify-content: center; } }
+        .footer-socials a { color: #555; text-decoration: none; font-size: 0.98rem; font-weight: 500; }
+        .footer-socials a:hover { color: #000; }
+        
+        .footer-bottom { max-width: 1040px; margin: 35px auto 0 auto; padding-top: 22px; border-top: 1px solid #f2f2f2; text-align: center; font-size: 0.92rem; color: #888; }
+        .footer-bottom p { text-align: center; margin: 0 auto; display: block; }
 
         /* ── Mobile ── */
         @media (max-width: 768px) {
-            .header-title h1 { font-size: 1.6rem; letter-spacing: 2px; }
-            .map-navigation { gap: 8px; }
-            .nav-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .header-title h1 { font-size: 1.8rem; letter-spacing: 2px; }
+            .map-navigation { gap: 10px; }
+            .nav-btn { width: 40px; height: 40px; font-size: 1.05rem; }
 
-            .scroll-master-wrapper { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; }
-            .horizontal-scroll-container { padding: 16px 20px 28px 20px; gap: 16px; }
-            .map-station { flex: 0 0 82vw; max-width: 300px; }
-            .visit-cta { opacity: 1; transform: none; }
-
-            .map-legend { gap: 14px; }
-            .legend-item { font-size: 0.65rem; }
-
-            .footer-container { grid-template-columns: 1fr; gap: 0; }
-            .footer-col:first-child { margin-bottom: 32px; }
-            .footer-col p { text-align: left; }
-            .footer-col:last-child { text-align: center; }
-            .footer-col:last-child h3 { text-align: center; }
-            .footer-col:last-child ul { display: inline-block; text-align: left; }
-            .social-row { justify-content: flex-start; }
+            .horizontal-scroll-container { padding: 16px 20px 28px 20px; gap: 18px; }
+            .map-station { flex: 0 0 84vw; max-width: 320px; }
         }
     </style>
 </head>
 <body>
 
+<div class="top-bar" aria-hidden="true"></div>
+<span class="bsd" lang="arc" title="B'Siyata D'Shmaya">BS"D</span>
+
 <main>
     <div class="header-title">
-        <h1>Mapa del Ecosistema</h1>
-        <p>Navega horizontalmente para recorrer la cartografía completa de proyectos interconectados.</p>
+        <h1>Mi Huella</h1>
+        <p>Recorre horizontalmente los espacios donde pienso, creo y dirijo.</p>
     </div>
 
     <div class="map-navigation">
@@ -383,7 +380,7 @@
         <button class="nav-btn" id="nextBtn" aria-label="Siguiente estación">→</button>
     </div>
 
-    <div class="scroll-master-wrapper" id="scrollWrapper" tabindex="0" role="region" aria-label="Mapa horizontal del ecosistema">
+    <div class="scroll-master-wrapper" id="scrollWrapper" tabindex="0" role="region" aria-label="Recorrido horizontal de mi huella">
         <div class="horizontal-scroll-container" id="scrollContainer">
 
             <div class="map-station" data-station="0" data-category="identity">
@@ -393,102 +390,18 @@
                     <h2 class="station-title">Sergio Lubezky</h2>
                     <a href="https://lubezky.com" class="station-domain" target="_blank" rel="noopener noreferrer">lubezky.com</a>
                 </div>
-                <p class="station-description">El nodo central del ecosistema. Estrategia, liderazgo y percepción ejecutiva en México y Latinoamérica.</p>
+                <p class="station-description">El punto de encuentro. Donde convergen mi trayectoria, mi mirada creativa y mi práctica directiva.</p>
                 <ul class="nodes-list">
-                    <li><span class="tag">Página</span><a href="https://lubezky.com/sobre-mi">Sobre Mí</a></li>
-                    <li><span class="tag">Página</span><a href="https://lubezky.com/trabajo">Mi Trabajo</a></li>
+                    <li><span class="tag">Página</span><a href="https://lubezky.com/sobre-mi/">Sobre Mí</a></li>
+                    <li><span class="tag">Página</span><a href="https://lubezky.com/trabajo/">Mi Trabajo</a></li>
                     <li><span class="tag">Podcast</span><a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank" rel="noopener noreferrer">El Bien Común</a></li>
-                    <li><span class="tag">Mapa</span><a href="https://lubezky.com/mapa">Mapa de Contenidos</a></li>
                 </ul>
                 <a href="https://lubezky.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="1" data-category="strategy">
-                <span class="station-number">02 — Estrategia</span>
-                <span class="category-pill">Estrategia</span>
-                <div class="station-header">
-                    <h2 class="station-title">Inteligencia</h2>
-                    <a href="https://inteligencia.com" class="station-domain" target="_blank" rel="noopener noreferrer">inteligencia.com</a>
-                </div>
-                <p class="station-description">Coordinación colectiva, sistemas complejos y dirección regional en Latinoamérica.</p>
-                <ul class="nodes-list">
-                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
-                </ul>
-                <a href="https://inteligencia.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
-            </div>
-
-            <div class="map-station" style="flex-basis: 330px;" data-station="2" data-category="strategy">
-                <span class="station-number">03 — Estrategia</span>
-                <span class="category-pill">Estrategia</span>
-                <div class="station-header">
-                    <h2 class="station-title">Liderazgo Interino</h2>
-                    <a href="https://liderazgointerino.com" class="station-domain" target="_blank" rel="noopener noreferrer">liderazgointerino.com</a>
-                </div>
-                <p class="station-description">Continuidad operativa y liderazgo de transición para corporaciones en momentos críticos.</p>
-                <ul class="nodes-list">
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
-                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
-                    <li><span class="tag">Whitepaper</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/when-interim-director-needed/">When is an Interim Director Needed?</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/mistakes-in-an-organizational-crisis/">Mistakes in an Organizational Crisis</a></li>
-                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/what-does-an-interim-director-do/">What Does an Interim Director Do?</a></li>
-                </ul>
-                <a href="https://liderazgointerino.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
-            </div>
-
-            <div class="map-station" data-station="3" data-category="creation">
-                <span class="station-number">04 — Creación</span>
-                <span class="category-pill">Creación</span>
-                <div class="station-header">
-                    <h2 class="station-title">Clases de Foto</h2>
-                    <a href="https://clasesdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">clasesdefoto.com</a>
-                </div>
-                <p class="station-description">Aprender fotografía bien desde el primer paso. Clases individuales para principiantes.</p>
-                <ul class="nodes-list">
-                    <li><span class="tag">Formato</span><a href="https://clasesdefoto.com/#sesiones">Tres Sesiones Individuales</a></li>
-                    <li><span class="tag">Modalidad</span><a href="https://clasesdefoto.com/#sesiones">Presencial (Santa Fe) o Zoom</a></li>
-                    <li><span class="tag">Contacto</span><a href="https://clasesdefoto.com/#contacto">Atención Directa</a></li>
-                </ul>
-                <a href="https://clasesdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
-            </div>
-
-            <div class="map-station" style="flex-basis: 320px;" data-station="4" data-category="creation">
-                <span class="station-number">05 — Creación</span>
-                <span class="category-pill">Creación</span>
-                <div class="station-header">
-                    <h2 class="station-title">Coach de Foto</h2>
-                    <a href="https://coachdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">coachdefoto.com</a>
-                </div>
-                <p class="station-description">Coaching uno a uno para fotógrafos intermedios/avanzados y viajes fotográficos en grupo reducidos.</p>
-                <ul class="nodes-list">
-                    <li><span class="tag">Acompañamiento</span><a href="https://coachdefoto.com/#coaching">Rondas de Tres Sesiones</a></li>
-                    <li><span class="tag">Experiencia</span><a href="https://coachdefoto.com/#viajes">Viajes Fotográficos</a></li>
-                    <li><span class="tag">Consulta</span><a href="https://coachdefoto.com/#contacto">Sesión Gratuita de 15 min</a></li>
-                </ul>
-                <a href="https://coachdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
-            </div>
-
-            <div class="map-station" data-station="5" data-category="creation">
-                <span class="station-number">06 — Creación</span>
-                <span class="category-pill">Creación</span>
-                <div class="station-header">
-                    <h2 class="station-title">Lo Mío es la Foto</h2>
-                    <a href="https://lomioeslafoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">lomioeslafoto.com</a>
-                </div>
-                <p class="station-description">Una foto y su historia. Anécdotas, vivencias y lecciones sobre lo que veo y aprendo con una cámara.</p>
-                <ul class="nodes-list">
-                    <li><span class="tag">Blog</span><a href="https://lomioeslafoto.com/historias/">Historias de Fotografía</a></li>
-                    <li><span class="tag">Acerca</span><a href="https://lomioeslafoto.com/acerca/">Por qué la foto es lo mío</a></li>
-                </ul>
-                <a href="https://lomioeslafoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
-            </div>
-
-            <div class="map-station" data-station="6" data-category="reflection">
-                <span class="station-number">07 — Reflexión</span>
-                <span class="category-pill">Reflexión</span>
+            <div class="map-station" data-station="1" data-category="reflection">
+                <span class="station-number">02 — Entender</span>
+                <span class="category-pill">Pensamiento</span>
                 <div class="station-header">
                     <h2 class="station-title">El Mismo Barco</h2>
                     <a href="https://elmismobarco.com" class="station-domain" target="_blank" rel="noopener noreferrer">elmismobarco.com</a>
@@ -503,9 +416,9 @@
                 <a href="https://elmismobarco.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" data-station="7" data-category="reflection">
-                <span class="station-number">08 — Reflexión</span>
-                <span class="category-pill">Reflexión</span>
+            <div class="map-station" data-station="2" data-category="reflection">
+                <span class="station-number">03 — Entender</span>
+                <span class="category-pill">Perspectiva</span>
                 <div class="station-header">
                     <h2 class="station-title">Un Nuevo Punto de Vista</h2>
                     <a href="https://unnuevopuntodevista.com" class="station-domain" target="_blank" rel="noopener noreferrer">unnuevopuntodevista.com</a>
@@ -519,9 +432,56 @@
                 <a href="https://unnuevopuntodevista.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
-            <div class="map-station" style="flex-basis: 340px;" data-station="8" data-category="creation">
-                <span class="station-number">09 — Creación</span>
-                <span class="category-pill">Creación</span>
+            <div class="map-station" data-station="3" data-category="creation">
+                <span class="station-number">04 — Ver y Sentir</span>
+                <span class="category-pill">Fotografía</span>
+                <div class="station-header">
+                    <h2 class="station-title">Lo Mío es la Foto</h2>
+                    <a href="https://lomioeslafoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">lomioeslafoto.com</a>
+                </div>
+                <p class="station-description">Una foto y su historia. Anécdotas, vivencias y lecciones sobre lo que veo y aprendo con una cámara.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Bitácora</span><a href="https://lomioeslafoto.com/historias/">Historias de Fotografía</a></li>
+                    <li><span class="tag">Acerca</span><a href="https://lomioeslafoto.com/acerca/">Por qué la foto es lo mío</a></li>
+                </ul>
+                <a href="https://lomioeslafoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" data-station="4" data-category="creation">
+                <span class="station-number">05 — Ver y Sentir</span>
+                <span class="category-pill">Fotografía</span>
+                <div class="station-header">
+                    <h2 class="station-title">Clases de Foto</h2>
+                    <a href="https://clasesdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">clasesdefoto.com</a>
+                </div>
+                <p class="station-description">Aprender fotografía bien desde el primer paso. Clases individuales para principiantes.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Formato</span><a href="https://clasesdefoto.com/#sesiones">Tres Sesiones Individuales</a></li>
+                    <li><span class="tag">Modalidad</span><a href="https://clasesdefoto.com/#sesiones">Presencial (Santa Fe) o Zoom</a></li>
+                    <li><span class="tag">Contacto</span><a href="https://clasesdefoto.com/#contacto">Atención Directa</a></li>
+                </ul>
+                <a href="https://clasesdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" style="flex-basis: 350px;" data-station="5" data-category="creation">
+                <span class="station-number">06 — Ver y Sentir</span>
+                <span class="category-pill">Fotografía</span>
+                <div class="station-header">
+                    <h2 class="station-title">Coach de Foto</h2>
+                    <a href="https://coachdefoto.com" class="station-domain" target="_blank" rel="noopener noreferrer">coachdefoto.com</a>
+                </div>
+                <p class="station-description">Coaching uno a uno para fotógrafos intermedios y avanzados, y viajes fotográficos en grupos reducidos.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Acompañamiento</span><a href="https://coachdefoto.com/#coaching">Rondas de Tres Sesiones</a></li>
+                    <li><span class="tag">Experiencia</span><a href="https://coachdefoto.com/#viajes">Viajes Fotográficos</a></li>
+                    <li><span class="tag">Consulta</span><a href="https://coachdefoto.com/#contacto">Sesión Gratuita de 15 min</a></li>
+                </ul>
+                <a href="https://coachdefoto.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" style="flex-basis: 360px;" data-station="6" data-category="creation">
+                <span class="station-number">07 — Ver y Sentir</span>
+                <span class="category-pill">Música</span>
                 <div class="station-header">
                     <h2 class="station-title">Discografía</h2>
                     <a href="https://musica.sergiolubezky.com" class="station-domain" target="_blank" rel="noopener noreferrer">musica.sergiolubezky.com</a>
@@ -542,51 +502,98 @@
                 <a href="https://musica.sergiolubezky.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
             </div>
 
+            <div class="map-station" data-station="7" data-category="strategy">
+                <span class="station-number">08 — Actuar</span>
+                <span class="category-pill">Práctica Directiva</span>
+                <div class="station-header">
+                    <h2 class="station-title">Inteligencia</h2>
+                    <a href="https://inteligencia.com" class="station-domain" target="_blank" rel="noopener noreferrer">inteligencia.com</a>
+                </div>
+                <p class="station-description">Diagnóstico de sistemas complejos, reconstrucción de procesos rotos y dirección estratégica en Latinoamérica.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/empresa-en-crisis">Empresa en Crisis</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/falta-de-liderazgo">Falta de Liderazgo</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://inteligencia.com/problemas-operativos">Problemas Operativos</a></li>
+                </ul>
+                <a href="https://inteligencia.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
+            <div class="map-station" style="flex-basis: 360px;" data-station="8" data-category="strategy">
+                <span class="station-number">09 — Actuar</span>
+                <span class="category-pill">Práctica Directiva</span>
+                <div class="station-header">
+                    <h2 class="station-title">Liderazgo Interino</h2>
+                    <a href="https://liderazgointerino.com" class="station-domain" target="_blank" rel="noopener noreferrer">liderazgointerino.com</a>
+                </div>
+                <p class="station-description">Continuidad operativa y liderazgo ejecutivo de transición para organizaciones en momentos críticos.</p>
+                <ul class="nodes-list">
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/cuando-se-necesita-un-director-interino">Cuándo se necesita un Director Interino</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/errores-en-una-crisis-organizacional">Errores en una crisis organizacional</a></li>
+                    <li><span class="tag">Artículo</span><a href="https://liderazgointerino.com/que-hace-un-director-interino">Qué hace un Director Interino</a></li>
+                    <li><span class="tag">Whitepaper</span><a href="https://liderazgointerino.com/interim-leadership-strategic-advantage">Interim Leadership Strategic Advantage</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/when-interim-director-needed/">When is an Interim Director Needed?</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/mistakes-in-an-organizational-crisis/">Mistakes in an Organizational Crisis</a></li>
+                    <li><span class="tag">Article</span><a href="https://liderazgointerino.com/en/what-does-an-interim-director-do/">What Does an Interim Director Do?</a></li>
+                </ul>
+                <a href="https://liderazgointerino.com" class="visit-cta" target="_blank" rel="noopener noreferrer">Visitar sitio →</a>
+            </div>
+
         </div>
     </div>
 
     <div class="map-legend">
         <div class="legend-item"><span class="legend-dot identity"></span>Identidad</div>
-        <div class="legend-item"><span class="legend-dot strategy"></span>Estrategia</div>
-        <div class="legend-item"><span class="legend-dot reflection"></span>Reflexión</div>
-        <div class="legend-item"><span class="legend-dot creation"></span>Creación</div>
+        <div class="legend-item"><span class="legend-dot reflection"></span>Entender</div>
+        <div class="legend-item"><span class="legend-dot creation"></span>Ver y Sentir</div>
+        <div class="legend-item"><span class="legend-dot strategy"></span>Actuar</div>
     </div>
 </main>
 
 <footer>
-    <div class="footer-container">
+    <div class="footer-grid">
         <div class="footer-col">
             <h3>Sergio Lubezky A.</h3>
-            <p>Estratega enfocado en la intersección entre tecnología, liderazgo y percepción. Exploro cómo los sistemas complejos, los equipos de trabajo y las ideas colectivas se coordinan para transformar crisis operativas en ventajas estratégicas resilientes.</p>
-            <div class="social-row">
+            <p>Estratega, director y creador multidisciplinario. Exploro cómo la percepción, los sistemas complejos y la sensibilidad humana se articulan para transformar la incertidumbre en claridad y acción.</p>
+            <div class="footer-socials">
                 <a href="https://www.linkedin.com/in/sergiolubezky/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://x.com/slubezky" target="_blank" rel="noopener noreferrer">X</a>
-                <a href="https://www.facebook.com/sergiolubezky/" target="_blank" rel="noopener noreferrer">Facebook</a>
                 <a href="https://www.instagram.com/sergiolubezky/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.facebook.com/sergiolubezky/" target="_blank" rel="noopener noreferrer">Facebook</a>
                 <a href="https://open.spotify.com/show/1aZSsv60nXP2XbemIVhVqk" target="_blank" rel="noopener noreferrer">Podcast</a>
             </div>
-            <div class="contact-email">
-                <a href="mailto:sergio@lubezky.com">sergio@lubezky.com</a>
-            </div>
         </div>
-
         <div class="footer-col">
-            <h3>Ecosistema</h3>
+            <h3>Navegación</h3>
             <ul>
-                <li><a href="https://lubezky.com">Lubezky.com</a></li>
-                <li><a href="https://inteligencia.com">Inteligencia</a></li>
-                <li><a href="https://liderazgointerino.com">Liderazgo Interino</a></li>
-                <li><a href="https://clasesdefoto.com">Clases de Foto</a></li>
-                <li><a href="https://coachdefoto.com">Coach de Foto</a></li>
-                <li><a href="https://lomioeslafoto.com">Lo Mío es la Foto</a></li>
-                <li><a href="https://elmismobarco.com">El Mismo Barco</a></li>
-                <li><a href="https://unnuevopuntodevista.com">Un Nuevo Punto de Vista</a></li>
+                <li><a href="/sobre-mi/">Sobre Mí</a></li>
+                <li><a href="/trabajo/">Mi Trabajo</a></li>
+                <li><a href="/mapa/" class="current-location">Mi Huella</a></li>
+                <li><a href="mailto:sergio@lubezky.com">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Universo Personal</h3>
+            <ul>
+                <li><a href="https://lubezky.com/">Lubezky.com</a></li>
+                <li><a href="https://elmismobarco.com/">El Mismo Barco</a></li>
+                <li><a href="https://unnuevopuntodevista.com/">Un Nuevo Punto de Vista</a></li>
+                <li><a href="https://lomioeslafoto.com/">Lo Mío es la Foto</a></li>
+                <li><a href="https://clasesdefoto.com/">Clases de Foto</a></li>        
+                <li><a href="https://coachdefoto.com/">Coach de Foto</a></li>
                 <li><a href="https://musica.sergiolubezky.com/">Música</a></li>
-                <li><a href="https://lubezky.com/mapa/" class="active-map">Mapa del Ecosistema</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Práctica Directiva</h3>
+            <ul>
+                <li><a href="https://inteligencia.com/">Inteligencia</a></li>
+                <li><a href="https://liderazgointerino.com/">Liderazgo Interino</a></li>
             </ul>
         </div>
     </div>
-    <span class="copyright">© 2026 Sergio Lubezky A. Todos los derechos reservados.</span>
+    <div class="footer-bottom">
+        <p>© 2026 Sergio Lubezky A. Todos los derechos reservados.</p>
+    </div>
 </footer>
 
 <script>
@@ -648,7 +655,7 @@
             const stationTitle = station.querySelector('.station-title').textContent;
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'map_interaction', {
-                    'event_category': 'Mapa del Ecosistema',
+                    'event_category': 'Mi Huella',
                     'event_label': `${stationTitle} - ${this.textContent}`,
                     'station': stationTitle
                 });
